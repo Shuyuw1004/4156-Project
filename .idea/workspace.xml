@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="ff67e7a7-f53c-4486-93dc-dd7c0e70b72d" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/rentermatch/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rentermatch/src/main/java/org/humanlearning/dao/impl/RenterDaoImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rentermatch/src/main/java/org/humanlearning/service/impl/RenterServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rentermatch/src/main/resources/applicationContext.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rentermatch/src/main/webapp/WEB-INF/web.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rentermatch/src/main/webapp/index.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rentermatch/src/test/java/TestRenterDaoImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rentermatch/src/test/java/TestRenterServiceImpl.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="$USER_HOME$/apache-maven-3.8.6" />
+        <option name="useMavenConfig" value="true" />
+        <option name="userSettingsFile" value="$USER_HOME$/apache-maven-3.8.6/conf/settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="MavenRunner">
+    <option name="jreName" value="18" />
+    <option name="vmOptions" value="-DarchetypeCatalog=internal" />
+  </component>
+  <component name="ProjectId" id="2GSEauOl3PV8P8zvYdNGEWf93yP" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "jdk.selected.JAVA_MODULE": "18",
+    "last_opened_file_path": "/Users/uuu/Desktop/CU/F22/4156_SoftwareEngineer/4156-Project",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="RentermatchApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="rentermatch" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.humanlearning.rentermatch.RentermatchApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ff67e7a7-f53c-4486-93dc-dd7c0e70b72d" name="Changes" comment="" />
+      <created>1666373651623</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1666373651623</updated>
+      <workItem from="1666373652834" duration="9972000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
