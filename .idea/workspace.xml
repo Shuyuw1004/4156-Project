@@ -4,15 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff67e7a7-f53c-4486-93dc-dd7c0e70b72d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/rentermatch/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rentermatch/src/main/java/org/humanlearning/dao/impl/RenterDaoImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rentermatch/src/main/java/org/humanlearning/service/impl/RenterServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rentermatch/src/main/resources/applicationContext.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rentermatch/src/main/webapp/WEB-INF/web.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rentermatch/src/main/webapp/index.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rentermatch/src/test/java/TestRenterDaoImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rentermatch/src/test/java/TestRenterServiceImpl.java" beforeDir="false" />
+    <list default="true" id="ff67e7a7-f53c-4486-93dc-dd7c0e70b72d" name="Changes" comment="Connected with MySQL database and added login and register feature">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,8 +78,23 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1666373651623</updated>
-      <workItem from="1666373652834" duration="9972000" />
+      <workItem from="1666373652834" duration="10630000" />
     </task>
+    <task id="LOCAL-00001" summary="Connected with MySQL database&#10;Added login and register feature">
+      <created>1666385452726</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1666385452726</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Connected with MySQL database and added login and register feature">
+      <created>1666385651825</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1666385651825</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -102,6 +110,11 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Connected with MySQL database&#10;Added login and register feature" />
+    <MESSAGE value="Connected with MySQL database and added login and register feature" />
+    <option name="LAST_COMMIT_MESSAGE" value="Connected with MySQL database and added login and register feature" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
