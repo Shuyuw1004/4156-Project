@@ -36,8 +36,6 @@ public class ClientController {
 
     @GetMapping("register")
     public String register(String name, String password) {
-        log.info("name: {}", name);
-        log.info("password: {}", password);
         if (StringUtils.isEmpty(name)) {
             return "name cannot be empty";
         }
