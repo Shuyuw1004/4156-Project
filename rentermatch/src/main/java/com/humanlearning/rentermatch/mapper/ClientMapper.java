@@ -8,9 +8,9 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ClientMapper {
-    @Insert("INSERT INTO coms4156.client(name, password) VALUES(#{name},#{password})")
-    int saveClient(@Param("name") String name, @Param("password") String password);
+    @Insert("INSERT INTO coms4156.client(Name, password, Email) VALUES(#{name},#{password},#{email})")
+    int saveClient(@Param("password") String password, @Param("name") String name, @Param("email") String email);
 
-    @Select("SELECT cid,name,password FROM coms4156.client WHERE name=#{name}")
-    Client selectClient(@Param("name") String name);
+    @Select("SELECT cid,Name,password,Email FROM coms4156.client WHERE Email=#{email}")
+    Client selectClient(@Param("email") String email);
 }
