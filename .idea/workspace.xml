@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff67e7a7-f53c-4486-93dc-dd7c0e70b72d" name="Changes" comment="Updated login and register feature">
-      <change afterPath="$PROJECT_DIR$/rentermatch/src/test/java/com/humanlearning/rentermatch/ClientControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rentermatch/src/main/java/com/humanlearning/rentermatch/controller/ClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/rentermatch/src/main/java/com/humanlearning/rentermatch/controller/ClientController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rentermatch/src/main/java/com/humanlearning/rentermatch/mapper/ClientMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/rentermatch/src/main/java/com/humanlearning/rentermatch/mapper/ClientMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rentermatch/src/test/java/com/humanlearning/rentermatch/RentermatchApplicationTests.java" beforeDir="false" />
-    </list>
+    <list default="true" id="ff67e7a7-f53c-4486-93dc-dd7c0e70b72d" name="Changes" comment="Added comments and Junit test for ClientController" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -206,7 +200,14 @@
       <option name="project" value="LOCAL" />
       <updated>1666385800333</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Added comments and Junit test for ClientController">
+      <created>1666593841444</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1666593841444</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -226,7 +227,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Connected with MySQL database&#10;Added login and register feature" />
     <MESSAGE value="Connected with MySQL database and added login and register feature" />
-    <option name="LAST_COMMIT_MESSAGE" value="Connected with MySQL database and added login and register feature" />
+    <MESSAGE value="Added comments and Junit test for ClientController" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added comments and Junit test for ClientController" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
