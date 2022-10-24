@@ -17,14 +17,14 @@ public class ClientController {
     private ClientMapper clientMapper;
 
     @GetMapping("login")
-    public String login(String name, String password) {
-        if (StringUtils.isEmpty(name)) {
-            return "name cannot be empty";
+    public String login(String email, String password) {
+        if (StringUtils.isEmpty(email)) {
+            return "email cannot be empty";
         }
         if (StringUtils.isEmpty(password)) {
             return "password cannot be empty";
         }
-        Client client = clientMapper.selectClient(name);
+        Client client = clientMapper.selectClient(email);
         if (client == null) {
             return "login failed";
         }
@@ -35,18 +35,22 @@ public class ClientController {
     }
 
     @GetMapping("register")
-    public String register(String name, String password) {
-        if (StringUtils.isEmpty(name)) {
-            return "name cannot be empty";
+    public String register(String password, String name, String email) {
+
+        if (StringUtils.isEmpty(email)) {
+            return "email cannot be empty";
         }
         if (StringUtils.isEmpty(password)) {
             return "password cannot be empty";
         }
-        Client client = clientMapper.selectClient(name);
+        if (StringUtils.isEmpty(name)) {
+            return "name cannot be empty";
+        }
+        Client client = clientMapper.selectClient(email);
         if (client != null) {
             return "register failed, user already exist";
         }
-        int resultCount = clientMapper.saveClient(name, password);
+        int resultCount = clientMapper.saveClient(password,name,email);
         if (resultCount == 0) return "register failed";
         return "register successfully";
     }
