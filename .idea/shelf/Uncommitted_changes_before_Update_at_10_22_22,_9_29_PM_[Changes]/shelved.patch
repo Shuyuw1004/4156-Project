@@ -1,0 +1,79 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"ff67e7a7-f53c-4486-93dc-dd7c0e70b72d\" name=\"Changes\" comment=\"Connected with MySQL database and added login and register feature\">\n      <change beforePath=\"$PROJECT_DIR$/rentermatch/src/main/java/com/humanlearning/rentermatch/controller/ClientController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/rentermatch/src/main/java/com/humanlearning/rentermatch/controller/ClientController.java\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"Interface\" />\n        <option value=\"Class\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"MarkdownSettingsMigration\">\n    <option name=\"stateVersion\" value=\"1\" />\n  </component>\n  <component name=\"MavenImportPreferences\">\n    <option name=\"generalSettings\">\n      <MavenGeneralSettings>\n        <option name=\"mavenHome\" value=\"$USER_HOME$/apache-maven-3.8.6\" />\n        <option name=\"useMavenConfig\" value=\"true\" />\n        <option name=\"userSettingsFile\" value=\"$USER_HOME$/apache-maven-3.8.6/conf/settings.xml\" />\n      </MavenGeneralSettings>\n    </option>\n  </component>\n  <component name=\"MavenRunner\">\n    <option name=\"jreName\" value=\"18\" />\n    <option name=\"vmOptions\" value=\"-DarchetypeCatalog=internal\" />\n  </component>\n  <component name=\"ProjectId\" id=\"2GSEauOl3PV8P8zvYdNGEWf93yP\" />\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\"><![CDATA[{\n  \"keyToString\": {\n    \"RequestMappingsPanelOrder0\": \"0\",\n    \"RequestMappingsPanelOrder1\": \"1\",\n    \"RequestMappingsPanelWidth0\": \"75\",\n    \"RequestMappingsPanelWidth1\": \"75\",\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\n    \"WebServerToolWindowFactoryState\": \"false\",\n    \"jdk.selected.JAVA_MODULE\": \"18\",\n    \"last_opened_file_path\": \"/Users/uuu/Desktop/CU/F22/4156_SoftwareEngineer/4156-Project\",\n    \"project.structure.last.edited\": \"Modules\",\n    \"project.structure.proportion\": \"0.0\",\n    \"project.structure.side.proportion\": \"0.0\",\n    \"settings.editor.selected.configurable\": \"preferences.pluginManager\"\n  }\n}]]></component>\n  <component name=\"RunManager\">\n    <configuration name=\"RentermatchApplication\" type=\"SpringBootApplicationConfigurationType\" factoryName=\"Spring Boot\">\n      <module name=\"rentermatch\" />\n      <option name=\"SPRING_BOOT_MAIN_CLASS\" value=\"com.humanlearning.rentermatch.RentermatchApplication\" />\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"ff67e7a7-f53c-4486-93dc-dd7c0e70b72d\" name=\"Changes\" comment=\"\" />\n      <created>1666373651623</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1666373651623</updated>\n      <workItem from=\"1666373652834\" duration=\"10783000\" />\n    </task>\n    <task id=\"LOCAL-00001\" summary=\"Connected with MySQL database&#10;Added login and register feature\">\n      <created>1666385452726</created>\n      <option name=\"number\" value=\"00001\" />\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1666385452726</updated>\n    </task>\n    <task id=\"LOCAL-00002\" summary=\"Connected with MySQL database and added login and register feature\">\n      <created>1666385651825</created>\n      <option name=\"number\" value=\"00002\" />\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1666385651825</updated>\n    </task>\n    <task id=\"LOCAL-00003\" summary=\"Connected with MySQL database and added login and register feature\">\n      <created>1666385800333</created>\n      <option name=\"number\" value=\"00003\" />\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1666385800333</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"4\" />\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State />\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <MESSAGE value=\"Connected with MySQL database&#10;Added login and register feature\" />\n    <MESSAGE value=\"Connected with MySQL database and added login and register feature\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Connected with MySQL database and added login and register feature\" />\n  </component>\n  <component name=\"XSLT-Support.FileAssociations.UIState\">\n    <expand />\n    <select />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 0035d76b28cdcd8f01ce8fcdac13fd9e860481ef)
++++ b/.idea/workspace.xml	(date 1666488529321)
+@@ -5,7 +5,10 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="ff67e7a7-f53c-4486-93dc-dd7c0e70b72d" name="Changes" comment="Connected with MySQL database and added login and register feature">
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/rentermatch/src/main/java/com/humanlearning/rentermatch/controller/ClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/rentermatch/src/main/java/com/humanlearning/rentermatch/controller/ClientController.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/rentermatch/src/main/java/com/humanlearning/rentermatch/domain/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/rentermatch/src/main/java/com/humanlearning/rentermatch/domain/Client.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/rentermatch/src/main/java/com/humanlearning/rentermatch/mapper/ClientMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/rentermatch/src/main/java/com/humanlearning/rentermatch/mapper/ClientMapper.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -40,6 +43,7 @@
+     <option name="vmOptions" value="-DarchetypeCatalog=internal" />
+   </component>
+   <component name="ProjectId" id="2GSEauOl3PV8P8zvYdNGEWf93yP" />
++  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+   <component name="ProjectViewState">
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+@@ -48,8 +52,10 @@
+   "keyToString": {
+     "RequestMappingsPanelOrder0": "0",
+     "RequestMappingsPanelOrder1": "1",
++    "RequestMappingsPanelOrder2": "2",
+     "RequestMappingsPanelWidth0": "75",
+     "RequestMappingsPanelWidth1": "75",
++    "RequestMappingsPanelWidth2": "75",
+     "RunOnceActivity.OpenProjectViewOnStart": "true",
+     "RunOnceActivity.ShowReadmeOnStart": "true",
+     "WebServerToolWindowFactoryState": "false",
+@@ -58,7 +64,8 @@
+     "project.structure.last.edited": "Modules",
+     "project.structure.proportion": "0.0",
+     "project.structure.side.proportion": "0.0",
+-    "settings.editor.selected.configurable": "preferences.pluginManager"
++    "settings.editor.selected.configurable": "preferences.pluginManager",
++    "spring.configuration.checksum": "6f4ddc5c611f6be04ec1d0591a726555"
+   }
+ }]]></component>
+   <component name="RunManager">
+@@ -78,7 +85,11 @@
+       <option name="number" value="Default" />
+       <option name="presentableId" value="Default" />
+       <updated>1666373651623</updated>
+-      <workItem from="1666373652834" duration="10783000" />
++      <workItem from="1666373652834" duration="16796000" />
++      <workItem from="1666477018284" duration="22000" />
++      <workItem from="1666477061254" duration="98000" />
++      <workItem from="1666478024055" duration="1243000" />
++      <workItem from="1666486377444" duration="2147000" />
+     </task>
+     <task id="LOCAL-00001" summary="Connected with MySQL database&#10;Added login and register feature">
+       <created>1666385452726</created>
+@@ -101,7 +112,14 @@
+       <option name="project" value="LOCAL" />
+       <updated>1666385800333</updated>
+     </task>
+-    <option name="localTasksCounter" value="4" />
++    <task id="LOCAL-00004" summary="Connected with MySQL database and added login and register feature">
++      <created>1666385964232</created>
++      <option name="number" value="00004" />
++      <option name="presentableId" value="LOCAL-00004" />
++      <option name="project" value="LOCAL" />
++      <updated>1666385964232</updated>
++    </task>
++    <option name="localTasksCounter" value="5" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
