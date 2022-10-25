@@ -14,30 +14,30 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class StudentController {
 
-  @Autowired
-  private StudentMapper studentMapper;
-
-  @GetMapping("insertStudent")
-  public String insertStudent(String email, String name, Integer sid, String uni) {
-    if (StringUtils.isEmpty(email)) {
-      return "email cannot be empty";
-    }
-    if (StringUtils.isEmpty(name)) {
-      return "name cannot be empty";
-    }
-    if (StringUtils.isEmpty(sid)) {
-      return "sid cannot be empty";
-    }
-    if (StringUtils.isEmpty(uni)) {
-      return "name cannot be empty";
-    }
-    Student student = studentMapper.selectStudent(name);
-    if (student != null) {
-      return "profile creation failed, user already exist";
-    }
-    int resultCount = studentMapper.saveStudent(email, name, sid, uni);
-    if (resultCount == 0) {
-      return "profile creation failed";
+    @GetMapping("insertStudent")
+    public String insertStudent(String email, String name, Integer sid, Integer sClientId, String uni) {
+        if (StringUtils.isEmpty(email)) {
+            return "email cannot be empty";
+        }
+        if (StringUtils.isEmpty(name)) {
+            return "name cannot be empty";
+        }
+        if (StringUtils.isEmpty(sid)) {
+            return "sid cannot be empty";
+        }
+        if (StringUtils.isEmpty(sClientId)) {
+            return "sClientId cannot be empty";
+        }
+        if (StringUtils.isEmpty(uni)) {
+            return "uni cannot be empty";
+        }
+        Student student = studentMapper.selectStudent(name);
+        if (student != null) {
+            return "profile creation failed, user already exist";
+        }
+        int resultCount = studentMapper.saveStudent(email, name, sid, sClientId, uni);
+        if (resultCount == 0) return "profile creation failed";
+        return "profile created successfully";
     }
     return "profile created successfully";
   }
