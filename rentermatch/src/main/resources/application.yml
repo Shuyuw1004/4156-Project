@@ -8,22 +8,4 @@ spring:
     password: 12345678
     driver-class-name: com.mysql.cj.jdbc.Driver
 
-  security:
-    oauth2:
-      client:
-        clientId: javadevoauthtest
-        clientSecret: 12345678
-      user:
-        username: javadevoathtest
-        password: 1234
-      accessTokenValidity: 300
-      refreshTokenValidity: 240000
 
-#      accessTokenUri:
-#      userAuthorizationUri:
-#      clientAuthenticationScheme:
-#      scope:
-#        - openid
-#    resource:
-#      userInfoUri:
-#      preferTokenInfo:

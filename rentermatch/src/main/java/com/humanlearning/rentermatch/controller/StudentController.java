@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("student")
 @RestController
 public class StudentController {
-    @Autowired
-    private StudentMapper studentMapper;
 
     @GetMapping("insertStudent")
     public String insertStudent(String email, String name, Integer sid, Integer sClientId, String uni) {
@@ -41,4 +39,6 @@ public class StudentController {
         if (resultCount == 0) return "profile creation failed";
         return "profile created successfully";
     }
+    return "profile created successfully";
+  }
 }
