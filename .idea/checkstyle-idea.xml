@@ -5,14 +5,14 @@
     <scanScope>JavaOnly</scanScope>
     <option name="thirdPartyClasspath" />
     <option name="activeLocationIds">
-      <option value="9a2c50fe-f922-48b4-bf9a-ccba50485a88" />
+      <option value="dba56196-f488-4c2c-92f0-ce5edf326f0f" />
     </option>
     <option name="locations">
       <list>
         <ConfigurationLocation id="bundled-sun-checks" type="BUNDLED" scope="All" description="Sun Checks">(bundled)</ConfigurationLocation>
         <ConfigurationLocation id="bundled-google-checks" type="BUNDLED" scope="All" description="Google Checks">(bundled)</ConfigurationLocation>
-        <ConfigurationLocation id="9a2c50fe-f922-48b4-bf9a-ccba50485a88" type="LOCAL_FILE" scope="All" description="Google Java Style checks">
-          $PROJECT_DIR$/../../../../Korea Visa/google_checks.xml
+        <ConfigurationLocation id="dba56196-f488-4c2c-92f0-ce5edf326f0f" type="LOCAL_FILE" scope="All" description="Google Style Check">
+          $PROJECT_DIR$/rentermatch/src/main/resources/google_checks.xml
           <option name="properties">
             <map>
               <entry key="org.checkstyle.google.suppressionfilter.config" value="" />
