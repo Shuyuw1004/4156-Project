@@ -27,14 +27,14 @@ public class LandlordController {
         if (StringUtils.isEmpty(lClientId)) {
             return "lClientId cannot be empty";
         }
-        //Select client from database by email
+        //Select landlord from database by lPhone
         Landlord landlord = landlordMapper.selectLandlord(lPhone);
-        //If client does not exist
+        //If landlord does not exist
         if (landlord != null) {
-            return "landlord creation failed, user already exist";
+            return "landlord creation failed, landlord already exist";
         }
         int resultCount = landlordMapper.saveLandlord(lPhone, lClientId);
-        if (resultCount == 0) return "profile creation failed";
-        return "profile created successfully";
+        if (resultCount == 0) return "landlord creation failed";
+        return "landlord created successfully";
     }
 }
