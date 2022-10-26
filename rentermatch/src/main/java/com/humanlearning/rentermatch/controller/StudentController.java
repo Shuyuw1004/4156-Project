@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class StudentController {
 
+    @Autowired
+    private StudentMapper studentMapper;
+
     @GetMapping("insertStudent")
     public String insertStudent(String email, String name, Integer sid, Integer sClientId, String uni) {
         if (StringUtils.isEmpty(email)) {
@@ -39,6 +42,4 @@ public class StudentController {
         if (resultCount == 0) return "profile creation failed";
         return "profile created successfully";
     }
-    return "profile created successfully";
-  }
 }
