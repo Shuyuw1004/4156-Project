@@ -14,4 +14,20 @@ public interface StudentMapper {
 
     @Select("SELECT email,name,sid,sClientId,uni FROM coms4156.student WHERE name=#{name}")
     Student selectStudent(@Param("name") String name);
+
+    @Select("SELECT email, name, sid, sClientId, uni FROM coms4156.student WHERE uni=#{uni}")
+    Student selectStudentByuni(@Param("uni") String uni);
+
+    @Select("SELECT email, name, sid, sClientId, uni FROM coms4156.student WHERE sid=#{sid}")
+    Student selectStudentBysid(@Param("sid") Integer sid);
+
+    @Select("SELECT email, name, sid, sClientId, uni FROM coms4156.student WHERE email=#{email}")
+    Student selectStudentByemail(@Param("email") String email);
+
+    @Select("SELECT email, name, sid, sClientId, uni FROM coms4156.student WHERE sClientId=#{sClientId}")
+    Student selectStudentBysClientId(@Param("sClientId") Integer sClientId);
+
+    @Select("SELECT email,name,sid,sClientId,uni FROM coms4156.student WHERE name=#{name}")
+    Student selectStudentByname(@Param("name") String name);
+
 }

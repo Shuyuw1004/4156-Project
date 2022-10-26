@@ -42,4 +42,41 @@ public class StudentController {
         if (resultCount == 0) return "profile creation failed";
         return "profile created successfully";
     }
+
+
+    @GetMapping("getStudent")
+    public String getStudent(String email, Integer sid, String uni, Integer sClientId, String name) {
+        Student student;
+        if (email != null) {
+            student = studentMapper.selectStudentByemail(email);
+            if (student != null) {
+                return student.toString();
+            } else
+                return "Can't find student by this email. Invalid email.";
+        } else if (sid != null) {
+            student = studentMapper.selectStudentBysid(sid);
+            if (student != null) {
+                return student.toString();
+            } else
+                return "Can't find student by this sid. Invalid sid.";
+        } else if (uni != null) {
+            student = studentMapper.selectStudentByuni(uni);
+            if (student != null) {
+                return student.toString();
+            } else
+                return "Can't find student by this uni. Invalid uni.";
+        } else if (sClientId != null) {
+            student = studentMapper.selectStudentBysClientId(sClientId);
+            if (student != null) {
+                return student.toString();
+            } else
+                return "Can't find student by this sClientId. Invalid sClientId.";
+        } else if (name != null) {
+            student = studentMapper.selectStudentByname(name);
+            if (student != null) {
+                return student.toString();
+            } else
+                return "Can't find student by this name. Invalid name.";
+        } else return "The student does not exist.";
+    }
 }
