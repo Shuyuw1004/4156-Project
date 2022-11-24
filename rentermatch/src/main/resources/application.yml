@@ -3,7 +3,7 @@ server:
 
 spring:
   datasource:
-    url: jdbc:mysql://coms4156.cjpbkidulxni.us-east-1.rds.amazonaws.com
+    url: jdbc:mysql://coms-4156.cjpbkidulxni.us-east-1.rds.amazonaws.com
     username: admin
     password: 12345678
     driver-class-name: com.mysql.cj.jdbc.Driver
