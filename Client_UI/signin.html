@@ -7,18 +7,14 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Login</title>
         <style>
-                body {
-                        margin: 0;
-                        padding: 0;
+                body {                    
                         background-image: url(img/register_bg.png);
-                        background-repeat: no-repeat;
-                        background-size: cover;
                 }
 
                 .login-form {
                         width: 300px;
                         background: #191919;
-                        padding: 30px;
+                        padding: 40px;
                         margin: 10% auto 0 auto;
                         border-radius: 30px;
                         opacity: 0.6;
@@ -50,6 +46,13 @@
                         width: 280px;
                         border-color: #2ecc71;
                 }
+
+                #btn_sub {
+                        width: 150px;
+                        height: 40px;
+                        background-color: #c2dadd;
+                        border: 1px solid #FFD026;
+                }
         </style>
 
 
@@ -65,8 +68,9 @@
                 <input type="text" name="name" placeholder="Username">
                 <input type="text" name="email" placeholder="Email">
                 <input type="password" name="password" placeholder="Password">
-                <input type="submit" value="Login">
-                <input type="reset" value="Reset">
+                <input type="submit" id="btn_sub" value="Login">
+                <p></p>
+                <input type="reset" id="btn_sub" value="Reset">
         </form>
 </body>
 
