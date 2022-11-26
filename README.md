@@ -62,4 +62,20 @@ This is an example after code stylechecker scanning:
 ![img_3.png](img_3.png)
 
 
+## Branch Coverage tool
+In this project, we are using JaCoCo as the branch coverage tool.
+
+We used Maven to add JaCoCo Plugin. Relevant information can be found:
+https://www.jacoco.org/jacoco/
+
+When checking code coverage with JaCoCo, select 'clean' and 'test' in the maven sidebar and click 'Run'.
+
+![img_4.jpg](img_4.jpg)
+
+Then use the browser to open 'index.html' in the target/site/jacoco folder to view the current code coverage situation.
+
+![img_5.ipg](img_5.jpg)
+
+
+
 
