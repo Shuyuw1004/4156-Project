@@ -2,7 +2,7 @@ version: 2 # use CircleCI 2.0
 jobs: # a collection of steps
   build: # runs not using Workflows must have a `build` job as entry point
 
-    working_directory: ~/circleci-demo-java-spring # directory where steps will run
+    working_directory: ~/rentermatch # directory where steps will run
 
     docker: # run the steps with Docker
       - image: circleci/openjdk:11-stretch # ...with this image as the primary container; this is where all `steps` will run
@@ -20,7 +20,7 @@ jobs: # a collection of steps
       - save_cache: # saves the project dependencies
           paths:
             - ~/.m2
-          key: circleci-demo-java-spring-{{ checksum "pom.xml" }}
+          key: rentermatch-{{ checksum "pom.xml" }}
 
       - run: mvn package # run the actual tests
 
