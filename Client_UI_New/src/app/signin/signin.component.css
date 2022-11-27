@@ -1,0 +1,46 @@
+body {                    
+        background: url("../../../img/register_bg.png");
+}
+
+.login-form {
+        width: 300px;
+        background: #191919;
+        padding: 40px;
+        margin: 10% auto 0 auto;
+        border-radius: 30px;
+        opacity: 0.6;
+        text-align: center;
+}
+
+.login-form h1 {
+        color: white;
+        font-weight: 500;
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"] {
+        background: none;
+        width: 200px;
+        border: 2px solid #3498db;
+        border-radius: 25px;
+        font-size: 16px;
+        margin: 10px auto;
+        padding: 14px 10px;
+        text-align: center;
+        outline: none;
+        color: white;
+        transition: 0.25s;
+}
+
+.login-form input[type="text"]:focus,
+.login-form input[type="password"]:focus {
+        width: 280px;
+        border-color: #2ecc71;
+}
+
+#btn_sub {
+        width: 150px;
+        height: 40px;
+        background-color: #c2dadd;
+        border: 1px solid #FFD026;
+}

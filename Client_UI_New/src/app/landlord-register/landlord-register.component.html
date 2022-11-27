@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <meta charset="UTF-8">
+        <title>landlordRegister</title>
+        <!-- <script>
+                window.onload = function () {
+                        document.getElementById("form").onsubmit = function () {
+                                return checkUsername() && checkPassword();
+                        };
+                        document.getElementById("username").onblur = checkUsername;
+                        document.getElementById("password").onblur = checkPassword;
+                };
+
+                function checkUsername() {
+                        var username = document.getElementById("username").value;
+                        var reg_username = /^\w{1,64}$/;
+                        var flag = reg_username.test(username);
+                        var s_username = document.getElementById("s_username");
+                        if (flag) {
+                                s_username.innerHTML = "<img width='35' height='25' src='img/gou.png'/>";
+                        } else {
+                                s_username.innerHTML = "Username cannot be empty or more than 64 characters.";
+                        }
+                        return flag;
+                }
+
+                function checkPassword() {
+                        var password = document.getElementById("password").value;
+                        var reg_password = /^\w{1,128}$/;
+                        var flag = reg_password.test(password);
+                        var s_password = document.getElementById("s_password");
+                        if (flag) {
+                                s_password.innerHTML = "<img width='35' height='25' src='img/gou.png'/>";
+                        } else {
+                                s_password.innerHTML = "Password canno be empty.";
+                        }
+                        return flag;
+                }
+
+        </script> -->
+</head>
+
+<body>
+
+        <div class="rg_layout">
+
+                <div class="rg_left">
+                        <p>New landlord register</p>
+                </div>
+
+                <div class="rg_center">
+                        <div class="rg_form">
+                                <form action="#" id="form" method="get">
+                                        <table>
+                                                <tr>
+                                                        <td class="td_left"><label for="username">Username</label></td>
+                                                        <td class="td_right">
+                                                                <input type="text" name="username" id="username"
+                                                                        placeholder="Cannot be empty or more than 64 characters.">
+                                                                <span id="s_username" class="error"></span>
+                                                        </td>
+                                                </tr>
+
+                                                <tr>
+                                                        <td class="td_left"><label for="password">Password</label></td>
+                                                        <td class="td_right">
+                                                                <input type="password" name="password" id="password"
+                                                                        placeholder="Cannot be empty.">
+                                                                <span id="s_password" class="error"></span>
+                                                        </td>
+                                                </tr>
+
+                                                <tr>
+                                                        <td class="td_left"><label for="Email">Email</label></td>
+                                         
+                                                        <td class="td_right"><input type="email" name="Email" id="Email"
+                                                                        placeholder="Cannot be empty."></td>
+                                                </tr>
+
+
+                                                <tr>
+                                                        <td class="td_left"><label for="lPhone">Phone</label></td>
+                                                        <td class="td_right"><input type="tel" name="lPhone"
+                                                                        id="lPhone"></td>
+                                                </tr>
+
+                                                <tr>
+                                                        <td colspan="2" id="td_sub"><input type="submit" id="btn_sub"
+                                                                        value="Register" (click)="onRegister()"></td>
+                                                </tr>
+                                        </table>
+
+                                </form>
+                        </div>
+                </div>
+
+
+        </div>
+
+</body>
+
+</html>

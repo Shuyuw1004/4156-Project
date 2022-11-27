@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -41,6 +42,33 @@ public class ClientController {
         return "wrong password";
     }
 
+//    @PostMapping("register")
+//    public String registerByYY(String password, String name, String email) {
+//        //Check whether email is empty
+//        if (StringUtils.isEmpty(email)) {
+//            return "email cannot be empty";
+//        }
+//        //Check whether password is empty
+//        if (StringUtils.isEmpty(password)) {
+//            return "password cannot be empty";
+//        }
+//        //Check whether name is empty
+//        if (StringUtils.isEmpty(name)) {
+//            return "name cannot be empty";
+//        }
+//        //Select client from database by email
+//        Client client = clientMapper.selectClient(email);
+//        //Check whether client already exist
+//        if (client != null) {
+//            return "register failed, user already exist";
+//        }
+//        //Return 1 if saved successfully; return 0 if failed
+//        int resultCount = clientMapper.saveClient(password, name, email);
+//        if (resultCount == 0) {
+//            return "register failed";
+//        }
+//        return "register successfully";
+//    }
 
     @GetMapping("register")
     public String register(String password, String name, String email) {
