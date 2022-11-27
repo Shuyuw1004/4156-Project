@@ -1,15 +1,14 @@
 package com.humanlearning.rentermatch.controller;
 
 import com.humanlearning.rentermatch.domain.Client;
+import com.humanlearning.rentermatch.domain.Landlord;
 import com.humanlearning.rentermatch.domain.Tenant;
 import com.humanlearning.rentermatch.mapper.ClientMapper;
+import com.humanlearning.rentermatch.mapper.LandlordMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RequestMapping("client")
@@ -18,6 +17,8 @@ public class ClientController {
 
     @Autowired
     private ClientMapper clientMapper;
+    @Autowired
+    private LandlordMapper landlordMapper;
 
     @GetMapping("login")
     public String login(String email, String password) {
@@ -42,33 +43,6 @@ public class ClientController {
         return "wrong password";
     }
 
-//    @PostMapping("register")
-//    public String registerByYY(String password, String name, String email) {
-//        //Check whether email is empty
-//        if (StringUtils.isEmpty(email)) {
-//            return "email cannot be empty";
-//        }
-//        //Check whether password is empty
-//        if (StringUtils.isEmpty(password)) {
-//            return "password cannot be empty";
-//        }
-//        //Check whether name is empty
-//        if (StringUtils.isEmpty(name)) {
-//            return "name cannot be empty";
-//        }
-//        //Select client from database by email
-//        Client client = clientMapper.selectClient(email);
-//        //Check whether client already exist
-//        if (client != null) {
-//            return "register failed, user already exist";
-//        }
-//        //Return 1 if saved successfully; return 0 if failed
-//        int resultCount = clientMapper.saveClient(password, name, email);
-//        if (resultCount == 0) {
-//            return "register failed";
-//        }
-//        return "register successfully";
-//    }
 
     @GetMapping("register")
     public String register(String password, String name, String email) {
@@ -122,5 +96,37 @@ public class ClientController {
                 return "The client does not exist.";
         } else
             return "cId cannot be empty.";
+    }
+
+    @DeleteMapping("deleteClient")
+    public String deleteClient(String password, String name, String email) {
+        if (password == null) {
+            return "password cannot be empty";
+        }
+        if (name == null) {
+            return "name cannot be empty";
+        }
+        if (email == null) {
+            return "email cannot be empty";
+        }
+        Client client = clientMapper.selectClient(email);
+        if (client == null) {
+            return "client doest not exist";
+        }
+        int cid = client.getCid();
+        Landlord landlord = landlordMapper.selectLandlordBylClientId(cid);
+        if (landlord != null) {
+            Integer lId = landlord.getLId();
+            int resultCount = landlordMapper.deleteLandlordBylId(lId);
+            if (resultCount == 0) {
+                return "delete the client as a landlord failed";
+            }
+        }
+        int resultCount = clientMapper.deleteClientBycId(cid);
+        if (resultCount == 0) {
+            return "delete failed";
+        }
+        else
+            return "client deleted successfully";
     }
 }

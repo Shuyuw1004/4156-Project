@@ -1,6 +1,7 @@
 package com.humanlearning.rentermatch.mapper;
 
 import com.humanlearning.rentermatch.domain.Client;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -23,4 +24,7 @@ public interface ClientMapper {
 
     @Select("SELECT cid,Name,password,Email FROM coms4156.client WHERE cid=#{cid}")
     Client selectClientBycId(@Param("cid") Integer cid);
+
+    @Delete("DELETE FROM coms4156.client WHERE cid=#{cid}")
+    int deleteClientBycId(@Param("cid") Integer cid);
 }
