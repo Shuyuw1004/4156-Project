@@ -21,4 +21,5 @@ jobs:
         cache: maven
         
     - name: Build with Maven
+      working-directory: ./rentermatch
       run: mvn -B package --file pom.xml
