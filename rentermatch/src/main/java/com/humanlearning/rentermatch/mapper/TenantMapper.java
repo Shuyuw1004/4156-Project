@@ -28,7 +28,7 @@ public interface TenantMapper {
     Tenant selectTenantBytId(@Param("tid") String tid);
 
     @Select("SELECT tid, tAge, tClientId, tConstellation, tCooking, tEarlyTimeSleep, tExpenditure, tGender, tJob, tLateTimeSleep, " +
-            "tMatches, tNumOfRoomates, tNumOfRoomates, tPhone, tPreferLocation, tPreferType, tPreferZipCode, tSmoking " +
+            "tMatches, tNumOfRoomates,tPet,tNumOfRoomates, tPhone, tPreferLocation, tPreferType, tPreferZipCode, tSmoking " +
             "FROM coms4156.tenant WHERE tClientId=#{tClientId}")
     Tenant selectTenantBytClientId(@Param("tClientId") String tClientId);
 

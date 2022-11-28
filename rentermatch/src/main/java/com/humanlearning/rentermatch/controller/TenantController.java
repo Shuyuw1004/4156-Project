@@ -94,7 +94,7 @@ public class TenantController {
 
     @GetMapping("getTenantBytId")
     public String getTenantBytId(String tId) {
-        if (tId != null) {
+        if (!tId.isEmpty()) {
             Tenant tenant = tenantMapper.selectTenantBytId(tId);
             if (tenant != null) {
                 return tenant.toString();
@@ -106,7 +106,7 @@ public class TenantController {
 
     @GetMapping("getTenantBytClientId")
     public String getTenantByClientId(String tClientId) {
-        if (tClientId != null) {
+        if (!tClientId.isEmpty()) {
             Tenant tenant = tenantMapper.selectTenantBytClientId(tClientId);
             if (tenant != null) {
                 return tenant.toString();
