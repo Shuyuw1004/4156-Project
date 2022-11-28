@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <meta charset="UTF-8">
+        <title>tenantRegister</title>
+       
+        <script>
+                window.onload = function () {
+                        document.getElementById("form").onsubmit = function () {
+                                return checkUsername() && checkPassword();
+                        };
+                        document.getElementById("username").onblur = checkUsername;
+                        document.getElementById("password").onblur = checkPassword;
+                };
+
+                function checkUsername() {
+                        var username = document.getElementById("username").value;
+                        var reg_username = /^\w{1,64}$/;
+                        var flag = reg_username.test(username);
+                        var s_username = document.getElementById("s_username");
+                        if (flag) {
+                                s_username.innerHTML = "<img width='35' height='25' src='img/gou.png'/>";
+                        } else {
+                                s_username.innerHTML = "Username cannot be empty or more than 64 characters.";
+                        }
+                        return flag;
+                }
+
+                function checkPassword() {
+                        var password = document.getElementById("password").value;
+                        var reg_password = /^\w{1,128}$/;
+                        var flag = reg_password.test(password);
+                        var s_password = document.getElementById("s_password");
+                        if (flag) {
+                                s_password.innerHTML = "<img width='35' height='25' src='img/gou.png'/>";
+                        } else {
+                                s_password.innerHTML = "Password canno be empty.";
+                        }
+                        return flag;
+                }
+
+        </script>
+</head>
+
+<body>
+
+        <div class="rg_layout">
+
+                <div class="rg_left">
+                        <p>New tenant register</p>
+                </div>
+
+                <div class="rg_center">
+                        <div class="rg_form">
+                                <form action="#" id="form" method="get">
+                                        <table>
+                                                <tr>
+                                                        <td class="td_left"><label for="username">Username</label></td>
+                                                        <td class="td_right">
+                                                                <input type="text" name="username" id="username"
+                                                                        placeholder="Cannot be empty or more than 64 characters.">
+                                                                <span id="s_username" class="error"></span>
+                                                        </td>
+                                                </tr>
+
+                                                <tr>
+                                                        <td class="td_left"><label for="password">Password</label></td>
+                                                        <td class="td_right">
+                                                                <input type="password" name="password" id="password"
+                                                                        placeholder="Cannot be empty.">
+                                                                <span id="s_password" class="error"></span>
+                                                        </td>
+                                                </tr>
+
+                                                <tr>
+                                                        <td class="td_left"><label for="Email">Email</label></td>
+                                                        <td class="td_right"><input type="email" name="Email" id="Email"
+                                                                        placeholder="Cannot be empty."></td>
+                                                </tr>
+
+
+
+                                                <tr>
+                                                        <td class="td_left"><label for="tPhone">Phone</label></td>
+                                                        <td class="td_right"><input type="tel" name="tPhone"
+                                                                        id="tPhone"></td>
+                                                </tr>
+
+                                                <tr>
+                                                        <td class="td_left"><label>Gender</label></td>
+                                                        <td class="td_right">
+                                                                <input type="radio" name="tGender" value="male"> Male
+                                                                <input type="radio" name="tGender" value="female">
+                                                                Female
+                                                        </td>
+                                                </tr>
+
+                                                <tr>
+                                                        <td class="td_left"><label for="tAge">Age</label></td>
+                                                        <td class="td_right"><input type="number" name="tAge" id="tAge">
+                                                        </td>
+                                                </tr>
+
+
+                                                <tr>
+                                                        <td class="td_left"><label>Constellation</label></td>
+                                                        <td class="td_right">
+                                                                <input type="radio" name="constellation" value="Aries">
+                                                                Aries (3/21-4/20)
+                                                                <input type="radio" name="constellation" value="Taurus">
+                                                                Taurus (4/21-5/21)
+                                                                <input type="radio" name="constellation" value="Gemini">
+                                                                Gemini (5/22-6/21)
+                                                                <input type="radio" name="constellation" value="Cancer">
+                                                                Cancer (6/22-7/22)
+                                                                <input type="radio" name="constellation" value="Leo">
+                                                                Leo (7/23-8/22)
+                                                                <input type="radio" name="constellation" value="Virgo">
+                                                                Virgo (8/23-9/22)
+                                                                <input type="radio" name="constellation" value="Libra">
+                                                                Libra (9/23-10/23)
+                                                                <input type="radio" name="constellation"
+                                                                        value="Scorpio"> Scorpio (10/24-11/22)
+                                                                <input type="radio" name="constellation"
+                                                                        value="Sagittarius"> Sagittarius (11/23-12/21)
+                                                                <input type="radio" name="constellation"
+                                                                        value="Capricorn"> Capricorn (12/22-1/20)
+                                                                <input type="radio" name="constellation"
+                                                                        value="Aquarius"> Aquarius (1/21-2/18)
+                                                                <input type="radio" name="constellation" value="Pisces">
+                                                                Pisces (2/19-3/20)
+                                                        </td>
+                                                </tr>
+
+                                                <tr>
+                                                        <td class="td_left"><label for="tJob">Job</label></td>
+                                                        <td class="td_right"><input type="text" name="tJob" id="tJob">
+                                                        </td>
+                                                </tr>
+
+                                                <tr>
+                                                        <td class="td_left"><label for="tPreferLocation">Prefer
+                                                                        location</label></td>
+                                                        <td class="td_right"><input type="text" name="tPreferLocation"
+                                                                        id="tPreferLocation"></td>
+                                                </tr>
+
+                                                <tr>
+                                                        <td class="td_left"><label for="tPreferZipCode">Prefer zip
+                                                                        code</label></td>
+                                                        <td class="td_right"><input type="number" name="tPreferZipCode"
+                                                                        id="tPreferZipCode"></td>
+                                                </tr>
+
+                                                <tr>
+                                                        <td class="td_left"><label for="tPreferType">Prefer type</label>
+                                                        </td>
+                                                        <td class="td_right"><input type="text" name="tPreferType"
+                                                                        id="tPreferType"></td>
+                                                </tr>
+
+                                                <tr>
+                                                        <td class="td_left"><label
+                                                                        for="tExpenditure">Expenditure</label></td>
+                                                        <td class="td_right"><input type="number" name="tExpenditure"
+                                                                        id="tExpenditure"></td>
+                                                </tr>
+
+                                                <tr>
+                                                        <td class="td_left"><label for="tNumOfRoomates">Number of
+                                                                        Roomates</label></td>
+                                                        <td class="td_right"><input type="number" name="tNumOfRoomates"
+                                                                        id="tNumOfRoomates"></td>
+                                                </tr>
+
+                                                <tr>
+                                                        <td class="td_left"><label for="tSmoking">Smoking</label></td>
+                                                        <td class="td_right"><input type="text" name="tSmoking"
+                                                                        id="tSmoking"></td>
+                                                </tr>
+
+                                                <tr>
+                                                        <td class="td_left"><label for="tPet">Pet</label></td>
+                                                        <td class="td_right"><input type="text" name="tPet" id="tPet">
+                                                        </td>
+                                                </tr>
+
+                                                <tr>
+                                                        <td class="td_left"><label for="tCooking">Cooking</label>
+                                                        </td>
+                                                        <td class="td_right"><input type="text" name="tCooking"
+                                                                        id="tCooking"></td>
+                                                </tr>
+
+                                                <tr>
+                                                        <td class="td_left"><label for="tEarlyTimeSleep">Early Time Sleep</label>
+                                                        </td>
+                                                        <td class="td_right"><input type="time" name="tEarlyTimeSleep"
+                                                                        id="tEarlyTimeSleep"></td>
+                                                </tr>
+
+                                                <tr>
+                                                        <td class="td_left"><label for="tLateTimeSleep">Late Time Sleep</label>
+                                                        </td>
+                                                        <td class="td_right"><input type="time" name="tLateTimeSleep"
+                                                                        id="tLateTimeSleep"></td>
+                                                </tr>
+
+                                               
+                                                
+                                                <tr>
+                                                        <td class="td_left"><label for="uni">Uni (Provide if you're a Columbia student)</label>
+                                                        </td>
+                                                        <td class="td_right"><input type="text" name="uni"
+                                                                        id="uni"></td>
+                                                </tr>
+
+                                                <tr>
+                                                        <td colspan="2" id="td_sub"><input type="submit" id="btn_sub"
+                                                                        value="Register" (click)="onRegister()"></td>
+                                                </tr>
+                                        </table>
+
+                                </form>
+                        </div>
+                </div>
+
+
+                
+
+
+
+        </div>
+
+</body>
+
+</html>
