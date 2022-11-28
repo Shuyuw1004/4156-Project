@@ -28,49 +28,49 @@ public class TenantController {
         if (tAge == null) {
             return "tAge cannot be empty";
         }
-        if (tClientId == null) {
+        if (tClientId == null || tClientId.isEmpty()) {
             return "tClientId cannot be empty";
         }
-        if (tConstellation == null) {
+        if (tConstellation == null || tConstellation.isEmpty()) {
             return "tConstellation cannot be empty";
         }
-        if (tCooking == null) {
+        if (tCooking == null || tCooking.isEmpty()) {
             return "tCooking cannot be empty";
         }
-        if (tEarlyTimeSleep == null) {
+        if (tEarlyTimeSleep == null || tEarlyTimeSleep.isEmpty()) {
             return "tEarlyTimeSleep cannot be empty";
         }
         if (tExpenditure == null) {
             return "tExpenditure cannot be empty";
         }
-        if (tGender == null) {
+        if (tGender == null || tGender.isEmpty()) {
             return "tGender cannot be empty";
         }
-        if (tJob == null) {
+        if (tJob == null || tJob.isEmpty()) {
             return "tJob cannot be empty";
         }
-        if (tLateTimeSleep == null) {
+        if (tLateTimeSleep == null || tLateTimeSleep.isEmpty()) {
             return "tLateTimeSleep cannot be empty";
         }
         if (tNumOfRoomates == null) {
             return "tNumOfRoomates cannot be empty";
         }
-        if (tPet == null) {
+        if (tPet == null || tPet.isEmpty()) {
             return "tPet cannot be empty";
         }
-        if (tPhone == null) {
+        if (tPhone == null || tPhone.isEmpty()) {
             return "tPhone cannot be empty";
         }
-        if (tPreferLocation == null) {
+        if (tPreferLocation == null || tPreferLocation.isEmpty()) {
             return "tPreferLocation cannot be empty";
         }
-        if (tPreferType == null) {
+        if (tPreferType == null || tPreferType.isEmpty()) {
             return "tPreferType cannot be empty";
         }
-        if (tPreferZipCode == null) {
+        if (tPreferZipCode == null || tPreferZipCode.isEmpty()) {
             return "tPreferZipCode cannot be empty";
         }
-        if (tSmoking == null) {
+        if (tSmoking == null || tSmoking.isEmpty()) {
             return "tSmoking cannot be empty";
         }
         // check if tClientId in client database
@@ -124,49 +124,49 @@ public class TenantController {
         if (tAge == null) {
             return "tAge cannot be empty";
         }
-        if (tClientId == null) {
+        if (tClientId == null || tClientId.isEmpty()) {
             return "tClientId cannot be empty";
         }
-        if (tConstellation == null) {
+        if (tConstellation == null || tConstellation.isEmpty()) {
             return "tConstellation cannot be empty";
         }
-        if (tCooking == null) {
+        if (tCooking == null || tCooking.isEmpty()) {
             return "tCooking cannot be empty";
         }
-        if (tEarlyTimeSleep == null) {
+        if (tEarlyTimeSleep == null || tEarlyTimeSleep.isEmpty()) {
             return "tEarlyTimeSleep cannot be empty";
         }
         if (tExpenditure == null) {
             return "tExpenditure cannot be empty";
         }
-        if (tGender == null) {
+        if (tGender == null || tGender.isEmpty()) {
             return "tGender cannot be empty";
         }
-        if (tJob == null) {
+        if (tJob == null || tJob.isEmpty()) {
             return "tJob cannot be empty";
         }
-        if (tLateTimeSleep == null) {
+        if (tLateTimeSleep == null || tLateTimeSleep.isEmpty()) {
             return "tLateTimeSleep cannot be empty";
         }
         if (tNumOfRoomates == null) {
             return "tNumOfRoomates cannot be empty";
         }
-        if (tPet == null) {
+        if (tPet == null || tPet.isEmpty()) {
             return "tPet cannot be empty";
         }
-        if (tPhone == null) {
+        if (tPhone == null || tPhone.isEmpty()) {
             return "tPhone cannot be empty";
         }
-        if (tPreferLocation == null) {
+        if (tPreferLocation == null || tPreferLocation.isEmpty()) {
             return "tPreferLocation cannot be empty";
         }
-        if (tPreferType == null) {
+        if (tPreferType == null || tPreferType.isEmpty()) {
             return "tPreferType cannot be empty";
         }
-        if (tPreferZipCode == null) {
+        if (tPreferZipCode == null || tPreferZipCode.isEmpty()) {
             return "tPreferZipCode cannot be empty";
         }
-        if (tSmoking == null) {
+        if (tSmoking == null || tSmoking.isEmpty()) {
             return "tSmoking cannot be empty";
         }
         Tenant tenant = tenantMapper.selectTenantBytClientId(tClientId);
@@ -185,6 +185,10 @@ public class TenantController {
 
     @DeleteMapping("deleteTenant")
     public String deleteTenant(String tClientId) {
+        //Check whether tClientId is empty
+        if (tClientId == null || tClientId.isEmpty()) {
+            return "tClientId cannot be empty";
+        }
         Tenant tenant = tenantMapper.selectTenantBytClientId(tClientId);
         if (tenant == null) {
             return "tenant does not exist";

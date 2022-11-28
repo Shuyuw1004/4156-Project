@@ -21,7 +21,7 @@ public class HouseController {
     @PostMapping("insertHouse")
     public String insertHouse(String hAddress, Integer hPrice, String hType, String hLandlordId) {
         //Check whether hAddress is empty
-        if (hAddress == null) {
+        if (hAddress == null || hAddress.isEmpty()) {
             return "hAddress cannot be empty";
         }
         //Check whether hPrice is empty
@@ -29,11 +29,11 @@ public class HouseController {
             return "hPrice cannot be empty";
         }
         //Check whether hType is empty
-        if (hType == null) {
+        if (hType == null || hType.isEmpty()) {
             return "hType cannot be empty";
         }
         //Check whether hLandlordId is empty
-        if (hLandlordId == null) {
+        if (hLandlordId == null || hLandlordId.isEmpty()) {
             return "hLandlordId cannot be empty";
         }
         // check if hLandlordId exists in landlord database
@@ -56,7 +56,7 @@ public class HouseController {
     @PatchMapping("updateHousePrice")
     public String updateHouse(String hAddress, Integer hPrice) {
         //Check whether hAddress is empty
-        if (hAddress == null) {
+        if (hAddress == null || hAddress.isEmpty()) {
             return "hAddress cannot be empty";
         }
         //Check whether hPrice is empty
@@ -78,7 +78,7 @@ public class HouseController {
     @DeleteMapping("deleteHouse")
     public String deleteHouse(String hAddress) {
         //Check whether hAddress is empty
-        if (hAddress == null) {
+        if (hAddress == null || hAddress.isEmpty()) {
             return "hAddress cannot be empty";
         }
         House house = houseMapper.selectHouse(hAddress);

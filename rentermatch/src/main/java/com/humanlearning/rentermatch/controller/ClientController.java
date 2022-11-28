@@ -29,11 +29,11 @@ public class ClientController {
     @GetMapping("login")
     public String login(String email, String password) {
         //Check whether email is empty
-        if (email == null) {
+        if (email == null || email.isEmpty()) {
             return "email cannot be empty";
         }
         //Check whether password is empty
-        if (password == null) {
+        if (password == null || password.isEmpty()) {
             return "password cannot be empty";
         }
         //Select client from database by email
@@ -54,15 +54,15 @@ public class ClientController {
     public String register(String password, String name, String email) {
 
         //Check whether email is empty
-        if (email == null) {
+        if (email == null || email.isEmpty()) {
             return "email cannot be empty";
         }
         //Check whether password is empty
-        if (password == null) {
+        if (password == null || password.isEmpty()) {
             return "password cannot be empty";
         }
         //Check whether name is empty
-        if (name == null) {
+        if (name == null || name.isEmpty()) {
             return "name cannot be empty";
         }
         //Select client from database by email
@@ -82,7 +82,7 @@ public class ClientController {
 
     @GetMapping("getClientByEmail")
     public String getClientByEmail(String email) {
-        if (email != null) {
+        if (email != null && !email.isEmpty()) {
             Client client = clientMapper.selectClientByEmail(email);
             if (client != null) {
                 return client.toString();
@@ -94,7 +94,7 @@ public class ClientController {
 
     @GetMapping("getClientBycId")
     public String getClientBycId(String cid) {
-        if (cid != null) {
+        if (cid != null && !cid.isEmpty()) {
             Client client = clientMapper.selectClientBycId(cid);
             if (client != null) {
                 return client.toString();
@@ -106,13 +106,13 @@ public class ClientController {
 
     @DeleteMapping("deleteClient")
     public String deleteClient(String password, String name, String email) {
-        if (password == null) {
+        if (password == null || password.isEmpty()) {
             return "password cannot be empty";
         }
-        if (name == null) {
+        if (name == null || name.isEmpty()) {
             return "name cannot be empty";
         }
-        if (email == null) {
+        if (email == null || email.isEmpty()) {
             return "email cannot be empty";
         }
         Client client = clientMapper.selectClient(email);

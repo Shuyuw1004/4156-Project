@@ -20,16 +20,16 @@ public class StudentController {
 
     @PostMapping("insertStudent")
     public String insertStudent(String email, String name, String sClientId, String uni) {
-        if (email == null) {
+        if (email == null || email.isEmpty()) {
             return "email cannot be empty";
         }
-        if (name == null) {
+        if (name == null || name.isEmpty()) {
             return "name cannot be empty";
         }
-        if (sClientId == null) {
+        if (sClientId == null || sClientId.isEmpty()) {
             return "sClientId cannot be empty";
         }
-        if (uni == null) {
+        if (uni == null || uni.isEmpty()) {
             return "uni cannot be empty";
         }
         // check if sClientId in client database
@@ -85,6 +85,10 @@ public class StudentController {
 
     @DeleteMapping("deleteStudent")
     public String deleteStudent(String sClientId) {
+        //Check whether sClientId is empty
+        if (sClientId == null || sClientId.isEmpty()) {
+            return "sClientId cannot be empty";
+        }
         Student student = studentMapper.selectStudentBysClientId(sClientId);
         if (student == null) {
             return "student does not exist";
@@ -99,16 +103,16 @@ public class StudentController {
 
     @PatchMapping("updateStudent")
     public String updateStudent(String email, String name, String sClientId, String uni) {
-        if (email == null) {
+        if (email == null || email.isEmpty()) {
             return "email cannot be empty";
         }
-        if (name == null) {
+        if (name == null || name.isEmpty()) {
             return "name cannot be empty";
         }
-        if (sClientId == null) {
+        if (sClientId == null || sClientId.isEmpty()) {
             return "sClientId cannot be empty";
         }
-        if (uni == null) {
+        if (uni == null || uni.isEmpty()) {
             return "uni cannot be empty";
         }
         Student student = studentMapper.selectStudentBysClientId(sClientId);

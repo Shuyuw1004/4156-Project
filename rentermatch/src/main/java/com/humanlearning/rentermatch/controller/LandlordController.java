@@ -25,11 +25,11 @@ public class LandlordController {
     @PostMapping("insertLandlord")
     public String insertLandlord(String lPhone, String lClientId) {
         //Check whether lPhone is empty
-        if (lPhone == null) {
+        if (lPhone == null || lPhone.isEmpty()) {
             return "lPhone cannot be empty";
         }
         //Check whether lClientid is empty
-        if (lClientId == null) {
+        if (lClientId == null || lClientId.isEmpty()) {
             return "lClientId cannot be empty";
         }
         // check if landlord exist in client database
@@ -51,11 +51,11 @@ public class LandlordController {
     @PatchMapping("updateLandlord")
     public String updateLandlord(String lPhone, String lClientId) {
         //Check whether lPhone is empty
-        if (lPhone == null) {
+        if (lPhone == null || lPhone.isEmpty()) {
             return "lPhone cannot be empty";
         }
         //Check whether lClientid is empty
-        if (lClientId == null) {
+        if (lClientId == null || lClientId.isEmpty()) {
             return "lClientId cannot be empty";
         }
         //Select landlord from database by lClientId
@@ -75,7 +75,7 @@ public class LandlordController {
     @DeleteMapping("deleteLandlord")
     public String deleteLandlord(String lClientId) {
         //Check whether lClientid is empty
-        if (lClientId == null) {
+        if (lClientId == null || lClientId.isEmpty()) {
             return "lClientId cannot be empty";
         }
         //Select landlord from database by lClientId
