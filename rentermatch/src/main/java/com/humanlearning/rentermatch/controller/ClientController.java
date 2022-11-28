@@ -11,7 +11,11 @@ import com.humanlearning.rentermatch.mapper.TenantMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpHeaders;
+import java.util.logging.*;
+import java.util.logging.Logger;
 @Slf4j
 @RequestMapping("client")
 @RestController
@@ -25,7 +29,8 @@ public class ClientController {
     private StudentMapper studentMapper;
     @Autowired
     private TenantMapper tenantMapper;
-
+    private final static Logger LOGGER =
+            Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
     @GetMapping("login")
     public String login(String email, String password) {
         //Check whether email is empty
@@ -51,32 +56,36 @@ public class ClientController {
 
 
     @PostMapping("register")
-    public String register(String password, String name, String email) {
-
+    public ResponseEntity<String> register(String password, String name, String email) {
+        HttpHeaders responseHeaders = new HttpHeaders();
+        responseHeaders.set("Access-Control-Allow-Origin", "*");
+        responseHeaders.set("Access-Control-Allow-Headers","X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method, Authorization");
+        responseHeaders.set("Access-Control-Allow-Methods","GET, POST, OPTIONS, PUT, DELETE, PATCH");
         //Check whether email is empty
         if (email == null || email.isEmpty()) {
-            return "email cannot be empty";
+            return new ResponseEntity<>("register fail", responseHeaders,HttpStatus.BAD_REQUEST);
         }
         //Check whether password is empty
         if (password == null || password.isEmpty()) {
-            return "password cannot be empty";
+            return new ResponseEntity<>("password cannot be empty", responseHeaders,HttpStatus.BAD_REQUEST);
         }
         //Check whether name is empty
         if (name == null || name.isEmpty()) {
-            return "name cannot be empty";
+            return new ResponseEntity<>("name cannot be empty", responseHeaders, HttpStatus.BAD_REQUEST);
         }
         //Select client from database by email
         Client client = clientMapper.selectClient(email);
         //Check whether client already exist
         if (client != null) {
-            return "register failed, user already exist";
+            return new ResponseEntity<>("register fail, user already exist", responseHeaders, HttpStatus.BAD_REQUEST);
         }
         //Return 1 if saved successfully; return 0 if failed
         int resultCount = clientMapper.saveClient(password, name, email);
         if (resultCount == 0) {
-            return "register failed";
+            return new ResponseEntity<>("register fail", responseHeaders, HttpStatus.BAD_REQUEST);
         }
-        return "register successfully";
+        this.LOGGER.log(Level.INFO, "reach here");
+        return new ResponseEntity<>("register successfully", responseHeaders, HttpStatus.OK);
     }
 
 
