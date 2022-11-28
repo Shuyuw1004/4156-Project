@@ -63,6 +63,19 @@
       </plugin>
 
       <plugin>
+        <groupId>com.heroku.sdk</groupId>
+        <artifactId>heroku-maven-plugin</artifactId>
+        <version>3.0.5</version>
+        <configuration>
+          <appName>rentermatch-service</appName>
+          <processTypes>
+            <web>java $JAVA_OPTS -cp target/classes:target/dependency/* Main</web>
+          </processTypes>
+        </configuration>
+      </plugin>
+
+
+      <plugin>
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
         <version>0.8.5</version>
