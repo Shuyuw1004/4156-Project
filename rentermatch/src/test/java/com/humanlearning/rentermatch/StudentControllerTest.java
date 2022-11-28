@@ -299,6 +299,7 @@ public class StudentControllerTest {
         .andReturn();
   }
 
+
   @Test
   @DisplayName("deleteStudent test empty sClientId")
   public void testMock25() throws Exception {
@@ -333,9 +334,82 @@ public class StudentControllerTest {
   }
 
 
+  @Test
+  @DisplayName("updateStudent test empty email")
+  public void testMock28() throws Exception {
+    MvcResult result = mockMvc.perform(MockMvcRequestBuilders
+            .patch("/student/updateStudent")
+            .param("email", ""))
+        .andExpect(MockMvcResultMatchers.status().isOk())
+        .andExpect(MockMvcResultMatchers.content().string("email cannot be empty"))
+        .andReturn();
+  }
 
+  @Test
+  @DisplayName("updateStudent test empty name")
+  public void testMock29() throws Exception {
+    MvcResult result = mockMvc.perform(MockMvcRequestBuilders
+            .patch("/student/updateStudent")
+            .param("email", "testEmail")
+            .param("name", ""))
+        .andExpect(MockMvcResultMatchers.status().isOk())
+        .andExpect(MockMvcResultMatchers.content().string("name cannot be empty"))
+        .andReturn();
+  }
 
+  @Test
+  @DisplayName("updateStudent test empty sClientId")
+  public void testMock30() throws Exception {
+    MvcResult result = mockMvc.perform(MockMvcRequestBuilders
+            .patch("/student/updateStudent")
+            .param("email", "testEmail")
+            .param("name", "testName")
+            .param("sClientId",""))
+        .andExpect(MockMvcResultMatchers.status().isOk())
+        .andExpect(MockMvcResultMatchers.content().string("sClientId cannot be empty"))
+        .andReturn();
+  }
 
+  @Test
+  @DisplayName("updateStudent test empty Uni")
+  public void testMock31() throws Exception {
+    MvcResult result = mockMvc.perform(MockMvcRequestBuilders
+            .patch("/student/updateStudent")
+            .param("email", "testEmail")
+            .param("name", "testName")
+            .param("sClientId","testSClientId")
+            .param("uni",""))
+        .andExpect(MockMvcResultMatchers.status().isOk())
+        .andExpect(MockMvcResultMatchers.content().string("uni cannot be empty"))
+        .andReturn();
+  }
 
+  @Test
+  @DisplayName("updateStudent test Non-exist student")
+  public void testMock32() throws Exception {
+    MvcResult result = mockMvc.perform(MockMvcRequestBuilders
+            .patch("/student/updateStudent")
+            .param("email", "mockEmail")
+            .param("name", "mockName")
+            .param("sClientId","mockSClientId")
+            .param("uni","mockUni"))
+        .andExpect(MockMvcResultMatchers.status().isOk())
+        .andExpect(MockMvcResultMatchers.content().string("student does not exist"))
+        .andReturn();
+  }
+
+  @Test
+  @DisplayName("updateStudent test update successfully")
+  public void testMock33() throws Exception {
+    MvcResult result = mockMvc.perform(MockMvcRequestBuilders
+            .patch("/student/updateStudent")
+            .param("email", "tony@gmail.com")
+            .param("name", "ton7")
+            .param("sClientId","4")
+            .param("uni","tony1111"))
+        .andExpect(MockMvcResultMatchers.status().isOk())
+        .andExpect(MockMvcResultMatchers.content().string("student update successfully"))
+        .andReturn();
+  }
 
 }
