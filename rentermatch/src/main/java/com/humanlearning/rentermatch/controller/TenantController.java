@@ -203,6 +203,9 @@ public class TenantController {
 
     @GetMapping("getMatch")
     public String getMatch(String tClientId) {
+        if (tClientId == null || tClientId.isEmpty()) {
+            return "tClientId cannot be empty";
+        }
         Tenant tenant = tenantMapper.selectTenantBytClientId(tClientId);
         if (tenant == null) {
             return "tenant does not exist";
@@ -227,10 +230,11 @@ public class TenantController {
         if (matchedTenants == null || matchedTenants.size() == 0) {
             return "cannot find matched tenants";
         }
-        else
-            matchedTenants.forEach(matchedTenant -> {
-                System.out.println(matchedTenant);
-            });
-        return matchedTenants.toString();
+        StringBuilder tenants = new StringBuilder("");
+        for (int i = 0; i < matchedTenants.size(); i++) {
+            tenants.append(matchedTenants.get(i).toString());
+            tenants.append("\n");
+        }
+        return tenants.toString();
     }
 }

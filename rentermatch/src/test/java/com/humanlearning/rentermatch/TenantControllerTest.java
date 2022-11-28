@@ -972,7 +972,44 @@ public class TenantControllerTest {
                         .get("/tenant/getMatch")
                         .param("tClientId", ""))
                 .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.content().string("tClientId cannot be empty"))
+                .andReturn();
+    }
+
+    @Test
+    @DisplayName("Wrong ClientId getMatch")
+    public void testMock43() throws Exception {
+        MvcResult result = mockMvc.perform(MockMvcRequestBuilders
+                        .get("/tenant/getMatch")
+                        .param("tClientId", "abc"))
+                .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().string("tenant does not exist"))
                 .andReturn();
     }
+
+    @Test
+    @DisplayName("ClientId Cannot Find Match")
+    public void testMock44() throws Exception {
+        MvcResult result = mockMvc.perform(MockMvcRequestBuilders
+                        .get("/tenant/getMatch")
+                        .param("tClientId", "3"))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.content().string("cannot find matched tenants"))
+                .andReturn();
+    }
+
+    @Test
+    @DisplayName("tClientId Matched With Other Tenants Successfully")
+    public void testMock45() throws Exception {
+        MvcResult result = mockMvc.perform(MockMvcRequestBuilders
+                        .get("/tenant/getMatch")
+                        .param("tClientId", "7"))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.content().string("Tenant(tid=19, tAge=23, tClientId=8, tConstellation=Libra, " +
+                        "tCooking=Yes, tEarlyTimeSleep=12:00, tExpenditure=3000, tGender=male, tJob=Student, tLateTimeSleep=2:00, " +
+                        "tMatches=null, tNumOfRoomates=2, tPet=Yes, tPhone=929-472-4669, tPreferLocation=New York, tPreferType=Apartment, " +
+                        "tPreferZipCode=10025, tSmoking=No)\n"))
+                .andReturn();
+    }
+
 }
