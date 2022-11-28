@@ -70,7 +70,7 @@ class ClientControllerTest {
   @DisplayName("Empty Email Register")
   public void testMock5() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
-            .get("/client/register")
+            .post("/client/register")
             .param("name", "Lena Smith")
             .param("password", "123")
             .param("email", ""))
@@ -83,7 +83,7 @@ class ClientControllerTest {
   @DisplayName("Empty Password Register")
   public void testMock6() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
-            .get("/client/register")
+            .post("/client/register")
             .param("name", "Lena Smith")
             .param("password", "")
             .param("email", "kevinceltics09@hotmail.com"))
@@ -96,7 +96,7 @@ class ClientControllerTest {
   @DisplayName("Empty Name Register")
   public void testMock7() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
-            .get("/client/register")
+            .post("/client/register")
             .param("name", "")
             .param("password", "123")
             .param("email", "kevinceltics09@hotmail.com"))
@@ -109,7 +109,7 @@ class ClientControllerTest {
   @DisplayName("Duplicate User Register")
   public void testMock8() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
-            .get("/client/register")
+            .post("/client/register")
             .param("name", "Lena Smith")
             .param("password", "123")
             .param("email", "kevinceltics09@hotmail.com"))
