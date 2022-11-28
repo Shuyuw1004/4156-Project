@@ -1,13 +1,12 @@
 package com.humanlearning.rentermatch.controller;
 
+import com.humanlearning.rentermatch.domain.Client;
 import com.humanlearning.rentermatch.domain.Student;
+import com.humanlearning.rentermatch.mapper.ClientMapper;
 import com.humanlearning.rentermatch.mapper.StudentMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RequestMapping("student")
@@ -16,36 +15,40 @@ public class StudentController {
 
     @Autowired
     private StudentMapper studentMapper;
+    @Autowired
+    private ClientMapper clientMapper;
 
-    @GetMapping("insertStudent")
-    public String insertStudent(String email, String name, Integer sid, Integer sClientId, String uni) {
-        if (StringUtils.isEmpty(email)) {
+    @PostMapping("insertStudent")
+    public String insertStudent(String email, String name, String sClientId, String uni) {
+        if (email == null) {
             return "email cannot be empty";
         }
-        if (StringUtils.isEmpty(name)) {
+        if (name == null) {
             return "name cannot be empty";
         }
-        if (StringUtils.isEmpty(sid)) {
-            return "sid cannot be empty";
-        }
-        if (StringUtils.isEmpty(sClientId)) {
+        if (sClientId == null) {
             return "sClientId cannot be empty";
         }
-        if (StringUtils.isEmpty(uni)) {
+        if (uni == null) {
             return "uni cannot be empty";
+        }
+        // check if sClientId in client database
+        Client client = clientMapper.selectClientBycId(sClientId);
+        if (client == null) {
+            return "profile creation failed, student is not a client";
         }
         Student student = studentMapper.selectStudent(name);
         if (student != null) {
-            return "profile creation failed, user already exist";
+            return "profile creation failed, student already exist";
         }
-        int resultCount = studentMapper.saveStudent(email, name, sid, sClientId, uni);
-        if (resultCount == 0) return "profile creation failed";
-        return "profile created successfully";
+        int resultCount = studentMapper.saveStudent(email, name, sClientId, uni);
+        if (resultCount == 0) return "studnet profile creation failed";
+        return "student profile created successfully";
     }
 
 
     @GetMapping("getStudent")
-    public String getStudent(String email, Integer sid, String uni, Integer sClientId, String name) {
+    public String getStudent(String email, String sid, String uni, String sClientId, String name) {
         Student student;
         if (email != null) {
             student = studentMapper.selectStudentByemail(email);
@@ -78,5 +81,45 @@ public class StudentController {
             } else
                 return "Can't find student by this name. Invalid name.";
         } else return "The student does not exist.";
+    }
+
+    @DeleteMapping("deleteStudent")
+    public String deleteStudent(String sClientId) {
+        Student student = studentMapper.selectStudentBysClientId(sClientId);
+        if (student == null) {
+            return "student does not exist";
+        }
+        int resultCount = studentMapper.deleteStudentBysClientId(sClientId);
+        if (resultCount == 0) {
+            return "delete failed";
+        }
+        else
+            return "student deleted successfully";
+    }
+
+    @PatchMapping("updateStudent")
+    public String updateStudent(String email, String name, String sClientId, String uni) {
+        if (email == null) {
+            return "email cannot be empty";
+        }
+        if (name == null) {
+            return "name cannot be empty";
+        }
+        if (sClientId == null) {
+            return "sClientId cannot be empty";
+        }
+        if (uni == null) {
+            return "uni cannot be empty";
+        }
+        Student student = studentMapper.selectStudentBysClientId(sClientId);
+        if (student == null) {
+            return "student does not exist";
+        }
+        int resultCount = studentMapper.updateStudent(sClientId, email, name, uni);
+        if(resultCount == 0) {
+            return "update failed";
+        }
+        else
+            return "student update successfully";
     }
 }

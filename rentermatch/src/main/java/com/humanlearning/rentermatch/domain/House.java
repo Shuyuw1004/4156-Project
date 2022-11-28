@@ -4,9 +4,9 @@ import lombok.Data;
 
 @Data
 public class House {
-    private Integer hId;
+    private String hId;
     private String hAddress;
     private Integer hPrice;
     private String hType;
-    private Integer hLandlordId;
+    private String hLandlordId;
 }

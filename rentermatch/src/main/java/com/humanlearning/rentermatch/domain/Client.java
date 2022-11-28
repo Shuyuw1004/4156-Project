@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class Client {
 
-  private Integer cid;
+  private String cid;
   private String name;
   private String password;
   private String email;

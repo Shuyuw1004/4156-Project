@@ -2,12 +2,14 @@ package com.humanlearning.rentermatch.controller;
 
 import com.humanlearning.rentermatch.domain.Client;
 import com.humanlearning.rentermatch.domain.Landlord;
+import com.humanlearning.rentermatch.domain.Student;
 import com.humanlearning.rentermatch.domain.Tenant;
 import com.humanlearning.rentermatch.mapper.ClientMapper;
 import com.humanlearning.rentermatch.mapper.LandlordMapper;
+import com.humanlearning.rentermatch.mapper.StudentMapper;
+import com.humanlearning.rentermatch.mapper.TenantMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 @Slf4j
@@ -19,15 +21,19 @@ public class ClientController {
     private ClientMapper clientMapper;
     @Autowired
     private LandlordMapper landlordMapper;
+    @Autowired
+    private StudentMapper studentMapper;
+    @Autowired
+    private TenantMapper tenantMapper;
 
     @GetMapping("login")
     public String login(String email, String password) {
         //Check whether email is empty
-        if (StringUtils.isEmpty(email)) {
+        if (email == null) {
             return "email cannot be empty";
         }
         //Check whether password is empty
-        if (StringUtils.isEmpty(password)) {
+        if (password == null) {
             return "password cannot be empty";
         }
         //Select client from database by email
@@ -44,19 +50,19 @@ public class ClientController {
     }
 
 
-    @GetMapping("register")
+    @PostMapping("register")
     public String register(String password, String name, String email) {
 
         //Check whether email is empty
-        if (StringUtils.isEmpty(email)) {
+        if (email == null) {
             return "email cannot be empty";
         }
         //Check whether password is empty
-        if (StringUtils.isEmpty(password)) {
+        if (password == null) {
             return "password cannot be empty";
         }
         //Check whether name is empty
-        if (StringUtils.isEmpty(name)) {
+        if (name == null) {
             return "name cannot be empty";
         }
         //Select client from database by email
@@ -87,7 +93,7 @@ public class ClientController {
     }
 
     @GetMapping("getClientBycId")
-    public String getClientBycId(Integer cid) {
+    public String getClientBycId(String cid) {
         if (cid != null) {
             Client client = clientMapper.selectClientBycId(cid);
             if (client != null) {
@@ -113,13 +119,29 @@ public class ClientController {
         if (client == null) {
             return "client doest not exist";
         }
-        int cid = client.getCid();
+        String cid = client.getCid();
+        // if client is a landlord, delete landlord first
         Landlord landlord = landlordMapper.selectLandlordBylClientId(cid);
         if (landlord != null) {
-            Integer lId = landlord.getLId();
-            int resultCount = landlordMapper.deleteLandlordBylId(lId);
+            int resultCount = landlordMapper.deleteLandlordBylClientId(cid);
             if (resultCount == 0) {
                 return "delete the client as a landlord failed";
+            }
+        }
+        // if client is a student, delete student first
+        Student student = studentMapper.selectStudentBysClientId(cid);
+        if (student != null) {
+            int resultCount = studentMapper.deleteStudentBysClientId(cid);
+            if (resultCount == 0) {
+                return "delete the client as a student failed";
+            }
+        }
+        // if client is a tenant, delete tenant first
+        Tenant tenant = tenantMapper.selectTenantBytClientId(cid);
+        if (tenant != null) {
+            int resultCount = tenantMapper.deleteTenantBytClientId(cid);
+            if (resultCount == 0) {
+                return "delete the client as a tenant failed";
             }
         }
         int resultCount = clientMapper.deleteClientBycId(cid);

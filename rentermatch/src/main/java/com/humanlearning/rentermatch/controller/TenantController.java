@@ -1,13 +1,14 @@
 package com.humanlearning.rentermatch.controller;
 
+import com.humanlearning.rentermatch.domain.Client;
 import com.humanlearning.rentermatch.domain.Tenant;
+import com.humanlearning.rentermatch.mapper.ClientMapper;
 import com.humanlearning.rentermatch.mapper.TenantMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Slf4j
 @RequestMapping("tenant")
@@ -16,50 +17,216 @@ public class TenantController {
 
     @Autowired
     private TenantMapper tenantMapper;
+    @Autowired
+    private ClientMapper clientMapper;
 
-    @GetMapping("insertStudent")
-    public String insertTenant(String tid, Integer tAge, String tClientId, String tConstellation,
+    @PostMapping("insertTenant")
+    public String insertTenant(Integer tAge, String tClientId, String tConstellation,
                                String tCooking, String tEarlyTimeSleep, Integer tExpenditure, String tGender, String tJob,
                                String tLateTimeSleep, Integer tNumOfRoomates, String tPet, String tPhone,
                                String tPreferLocation, String tPreferType, String tPreferZipCode, String tSmoking) {
-        if (StringUtils.isEmpty(tid)) {
-            return "tid cannot be empty";
+        if (tAge == null) {
+            return "tAge cannot be empty";
         }
-        Tenant tenant = tenantMapper.selectTenant(tid);
+        if (tClientId == null) {
+            return "tClientId cannot be empty";
+        }
+        if (tConstellation == null) {
+            return "tConstellation cannot be empty";
+        }
+        if (tCooking == null) {
+            return "tCooking cannot be empty";
+        }
+        if (tEarlyTimeSleep == null) {
+            return "tEarlyTimeSleep cannot be empty";
+        }
+        if (tExpenditure == null) {
+            return "tExpenditure cannot be empty";
+        }
+        if (tGender == null) {
+            return "tGender cannot be empty";
+        }
+        if (tJob == null) {
+            return "tJob cannot be empty";
+        }
+        if (tLateTimeSleep == null) {
+            return "tLateTimeSleep cannot be empty";
+        }
+        if (tNumOfRoomates == null) {
+            return "tNumOfRoomates cannot be empty";
+        }
+        if (tPet == null) {
+            return "tPet cannot be empty";
+        }
+        if (tPhone == null) {
+            return "tPhone cannot be empty";
+        }
+        if (tPreferLocation == null) {
+            return "tPreferLocation cannot be empty";
+        }
+        if (tPreferType == null) {
+            return "tPreferType cannot be empty";
+        }
+        if (tPreferZipCode == null) {
+            return "tPreferZipCode cannot be empty";
+        }
+        if (tSmoking == null) {
+            return "tSmoking cannot be empty";
+        }
+        // check if tClientId in client database
+        Client client = clientMapper.selectClientBycId(tClientId);
+        if (client == null) {
+            return "profile creation failed, tenant is not a client";
+        }
+        Tenant tenant = tenantMapper.selectTenantBytClientId(tClientId);
         if (tenant != null) {
-            return "profile creation failed, user already exist";
+            return "profile creation failed, tenant already exist";
         }
-        int resultCount = tenantMapper.saveTenant(tid, tAge, tClientId, tConstellation, tCooking,
+        int resultCount = tenantMapper.saveTenant(tAge, tClientId, tConstellation, tCooking,
                 tEarlyTimeSleep, tExpenditure, tGender, tJob, tLateTimeSleep, tNumOfRoomates, tPet, tPhone,
                 tPreferLocation, tPreferType, tPreferZipCode, tSmoking);
         if (resultCount == 0) {
-            return "profile creation failed";
+            return "tenant profile creation failed";
         }
-        return "profile created successfully";
+        return "tenant profile created successfully";
     }
 
 
     @GetMapping("getTenantBytId")
-    public String getTenantBytId(Integer tId) {
+    public String getTenantBytId(String tId) {
         if (tId != null) {
             Tenant tenant = tenantMapper.selectTenantBytId(tId);
             if (tenant != null) {
                 return tenant.toString();
             } else
-                return "The tenant does not exist.";
+                return "tenant does not exist.";
         } else
             return "tId cannot be empty.";
     }
 
     @GetMapping("getTenantBytClientId")
-    public String getTenantByClientId(Integer tClientId) {
+    public String getTenantByClientId(String tClientId) {
         if (tClientId != null) {
             Tenant tenant = tenantMapper.selectTenantBytClientId(tClientId);
             if (tenant != null) {
                 return tenant.toString();
             } else
-                return "The tenant does not exist.";
+                return "tenant does not exist.";
         } else
             return "tClientId cannot be empty.";
+    }
+
+    @PatchMapping("updateTenant")
+    public String updateTenant(Integer tAge, String tClientId, String tConstellation,
+                               String tCooking, String tEarlyTimeSleep, Integer tExpenditure, String tGender, String tJob,
+                               String tLateTimeSleep, Integer tNumOfRoomates, String tPet, String tPhone,
+                               String tPreferLocation, String tPreferType, String tPreferZipCode, String tSmoking) {
+        if (tAge == null) {
+            return "tAge cannot be empty";
+        }
+        if (tClientId == null) {
+            return "tClientId cannot be empty";
+        }
+        if (tConstellation == null) {
+            return "tConstellation cannot be empty";
+        }
+        if (tCooking == null) {
+            return "tCooking cannot be empty";
+        }
+        if (tEarlyTimeSleep == null) {
+            return "tEarlyTimeSleep cannot be empty";
+        }
+        if (tExpenditure == null) {
+            return "tExpenditure cannot be empty";
+        }
+        if (tGender == null) {
+            return "tGender cannot be empty";
+        }
+        if (tJob == null) {
+            return "tJob cannot be empty";
+        }
+        if (tLateTimeSleep == null) {
+            return "tLateTimeSleep cannot be empty";
+        }
+        if (tNumOfRoomates == null) {
+            return "tNumOfRoomates cannot be empty";
+        }
+        if (tPet == null) {
+            return "tPet cannot be empty";
+        }
+        if (tPhone == null) {
+            return "tPhone cannot be empty";
+        }
+        if (tPreferLocation == null) {
+            return "tPreferLocation cannot be empty";
+        }
+        if (tPreferType == null) {
+            return "tPreferType cannot be empty";
+        }
+        if (tPreferZipCode == null) {
+            return "tPreferZipCode cannot be empty";
+        }
+        if (tSmoking == null) {
+            return "tSmoking cannot be empty";
+        }
+        Tenant tenant = tenantMapper.selectTenantBytClientId(tClientId);
+        if (tenant == null) {
+            return "update failed, tenant does not exist";
+        }
+        int resultCount = tenantMapper.updateTenant(tAge, tClientId, tConstellation, tCooking, tEarlyTimeSleep,
+                                                    tExpenditure, tGender, tJob, tLateTimeSleep, tNumOfRoomates,
+                                                    tPet, tPhone, tPreferLocation, tPreferType, tPreferZipCode, tSmoking);
+        if (resultCount == 0) {
+            return "update failed";
+        }
+        else
+            return "tenant updated successfully";
+    }
+
+    @DeleteMapping("deleteTenant")
+    public String deleteTenant(String tClientId) {
+        Tenant tenant = tenantMapper.selectTenantBytClientId(tClientId);
+        if (tenant == null) {
+            return "tenant does not exist";
+        }
+        int resultCount = tenantMapper.deleteTenantBytClientId(tClientId);
+        if (resultCount == 0) {
+            return "delete failed";
+        }
+        else
+            return "tenant deleted successfully";
+    }
+
+    @GetMapping("getMatch")
+    public String getMatch(String tClientId) {
+        Tenant tenant = tenantMapper.selectTenantBytClientId(tClientId);
+        if (tenant == null) {
+            return "tenant does not exist";
+        }
+        String constellation = tenant.getTConstellation();
+        String cooking = tenant.getTCooking();
+        String tearlyTimeSleep = tenant.getTEarlyTimeSleep();
+        Integer expenditure = tenant.getTExpenditure();
+        String gender = tenant.getTGender();
+        String job = tenant.getTJob();
+        String lateTimeSleep = tenant.getTLateTimeSleep();
+        Integer numOfRoomates = tenant.getTNumOfRoomates();
+        String pet = tenant.getTPet();
+        String preferLocation = tenant.getTPreferLocation();
+        String preferType = tenant.getTPreferType();
+        String preferZipCode = tenant.getTPreferZipCode();
+        String smoking = tenant.getTSmoking();
+
+        List<Tenant> matchedTenants = tenantMapper.getMatch(tClientId, constellation, cooking, tearlyTimeSleep,
+                                                            expenditure, gender, job, lateTimeSleep, numOfRoomates, pet,
+                                                            preferLocation, preferType, preferZipCode, smoking);
+        if (matchedTenants == null || matchedTenants.size() == 0) {
+            return "cannot find matched tenants";
+        }
+        else
+            matchedTenants.forEach(matchedTenant -> {
+                System.out.println(matchedTenant);
+            });
+        return matchedTenants.toString();
     }
 }

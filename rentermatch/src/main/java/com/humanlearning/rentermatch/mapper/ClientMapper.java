@@ -23,8 +23,8 @@ public interface ClientMapper {
     Client selectClientByEmail(@Param("email") String email);
 
     @Select("SELECT cid,Name,password,Email FROM coms4156.client WHERE cid=#{cid}")
-    Client selectClientBycId(@Param("cid") Integer cid);
+    Client selectClientBycId(@Param("cid") String cid);
 
     @Delete("DELETE FROM coms4156.client WHERE cid=#{cid}")
-    int deleteClientBycId(@Param("cid") Integer cid);
+    int deleteClientBycId(@Param("cid") String cid);
 }

@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class Landlord {
-    private Integer lId;
+    private String lId;
     private String lPhone;
-    private Integer lClientId;
+    private String lClientId;
 }
