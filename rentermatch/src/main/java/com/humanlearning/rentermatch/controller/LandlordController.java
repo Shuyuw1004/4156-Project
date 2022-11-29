@@ -7,6 +7,9 @@ import com.humanlearning.rentermatch.mapper.HouseMapper;
 import com.humanlearning.rentermatch.mapper.LandlordMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @Slf4j
@@ -23,29 +26,33 @@ public class LandlordController {
     private HouseMapper houseMapper;
 
     @PostMapping("insertLandlord")
-    public String insertLandlord(String lPhone, String lClientId) {
+    public ResponseEntity<String> insertLandlord(String lPhone, String lClientId) {
         //Check whether lPhone is empty
+        HttpHeaders responseHeaders = new HttpHeaders();
+        responseHeaders.set("Access-Control-Allow-Origin", "*");
+        responseHeaders.set("Access-Control-Allow-Headers","X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method, Authorization");
+        responseHeaders.set("Access-Control-Allow-Methods","GET, POST, OPTIONS, PUT, DELETE, PATCH");
         if (lPhone == null || lPhone.isEmpty()) {
-            return "lPhone cannot be empty";
+            return new ResponseEntity<>("lPhone cannot be empty", responseHeaders, HttpStatus.BAD_REQUEST);
         }
         //Check whether lClientid is empty
         if (lClientId == null || lClientId.isEmpty()) {
-            return "lClientId cannot be empty";
+            return new ResponseEntity<>("lClientId cannot be empty", responseHeaders, HttpStatus.BAD_REQUEST);
         }
         // check if landlord exist in client database
         Client client = clientMapper.selectClientBycId(lClientId);
         if (client == null) {
-            return "landlord creation failed, landlord is not a client";
+            return new ResponseEntity<>("landlord creation failed, landlord is not a client", responseHeaders, HttpStatus.BAD_REQUEST);
         }
         //Select landlord from database by lClientId
         Landlord landlord = landlordMapper.selectLandlordBylClientId(lClientId);
         //If landlord does not exist
         if (landlord != null) {
-            return "landlord creation failed, landlord already exist";
+            return new ResponseEntity<>("landlord creation failed, landlord already exist", responseHeaders, HttpStatus.BAD_REQUEST);
         }
         int resultCount = landlordMapper.saveLandlord(lPhone, lClientId);
-        if (resultCount == 0) return "landlord creation failed";
-        return "landlord created successfully";
+        if (resultCount == 0) return new ResponseEntity<>("landlord creation failed", responseHeaders, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>("landlord created successfully", responseHeaders, HttpStatus.OK);
     }
 
     @PatchMapping("updateLandlord")

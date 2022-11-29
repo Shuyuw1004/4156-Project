@@ -12,7 +12,28 @@ export class LandlordRegisterComponent implements OnInit {
   public landlord: Landlord;
 
   constructor(private httpClient: HttpClient) {
-    this.landlord = new Landlord("123", "123456", "123@columbia1.edu", "123456789");
+    let username_original = document.getElementById("username");
+    let username = "";
+    if (username_original !== null) {
+      username = username_original.innerText;
+    }
+    let password_original = document.getElementById("password");
+    let password = "";
+    if (password_original !== null) {
+      password = password_original.innerText;
+    }
+    let email_original = document.getElementById("Email");
+    let email = "";
+    if (email_original !== null) {
+      email = email_original.innerText;
+    }
+    let phone_original = document.getElementById("lphone");
+    let phone = "";
+    if (phone_original !== null) {
+      phone = phone_original.innerText;
+    }
+    this.landlord = new Landlord(username,
+      password, email, phone);
   }
 
   ngOnInit(): void {
@@ -35,8 +56,5 @@ export class LandlordRegisterComponent implements OnInit {
       next: next => console.log("Success!", next),
       error: error => console.log("Error!", error)
     });
-    for(;;){
-
-    }
   }
 }

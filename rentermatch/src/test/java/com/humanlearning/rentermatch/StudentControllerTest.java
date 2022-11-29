@@ -24,7 +24,7 @@ public class StudentControllerTest {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .post("/student/insertStudent")
             .param("email", ""))
-        .andExpect(MockMvcResultMatchers.status().isOk())
+        .andExpect(MockMvcResultMatchers.status().isBadRequest())
         .andExpect(MockMvcResultMatchers.content().string("email cannot be empty"))
         .andReturn();
   }
@@ -36,7 +36,7 @@ public class StudentControllerTest {
             .post("/student/insertStudent")
             .param("email", "testEmail")
             .param("name", ""))
-        .andExpect(MockMvcResultMatchers.status().isOk())
+        .andExpect(MockMvcResultMatchers.status().isBadRequest())
         .andExpect(MockMvcResultMatchers.content().string("name cannot be empty"))
         .andReturn();
   }
@@ -49,7 +49,7 @@ public class StudentControllerTest {
             .param("email", "testEmail")
             .param("name", "testName")
             .param("sClientId",""))
-        .andExpect(MockMvcResultMatchers.status().isOk())
+        .andExpect(MockMvcResultMatchers.status().isBadRequest())
         .andExpect(MockMvcResultMatchers.content().string("sClientId cannot be empty"))
         .andReturn();
   }
@@ -63,7 +63,7 @@ public class StudentControllerTest {
             .param("name", "testName")
             .param("sClientId","testSClientId")
             .param("uni",""))
-        .andExpect(MockMvcResultMatchers.status().isOk())
+        .andExpect(MockMvcResultMatchers.status().isBadRequest())
         .andExpect(MockMvcResultMatchers.content().string("uni cannot be empty"))
         .andReturn();
   }
@@ -77,7 +77,7 @@ public class StudentControllerTest {
             .param("name", "testName")
             .param("sClientId","testSClientId")
             .param("uni","testUni"))
-        .andExpect(MockMvcResultMatchers.status().isOk())
+        .andExpect(MockMvcResultMatchers.status().isBadRequest())
         .andExpect(MockMvcResultMatchers.content().string("profile creation failed, student is not a client"))
         .andReturn();
   }
@@ -91,7 +91,7 @@ public class StudentControllerTest {
             .param("name", "tony")
             .param("sClientId","4")
             .param("uni","tony1111"))
-        .andExpect(MockMvcResultMatchers.status().isOk())
+        .andExpect(MockMvcResultMatchers.status().isBadRequest())
         .andExpect(MockMvcResultMatchers.content().string("profile creation failed, student already exist"))
         .andReturn();
   }
@@ -105,7 +105,7 @@ public class StudentControllerTest {
             .param("name", "tony")
             .param("sClientId","4")
             .param("uni","tony1111"))
-        .andExpect(MockMvcResultMatchers.status().isOk())
+        .andExpect(MockMvcResultMatchers.status().isBadRequest())
         .andExpect(MockMvcResultMatchers.content().string("profile creation failed, student already exist"))
         .andReturn();
   }
