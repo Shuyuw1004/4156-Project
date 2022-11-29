@@ -77,5 +77,7 @@ Then use the browser to open 'index.html' in the target/site/jacoco folder to vi
 ![img_5.ipg](img_5.jpg)
 
 ## Static Bug Finder 
-We are using SonarCloud as static bug finder, which will run automatically during CI.
-
+We are using SonarCloud as static bug finder, which will run automatically during CI. The report can be found in
+```
+https://sonarcloud.io/summary/overall?id=Shuyuw1004_4156-Project
+```
