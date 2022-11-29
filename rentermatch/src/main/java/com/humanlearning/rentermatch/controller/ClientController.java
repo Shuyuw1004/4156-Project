@@ -16,6 +16,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpHeaders;
 import java.util.logging.*;
 import java.util.logging.Logger;
+import java.util.Formatter;
 @Slf4j
 @RequestMapping("client")
 @RestController
@@ -62,6 +63,9 @@ public class ClientController {
         responseHeaders.set("Access-Control-Allow-Headers","X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method, Authorization");
         responseHeaders.set("Access-Control-Allow-Methods","GET, POST, OPTIONS, PUT, DELETE, PATCH");
         //Check whether email is empty
+        LOGGER.info(password);
+        LOGGER.info(name);
+        LOGGER.info(email);
         if (email == null || email.isEmpty()) {
             return new ResponseEntity<>("register fail", responseHeaders,HttpStatus.BAD_REQUEST);
         }
@@ -84,8 +88,8 @@ public class ClientController {
         if (resultCount == 0) {
             return new ResponseEntity<>("register fail", responseHeaders, HttpStatus.BAD_REQUEST);
         }
-        this.LOGGER.log(Level.INFO, "reach here");
-        return new ResponseEntity<>("register successfully", responseHeaders, HttpStatus.OK);
+        return new ResponseEntity<>(String.format("%s",
+                clientMapper.selectClient(email).getCid()), responseHeaders, HttpStatus.OK);
     }
 
 
