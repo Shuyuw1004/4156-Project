@@ -81,3 +81,9 @@ We are using SonarCloud as static bug finder, which will run automatically durin
 ```
 https://sonarcloud.io/summary/overall?id=Shuyuw1004_4156-Project
 ```
+
+
+## Heroku Deploy
+```
+https://rentermatch-service.herokuapp.com/ 
+```
