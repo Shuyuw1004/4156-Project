@@ -28,7 +28,7 @@ public class HouseControllerTest {
                         .param("hPrice", "3000")
                         .param("hType","condo")
                         .param("hLandlordId","2" ))
-                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.status().isBadRequest())
                 .andExpect(MockMvcResultMatchers.content().string("hAddress cannot be empty"))
                 .andReturn();
     }
@@ -42,7 +42,7 @@ public class HouseControllerTest {
                         .param("hPrice", "")
                         .param("hType","condo")
                         .param("hLandlordId","2" ))
-                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.status().isBadRequest())
                 .andExpect(MockMvcResultMatchers.content().string("hPrice cannot be empty"))
                 .andReturn();
     }
@@ -56,7 +56,7 @@ public class HouseControllerTest {
                         .param("hPrice", "2000")
                         .param("hType","")
                         .param("hLandlordId","2" ))
-                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.status().isBadRequest())
                 .andExpect(MockMvcResultMatchers.content().string("hType cannot be empty"))
                 .andReturn();
     }
@@ -70,7 +70,7 @@ public class HouseControllerTest {
                         .param("hPrice", "2040")
                         .param("hType","condo")
                         .param("hLandlordId","" ))
-                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.status().isBadRequest())
                 .andExpect(MockMvcResultMatchers.content().string("hLandlordId cannot be empty"))
                 .andReturn();
     }
@@ -84,7 +84,7 @@ public class HouseControllerTest {
                         .param("hPrice", "2040")
                         .param("hType","condo")
                         .param("hLandlordId","999" ))
-                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.status().isBadRequest())
                 .andExpect(MockMvcResultMatchers.content().string("house creation failed, landlord of the house does not exist"))
                 .andReturn();
     }
@@ -98,7 +98,7 @@ public class HouseControllerTest {
                         .param("hPrice", "4000")
                         .param("hType","Condo")
                         .param("hLandlordId","2" ))
-                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.status().isBadRequest())
                 .andExpect(MockMvcResultMatchers.content().string("house creation failed, house already exist"))
                 .andReturn();
     }
@@ -124,7 +124,7 @@ public class HouseControllerTest {
                         .patch("/house/updateHousePrice")
                         .param("hAddress", "")
                         .param("hPrice", "2500"))
-                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.status().isBadRequest())
                 .andExpect(MockMvcResultMatchers.content().string("hAddress cannot be empty"))
                 .andReturn();
     }
@@ -136,7 +136,7 @@ public class HouseControllerTest {
                         .patch("/house/updateHousePrice")
                         .param("hAddress", "5 NJ 10001")
                         .param("hPrice", "4000"))
-                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.status().isBadRequest())
                 .andExpect(MockMvcResultMatchers.content().string("house does not exist"))
                 .andReturn();
     }
