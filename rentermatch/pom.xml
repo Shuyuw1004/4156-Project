@@ -85,6 +85,11 @@
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
         <version>0.8.5</version>
+        <configuration>
+          <excludes>
+            **/com/humanlearning/rentermatch/domain/**
+          </excludes>
+        </configuration>
         <executions>
           <execution>
             <goals>
@@ -108,9 +113,6 @@
             <configuration>
               <rules>
                 <rule>
-                  <exclude>
-                    com/humanlearning/rentermatch/domain/**
-                  </exclude>
                   <element>PACKAGE</element>
                   <limits>
                     <limit>
