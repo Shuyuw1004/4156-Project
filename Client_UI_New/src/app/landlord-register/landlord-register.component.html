@@ -57,7 +57,7 @@
                                                 <tr>
                                                         <td class="td_left"><label for="username">Username</label></td>
                                                         <td class="td_right">
-                                                                <input type="text" name="username" id="username"
+                                                                <input type="text" name="username" id="username" #username
                                                                         placeholder="Cannot be empty or more than 64 characters.">
                                                                 <span id="s_username" class="error"></span>
                                                         </td>
@@ -66,7 +66,7 @@
                                                 <tr>
                                                         <td class="td_left"><label for="password">Password</label></td>
                                                         <td class="td_right">
-                                                                <input type="password" name="password" id="password"
+                                                                <input type="password" name="password" id="password" #password
                                                                         placeholder="Cannot be empty.">
                                                                 <span id="s_password" class="error"></span>
                                                         </td>
@@ -74,8 +74,8 @@
 
                                                 <tr>
                                                         <td class="td_left"><label for="Email">Email</label></td>
-                                         
-                                                        <td class="td_right"><input type="email" name="Email" id="Email"
+
+                                                        <td class="td_right"><input type="email" name="Email" id="Email" #email
                                                                         placeholder="Cannot be empty."></td>
                                                 </tr>
 
@@ -83,12 +83,12 @@
                                                 <tr>
                                                         <td class="td_left"><label for="lPhone">Phone</label></td>
                                                         <td class="td_right"><input type="tel" name="lPhone"
-                                                                        id="lPhone"></td>
+                                                                        id="lPhone" #phone></td>
                                                 </tr>
 
                                                 <tr>
                                                         <td colspan="2" id="td_sub"><input type="submit" id="btn_sub"
-                                                                        value="Register" (click)="onRegister()"></td>
+                                                                        value="Register" (click)="onRegister(username.value, password.value, email.value, phone.value)"></td>
                                                 </tr>
                                         </table>
 
