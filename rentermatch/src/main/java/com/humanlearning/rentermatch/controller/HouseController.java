@@ -6,6 +6,9 @@ import com.humanlearning.rentermatch.mapper.HouseMapper;
 import com.humanlearning.rentermatch.mapper.LandlordMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @Slf4j
@@ -19,60 +22,72 @@ public class HouseController {
     private LandlordMapper landlordMapper;
 
     @PostMapping("insertHouse")
-    public String insertHouse(String hAddress, Integer hPrice, String hType, String hLandlordId) {
+    public ResponseEntity<String> insertHouse(String hAddress, Integer hPrice, String hType, String hLandlordId) {
+        HttpHeaders responseHeaders = new HttpHeaders();
+        responseHeaders.set("Access-Control-Allow-Origin", "*");
+        responseHeaders.set("Access-Control-Allow-Headers","X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method, Authorization");
+        responseHeaders.set("Access-Control-Allow-Methods","GET, POST, OPTIONS, PUT, DELETE, PATCH");
         //Check whether hAddress is empty
         if (hAddress == null || hAddress.isEmpty()) {
-            return "hAddress cannot be empty";
+            return new ResponseEntity<>("hAddress cannot be empty", responseHeaders, HttpStatus.BAD_REQUEST);
         }
         //Check whether hPrice is empty
         if (hPrice == null) {
-            return "hPrice cannot be empty";
+            return new ResponseEntity<>("hPrice cannot be empty", responseHeaders, HttpStatus.BAD_REQUEST);
         }
         //Check whether hType is empty
         if (hType == null || hType.isEmpty()) {
-            return "hType cannot be empty";
+            return new ResponseEntity<>("hType cannot be empty", responseHeaders, HttpStatus.BAD_REQUEST);
         }
         //Check whether hLandlordId is empty
         if (hLandlordId == null || hLandlordId.isEmpty()) {
-            return "hLandlordId cannot be empty";
+            return new ResponseEntity<>("hLandlordId cannot be empty", responseHeaders, HttpStatus.BAD_REQUEST);
         }
         // check if hLandlordId exists in landlord database
         Landlord landlord = landlordMapper.selectLandlordBylId(hLandlordId);
         if (landlord == null) {
-            return "house creation failed, landlord of the house does not exist";
+            return new ResponseEntity<>("house creation failed, landlord of the house does not exist", responseHeaders, HttpStatus.BAD_REQUEST);
         }
 
         //Select house from database by hAddress
         House house = houseMapper.selectHouse(hAddress);
         //If house does not exist
         if (house != null) {
-            return "house creation failed, house already exist";
+            return new ResponseEntity<>("house creation failed, house already exist", responseHeaders, HttpStatus.BAD_REQUEST);
         }
         int resultCount = houseMapper.saveHouse(hAddress, hPrice, hType, hLandlordId);
-        if (resultCount == 0) return "house creation failed";
-        return "house created successfully";
+        if (resultCount == 0) {
+            return new ResponseEntity<>("house creation failed", responseHeaders, HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>("house created successfully", responseHeaders, HttpStatus.OK);
     }
 
     @PatchMapping("updateHousePrice")
-    public String updateHouse(String hAddress, Integer hPrice) {
+    public ResponseEntity<String> updateHouse(String hAddress, Integer hPrice) {
+        HttpHeaders responseHeaders = new HttpHeaders();
+        responseHeaders.set("Access-Control-Allow-Origin", "*");
+        responseHeaders.set("Access-Control-Allow-Headers","X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method, Authorization");
+        responseHeaders.set("Access-Control-Allow-Methods","GET, POST, OPTIONS, PUT, DELETE, PATCH");
         //Check whether hAddress is empty
         if (hAddress == null || hAddress.isEmpty()) {
-            return "hAddress cannot be empty";
+            return new ResponseEntity<>("hAddress cannot be empty", responseHeaders, HttpStatus.BAD_REQUEST);
         }
         //Check whether hPrice is empty
         if (hPrice == null) {
-            return "hPrice cannot be empty";
+            return new ResponseEntity<>("hPrice cannot be empty", responseHeaders, HttpStatus.BAD_REQUEST);
+
         }
         House house = houseMapper.selectHouse(hAddress);
         if (house == null) {
-            return "house does not exist";
+            return new ResponseEntity<>("house does not exist", responseHeaders, HttpStatus.BAD_REQUEST);
         }
         int resultCount = houseMapper.updateHousePrice(hAddress, hPrice);
         if (resultCount == 0) {
-            return "update failed";
+            return new ResponseEntity<>("update failed", responseHeaders, HttpStatus.BAD_REQUEST);
         }
-        else
-            return "update successfully";
+        else{
+            return new ResponseEntity<>("update successfully", responseHeaders, HttpStatus.OK);
+        }
     }
 
     @DeleteMapping("deleteHouse")
