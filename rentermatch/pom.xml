@@ -108,6 +108,9 @@
             <configuration>
               <rules>
                 <rule>
+                  <exclude>
+                    com/humanlearning/rentermatch/domain/**
+                  </exclude>
                   <element>PACKAGE</element>
                   <limits>
                     <limit>
