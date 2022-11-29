@@ -25,7 +25,7 @@ class LandlordControllerTest {
                         .post("/landlord/insertLandlord")
                         .param("lPhone", "")
                         .param("lClientId", ""))
-                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.status().isBadRequest())
                 .andExpect(MockMvcResultMatchers.content().string("lPhone cannot be empty"))
                 .andReturn();
     }
@@ -37,7 +37,7 @@ class LandlordControllerTest {
                         .post("/landlord/insertLandlord")
                         .param("lPhone", "917-555-4533")
                         .param("lClientId", ""))
-                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.status().isBadRequest())
                 .andExpect(MockMvcResultMatchers.content().string("lClientId cannot be empty"))
                 .andReturn();
     }
@@ -49,7 +49,7 @@ class LandlordControllerTest {
                         .post("/landlord/insertLandlord")
                         .param("lPhone", "917-555-4533")
                         .param("lClientId", "50"))
-                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.status().isBadRequest())
                 .andExpect(MockMvcResultMatchers.content().string("landlord creation failed, landlord is not a client"))
                 .andReturn();
     }
@@ -61,7 +61,7 @@ class LandlordControllerTest {
                         .post("/landlord/insertLandlord")
                         .param("lPhone", "917-555-4533")
                         .param("lClientId", "7"))
-                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.status().isBadRequest())
                 .andExpect(MockMvcResultMatchers.content().string("landlord creation failed, landlord already exist"))
                 .andReturn();
     }
