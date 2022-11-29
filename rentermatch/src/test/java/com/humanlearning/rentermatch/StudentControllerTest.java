@@ -397,19 +397,19 @@ public class StudentControllerTest {
         .andExpect(MockMvcResultMatchers.content().string("student does not exist"))
         .andReturn();
   }
-//
-//  @Test
-//  @DisplayName("updateStudent test update successfully")
-//  public void testMock33() throws Exception {
-//    MvcResult result = mockMvc.perform(MockMvcRequestBuilders
-//            .patch("/student/updateStudent")
-//            .param("email", "tony@gmail.com")
-//            .param("name", "ton7")
-//            .param("sClientId","4")
-//            .param("uni","tony1111"))
-//        .andExpect(MockMvcResultMatchers.status().isOk())
-//        .andExpect(MockMvcResultMatchers.content().string("student update successfully"))
-//        .andReturn();
-//  }
+
+  @Test
+  @DisplayName("updateStudent test update successfully")
+  public void testMock33() throws Exception {
+    MvcResult result = mockMvc.perform(MockMvcRequestBuilders
+            .patch("/student/updateStudent")
+            .param("email", "tony@gmail.com")
+            .param("name", "tony")
+            .param("sClientId","4")
+            .param("uni","tony1111"))
+        .andExpect(MockMvcResultMatchers.status().isOk())
+        .andExpect(MockMvcResultMatchers.content().string("student update successfully"))
+        .andReturn();
+  }
 
 }
