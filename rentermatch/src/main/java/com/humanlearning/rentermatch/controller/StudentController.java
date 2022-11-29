@@ -4,8 +4,13 @@ import com.humanlearning.rentermatch.domain.Client;
 import com.humanlearning.rentermatch.domain.Student;
 import com.humanlearning.rentermatch.mapper.ClientMapper;
 import com.humanlearning.rentermatch.mapper.StudentMapper;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @Slf4j
@@ -18,32 +23,42 @@ public class StudentController {
     @Autowired
     private ClientMapper clientMapper;
 
+    private final static Logger LOGGER =
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+
     @PostMapping("insertStudent")
-    public String insertStudent(String email, String name, String sClientId, String uni) {
+    public ResponseEntity<String> insertStudent(String email, String name, String sClientId, String uni) {
+        HttpHeaders responseHeaders = new HttpHeaders();
+        responseHeaders.set("Access-Control-Allow-Origin", "*");
+        responseHeaders.set("Access-Control-Allow-Headers","X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method, Authorization");
+        responseHeaders.set("Access-Control-Allow-Methods","GET, POST, OPTIONS, PUT, DELETE, PATCH");
         if (email == null || email.isEmpty()) {
-            return "email cannot be empty";
+            return new ResponseEntity<>("email cannot be empty", responseHeaders, HttpStatus.BAD_REQUEST);
         }
         if (name == null || name.isEmpty()) {
-            return "name cannot be empty";
+            return new ResponseEntity<>("name cannot be empty", responseHeaders,HttpStatus.BAD_REQUEST);
         }
         if (sClientId == null || sClientId.isEmpty()) {
-            return "sClientId cannot be empty";
+            return new ResponseEntity<>("sClientId cannot be empty", responseHeaders,HttpStatus.BAD_REQUEST);
         }
         if (uni == null || uni.isEmpty()) {
-            return "uni cannot be empty";
+            return new ResponseEntity<>("uni cannot be empty", responseHeaders,HttpStatus.BAD_REQUEST);
         }
         // check if sClientId in client database
         Client client = clientMapper.selectClientBycId(sClientId);
         if (client == null) {
-            return "profile creation failed, student is not a client";
+            return new ResponseEntity<>("profile creation failed, student is not a client", responseHeaders,HttpStatus.BAD_REQUEST);
         }
         Student student = studentMapper.selectStudent(name);
         if (student != null) {
-            return "profile creation failed, student already exist";
+            return new ResponseEntity<>("profile creation failed, student already exist", responseHeaders,HttpStatus.BAD_REQUEST);
         }
         int resultCount = studentMapper.saveStudent(email, name, sClientId, uni);
-        if (resultCount == 0) return "studnet profile creation failed";
-        return "student profile created successfully";
+        if (resultCount == 0) {
+            return new ResponseEntity<>("studnet profile creation failed", responseHeaders, HttpStatus.BAD_REQUEST);
+        }
+        this.LOGGER.log(Level.INFO, "reach here");
+        return new ResponseEntity<>("student profile created successfully", responseHeaders, HttpStatus.OK);
     }
 
 
