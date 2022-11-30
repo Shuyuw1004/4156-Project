@@ -26,7 +26,9 @@ export class TenantRegisterComponent implements OnInit {
   tEarlyTimeSleep :string = "";
   tLateTimeSleep :string = "";
   uni :string = "";
-  constructor() { }
+  showLog: boolean = false;
+  ErrorLog :string = "";
+  constructor(private httpClient: HttpClient) { }
 
   ngOnInit(): void {
   }
@@ -65,6 +67,45 @@ export class TenantRegisterComponent implements OnInit {
     this.tLateTimeSleep = tLateTimeSleep_selector.value;
     this.uni = (<HTMLInputElement>document.querySelector('[name="uni"]')).value;
     console.log(this);
+
+    let params1 = new HttpParams()
+      .append("name", this.username)
+      .append("password", this.password)
+      .append("email", this.email);
+    this.httpClient.post(url1,"",{params: params1, observe: 'body', responseType: 'text'}).subscribe(
+      (data:string) => {
+        console.log(data);
+        let params2 = new HttpParams()
+          .append("lClientId", data)
+          .append("tAge", this.age)
+          .append("tConstellation", this.constellation)
+          .append("tCooking", this.cooking)
+          .append("tEarlyTimeSleep", this.tEarlyTimeSleep)
+          .append("tExpenditure", this.expenditure)
+          .append("tGender", this.gender)
+          .append("tJob", this.job)
+          .append("tLateTimeSleep", this.tLateTimeSleep)
+          .append("tNumOfRoomates", this.numOfRoomates)
+          .append("tPet", this.pet)
+          .append("tPhone", this.phone)
+          .append("tPreferLocation", this.preferLocation)
+          .append("tPreferType", this.preferType)
+          .append("tPreferZipCode", this.preferZipCode)
+          .append("tSmoking", this.smoking);
+
+        ;
+        this.httpClient.post(url2, "",{params: params2, observe: 'body', responseType: 'text'}).subscribe({
+          next: next => {
+            this.ErrorLog = "registration successful!";
+            window.location.replace("http://127.0.0.1:4200");
+          },
+          error: error => this.ErrorLog = error.error
+        });
+      },
+      error => this.ErrorLog = error.error);
+
+    this.showLog = true;
+    return false;
     return false;
 
   }
