@@ -53,7 +53,7 @@ export class TenantRegisterComponent implements OnInit {
     this.job = (<HTMLInputElement>document.querySelector('[name="tJob"]')).value;
     this.preferLocation = (<HTMLInputElement>document.querySelector('[name="tPreferLocation"]')).value;
     this.preferZipCode = (<HTMLInputElement>document.querySelector('[name="tPreferZipCode"]')).value;
-    this.preferType = (<HTMLInputElement>document.querySelector('[name="tPreferType"]')).value;
+    this.preferType = this.parseRadio("tPreferType");
     this.expenditure = (<HTMLInputElement>document.querySelector('[name="tExpenditure"]')).valueAsNumber;
     this.numOfRoomates = (<HTMLInputElement>document.querySelector('[name="tNumOfRoomates"]')).valueAsNumber;
     this.smoking = this.parseRadio(("tSmoking"));
