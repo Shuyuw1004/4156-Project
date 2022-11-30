@@ -6,6 +6,9 @@ import com.humanlearning.rentermatch.mapper.ClientMapper;
 import com.humanlearning.rentermatch.mapper.TenantMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,74 +24,78 @@ public class TenantController {
     private ClientMapper clientMapper;
 
     @PostMapping("insertTenant")
-    public String insertTenant(Integer tAge, String tClientId, String tConstellation,
-                               String tCooking, String tEarlyTimeSleep, Integer tExpenditure, String tGender, String tJob,
-                               String tLateTimeSleep, Integer tNumOfRoomates, String tPet, String tPhone,
-                               String tPreferLocation, String tPreferType, String tPreferZipCode, String tSmoking) {
+    public ResponseEntity<String> insertTenant(Integer tAge, String tClientId, String tConstellation,
+                                               String tCooking, String tEarlyTimeSleep, Integer tExpenditure, String tGender, String tJob,
+                                               String tLateTimeSleep, Integer tNumOfRoomates, String tPet, String tPhone,
+                                               String tPreferLocation, String tPreferType, String tPreferZipCode, String tSmoking) {
+        HttpHeaders responseHeaders = new HttpHeaders();
+        responseHeaders.set("Access-Control-Allow-Origin", "*");
+        responseHeaders.set("Access-Control-Allow-Headers","X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method, Authorization");
+        responseHeaders.set("Access-Control-Allow-Methods","GET, POST, OPTIONS, PUT, DELETE, PATCH");
         if (tAge == null) {
-            return "tAge cannot be empty";
+            return new ResponseEntity<>("tAge cannot be empty", responseHeaders, HttpStatus.BAD_REQUEST);
         }
         if (tClientId == null || tClientId.isEmpty()) {
-            return "tClientId cannot be empty";
+            return new ResponseEntity<>("tClientId cannot be empty", responseHeaders, HttpStatus.BAD_REQUEST);
         }
         if (tConstellation == null || tConstellation.isEmpty()) {
-            return "tConstellation cannot be empty";
+            return new ResponseEntity<>("tConstellation cannot be empty", responseHeaders, HttpStatus.BAD_REQUEST);
         }
         if (tCooking == null || tCooking.isEmpty()) {
-            return "tCooking cannot be empty";
+            return new ResponseEntity<>("tCooking cannot be empty", responseHeaders, HttpStatus.BAD_REQUEST);
         }
         if (tEarlyTimeSleep == null || tEarlyTimeSleep.isEmpty()) {
-            return "tEarlyTimeSleep cannot be empty";
+            return new ResponseEntity<>("tEarlyTimeSleep cannot be empty", responseHeaders, HttpStatus.BAD_REQUEST);
         }
         if (tExpenditure == null) {
-            return "tExpenditure cannot be empty";
+            return new ResponseEntity<>("tExpenditure cannot be empty", responseHeaders, HttpStatus.BAD_REQUEST);
         }
         if (tGender == null || tGender.isEmpty()) {
-            return "tGender cannot be empty";
+            return new ResponseEntity<>("tGender cannot be empty", responseHeaders, HttpStatus.BAD_REQUEST);
         }
         if (tJob == null || tJob.isEmpty()) {
-            return "tJob cannot be empty";
+            return new ResponseEntity<>("tJob cannot be empty", responseHeaders, HttpStatus.BAD_REQUEST);
         }
         if (tLateTimeSleep == null || tLateTimeSleep.isEmpty()) {
-            return "tLateTimeSleep cannot be empty";
+            return new ResponseEntity<>("tLateTimeSleep cannot be empty", responseHeaders, HttpStatus.BAD_REQUEST);
         }
         if (tNumOfRoomates == null) {
-            return "tNumOfRoomates cannot be empty";
+            return new ResponseEntity<>("tNumOfRoomates cannot be empty", responseHeaders, HttpStatus.BAD_REQUEST);
         }
         if (tPet == null || tPet.isEmpty()) {
-            return "tPet cannot be empty";
+            return new ResponseEntity<>("tPet cannot be empty", responseHeaders, HttpStatus.BAD_REQUEST);
         }
         if (tPhone == null || tPhone.isEmpty()) {
-            return "tPhone cannot be empty";
+            return new ResponseEntity<>("tPhone cannot be empty", responseHeaders, HttpStatus.BAD_REQUEST);
         }
         if (tPreferLocation == null || tPreferLocation.isEmpty()) {
-            return "tPreferLocation cannot be empty";
+            return new ResponseEntity<>("tPreferLocation cannot be empty", responseHeaders, HttpStatus.BAD_REQUEST);
         }
         if (tPreferType == null || tPreferType.isEmpty()) {
-            return "tPreferType cannot be empty";
+            return new ResponseEntity<>("tPreferType cannot be empty", responseHeaders, HttpStatus.BAD_REQUEST);
         }
         if (tPreferZipCode == null || tPreferZipCode.isEmpty()) {
-            return "tPreferZipCode cannot be empty";
+            return new ResponseEntity<>("tPreferZipCode cannot be empty", responseHeaders, HttpStatus.BAD_REQUEST);
         }
         if (tSmoking == null || tSmoking.isEmpty()) {
-            return "tSmoking cannot be empty";
+            return new ResponseEntity<>("tSmoking cannot be empty", responseHeaders, HttpStatus.BAD_REQUEST);
         }
         // check if tClientId in client database
         Client client = clientMapper.selectClientBycId(tClientId);
         if (client == null) {
-            return "profile creation failed, tenant is not a client";
+            return new ResponseEntity<>("profile creation failed, tenant is not a client", responseHeaders, HttpStatus.BAD_REQUEST);
         }
         Tenant tenant = tenantMapper.selectTenantBytClientId(tClientId);
         if (tenant != null) {
-            return "profile creation failed, tenant already exist";
+            return new ResponseEntity<>("profile creation failed, tenant already exist", responseHeaders, HttpStatus.BAD_REQUEST);
         }
         int resultCount = tenantMapper.saveTenant(tAge, tClientId, tConstellation, tCooking,
                 tEarlyTimeSleep, tExpenditure, tGender, tJob, tLateTimeSleep, tNumOfRoomates, tPet, tPhone,
                 tPreferLocation, tPreferType, tPreferZipCode, tSmoking);
         if (resultCount == 0) {
-            return "tenant profile creation failed";
+            return new ResponseEntity<>("profile creation failed, reason unknown", responseHeaders, HttpStatus.BAD_REQUEST);
         }
-        return "tenant profile created successfully";
+        return new ResponseEntity<>("profile creation successful", responseHeaders, HttpStatus.OK);
     }
 
 

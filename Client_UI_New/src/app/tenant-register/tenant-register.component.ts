@@ -106,7 +106,6 @@ export class TenantRegisterComponent implements OnInit {
 
     this.showLog = true;
     return false;
-    return false;
 
   }
 
