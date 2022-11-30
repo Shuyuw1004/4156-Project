@@ -12,14 +12,14 @@ export class TenantRegisterComponent implements OnInit {
   email :string = "";
   phone :string = "";
   gender :string = "";
-  age :string = "";
+  age :number = 0;
   constellation :string = "";
   job :string = "";
   preferLocation :string = "";
   preferZipCode :string = "";
   preferType :string = "";
-  expenditure :string = "";
-  numOfRoomates :string = "";
+  expenditure :number = 0;
+  numOfRoomates :number = 0;
   smoking :string = "";
   pet :string = "";
   cooking :string = "";
@@ -30,7 +30,16 @@ export class TenantRegisterComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  parseRadio(names :string)  : string {
+    let selector = document.querySelectorAll('[name=' + names + ']'), igender;
+    for (igender = 0; igender < selector.length; igender++){
+      let gender_element = <HTMLInputElement>selector[igender];
+      if (gender_element.checked === true){
+        return gender_element.value;
+      }
+    }
+    return "";
+  }
   onRegister () {
     let url1 = "http://127.0.0.1:8080/client/register";
     let url2 = "http://127.0.0.1:8080/tenant/insertTenant";
@@ -38,35 +47,24 @@ export class TenantRegisterComponent implements OnInit {
     this.password = (<HTMLInputElement>document.querySelector('[name="password"]')).value;
     this.email = (<HTMLInputElement>document.querySelector('[name="Email"]')).value;
     this.phone = (<HTMLInputElement>document.querySelector('[name="tPhone"]')).value;
-    let gender_selector = document.querySelectorAll('[name="tGender"]'), igender;
-    for (igender = 0; igender < gender_selector.length; igender++){
-      let gender_element = <HTMLInputElement>gender_selector[igender];
-      if (gender_element.checked === true){
-        this.gender = gender_element.value;
-      }
-    }
-    this.age = (<HTMLInputElement>document.querySelector('[name="tAge"]')).value;
-    let constellation_selector = document.querySelectorAll('[name="constellation"]'), i;
-    for (i = 0; i < constellation_selector.length; i++){
-      let constellation_element = <HTMLInputElement>constellation_selector[i];
-      if (constellation_element.checked === true){
-        this.constellation = constellation_element.value;
-      }
-    }
+    this.gender = this.parseRadio("tGender");
+    this.age = (<HTMLInputElement>document.querySelector('[name="tAge"]')).valueAsNumber;
+    this.constellation = this.parseRadio("constellation");
     this.job = (<HTMLInputElement>document.querySelector('[name="tJob"]')).value;
     this.preferLocation = (<HTMLInputElement>document.querySelector('[name="tPreferLocation"]')).value;
     this.preferZipCode = (<HTMLInputElement>document.querySelector('[name="tPreferZipCode"]')).value;
     this.preferType = (<HTMLInputElement>document.querySelector('[name="tPreferType"]')).value;
-    this.expenditure = (<HTMLInputElement>document.querySelector('[name="tExpenditure"]')).value;
-    this.numOfRoomates = (<HTMLInputElement>document.querySelector('[name="tNumOfRoomates"]')).value;
-    this.smoking = (<HTMLInputElement>document.querySelector('[name="tSmoking"]')).value;
-    this.pet = (<HTMLInputElement>document.querySelector('[name="tPet"]')).value;
-    this.cooking = (<HTMLInputElement>document.querySelector('[name="tCooking"]')).value;
+    this.expenditure = (<HTMLInputElement>document.querySelector('[name="tExpenditure"]')).valueAsNumber;
+    this.numOfRoomates = (<HTMLInputElement>document.querySelector('[name="tNumOfRoomates"]')).valueAsNumber;
+    this.smoking = this.parseRadio(("tSmoking"));
+    this.pet = this.parseRadio(("tPet"));
+    this.cooking = this.parseRadio(("tCooking"));
     let tEarlyTimeSleep_selector = <HTMLInputElement>document.querySelector('[name="tEarlyTimeSleep"]');
     this.tEarlyTimeSleep = tEarlyTimeSleep_selector.value;
     let tLateTimeSleep_selector = <HTMLInputElement>document.querySelector('[name="tLateTimeSleep"]');
     this.tLateTimeSleep = tLateTimeSleep_selector.value;
     this.uni = (<HTMLInputElement>document.querySelector('[name="uni"]')).value;
+    console.log(this);
     return false;
 
   }
