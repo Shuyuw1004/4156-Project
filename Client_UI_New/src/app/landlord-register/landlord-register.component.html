@@ -34,7 +34,7 @@
                         if (flag) {
                                 s_password.innerHTML = "<img width='35' height='25' src='img/gou.png'/>";
                         } else {
-                                s_password.innerHTML = "Password canno be empty.";
+                                s_password.innerHTML = "Password cannot be empty.";
                         }
                         return flag;
                 }
@@ -91,6 +91,7 @@
                                                                         value="Register" (click)="onRegister(username.value, password.value, email.value, phone.value)"></td>
                                                 </tr>
                                         </table>
+                                  <p class = "error" id="errorlog" *ngIf="showLog">{{ ErrorLog }}</p>
 
                                 </form>
                         </div>

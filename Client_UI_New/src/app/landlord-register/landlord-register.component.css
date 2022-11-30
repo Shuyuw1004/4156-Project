@@ -41,7 +41,6 @@ body {
 .td_right {
         padding-left: 50px;
 }
-
 #username,
 #password,
 #Email,
@@ -72,7 +71,9 @@ body {
 .error {
         color: red;
 }
-
+#errorlog {
+        padding-left: 140px;
+}
 #td_sub {
         padding-left: 150px;
 }

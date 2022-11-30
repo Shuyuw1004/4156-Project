@@ -9,6 +9,8 @@ import { Landlord } from './landlord';
 export class LandlordRegisterComponent implements OnInit {
 
   public landlord: Landlord;
+  showLog: boolean = false;
+  ErrorLog :string = "";
 
 
   constructor(private httpClient: HttpClient) {
@@ -25,8 +27,6 @@ export class LandlordRegisterComponent implements OnInit {
                       .append("name", name)
                       .append("password", password)
                       .append("email", email);
-
-
     this.httpClient.post(url1,"",{params: params1, observe: 'body', responseType: 'text'}).subscribe(
       (data:string) => {
         console.log(data);
@@ -34,10 +34,16 @@ export class LandlordRegisterComponent implements OnInit {
           .append("lClientId", data)
           .append("lPhone", phone);
         this.httpClient.post(url2, "",{params: params2, observe: 'body', responseType: 'text'}).subscribe({
-          next: next => console.log("Success!", next),
-          error: error => console.log("Error!", error)
+          next: next => {
+              this.ErrorLog = "registration successful!";
+              window.location.replace("http://127.0.0.1:4200");
+            },
+          error: error => this.ErrorLog = error.error
         });
-      });
+      },
+      error => this.ErrorLog = error.error);
+
+    this.showLog = true;
     return false;
   }
 }
