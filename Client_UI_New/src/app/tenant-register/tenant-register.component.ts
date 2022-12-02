@@ -96,6 +96,7 @@ export class TenantRegisterComponent implements OnInit {
         this.httpClient.post(url2, "",{params: params2, observe: 'body', responseType: 'text'}).subscribe({
           next: next => {
             this.ErrorLog = "registration successful!";
+            // call get match
             window.location.replace("http://127.0.0.1:4200");
           },
           error: error => this.ErrorLog = error.error

@@ -244,10 +244,11 @@ public class TenantController {
             tenants.append(matchedTenants.get(i).toString());
             tenants.append("\n");
         }
+        //send email
         return tenants.toString();
     }
 
     public ResponseEntity<String> sendEmail(String msg) {
-        
+
     }
 }
