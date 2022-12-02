@@ -1,4 +1,4 @@
-body {                    
+body {
         background: url("../../../img/register_bg.png");
 }
 
@@ -37,7 +37,9 @@ body {
         width: 280px;
         border-color: #2ecc71;
 }
-
+.error {
+  color: red;
+}
 #btn_sub {
         width: 150px;
         height: 40px;

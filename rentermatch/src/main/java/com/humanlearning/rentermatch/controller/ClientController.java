@@ -32,27 +32,31 @@ public class ClientController {
     private TenantMapper tenantMapper;
     private final static Logger LOGGER =
             Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
-    @GetMapping("login")
-    public String login(String email, String password) {
+    @PostMapping("login")
+    public ResponseEntity<String> login(String email, String password) {
+        HttpHeaders responseHeaders = new HttpHeaders();
+        responseHeaders.set("Access-Control-Allow-Origin", "*");
+        responseHeaders.set("Access-Control-Allow-Headers","X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method, Authorization");
+        responseHeaders.set("Access-Control-Allow-Methods","GET, POST, OPTIONS, PUT, DELETE, PATCH");
         //Check whether email is empty
         if (email == null || email.isEmpty()) {
-            return "email cannot be empty";
+            return new ResponseEntity<>("email cannot be empty", responseHeaders,HttpStatus.BAD_REQUEST);
         }
         //Check whether password is empty
         if (password == null || password.isEmpty()) {
-            return "password cannot be empty";
+            return new ResponseEntity<>("password cannot be empty", responseHeaders,HttpStatus.BAD_REQUEST);
         }
         //Select client from database by email
         Client client = clientMapper.selectClient(email);
         //If client does not exist
         if (client == null) {
-            return "login failed";
+            return new ResponseEntity<>("no email associated", responseHeaders,HttpStatus.BAD_REQUEST);
         }
         //Check whether the password matches the one stored in database
         if (password.equals(client.getPassword())) {
-            return "login successfully";
+            return new ResponseEntity<>("login successful", responseHeaders,HttpStatus.OK);
         }
-        return "wrong password";
+        return new ResponseEntity<>("wrong password", responseHeaders,HttpStatus.BAD_REQUEST);
     }
 
 

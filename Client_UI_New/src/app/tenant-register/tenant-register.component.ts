@@ -76,7 +76,7 @@ export class TenantRegisterComponent implements OnInit {
       (data:string) => {
         console.log(data);
         let params2 = new HttpParams()
-          .append("lClientId", data)
+          .append("tClientId", data)
           .append("tAge", this.age)
           .append("tConstellation", this.constellation)
           .append("tCooking", this.cooking)
@@ -92,7 +92,6 @@ export class TenantRegisterComponent implements OnInit {
           .append("tPreferType", this.preferType)
           .append("tPreferZipCode", this.preferZipCode)
           .append("tSmoking", this.smoking);
-
         ;
         this.httpClient.post(url2, "",{params: params2, observe: 'body', responseType: 'text'}).subscribe({
           next: next => {

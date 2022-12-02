@@ -10,7 +10,9 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
+import javax.mail.*;
+import javax.mail.internet.*;
+import javax.activation.*;
 import java.util.List;
 
 @Slf4j
@@ -243,5 +245,9 @@ public class TenantController {
             tenants.append("\n");
         }
         return tenants.toString();
+    }
+
+    public ResponseEntity<String> sendEmail(String msg) {
+        
     }
 }
