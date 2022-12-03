@@ -2,103 +2,104 @@
 <html lang="en">
 
 <head>
-        <meta charset="UTF-8">
-        <title>landlordRegister</title>
-        <!-- <script>
-                window.onload = function () {
-                        document.getElementById("form").onsubmit = function () {
-                                return checkUsername() && checkPassword();
-                        };
-                        document.getElementById("username").onblur = checkUsername;
-                        document.getElementById("password").onblur = checkPassword;
-                };
+  <meta charset="UTF-8">
+  <title>landlordRegister</title>
+  <!-- <script>
+          window.onload = function () {
+                  document.getElementById("form").onsubmit = function () {
+                          return checkUsername() && checkPassword();
+                  };
+                  document.getElementById("username").onblur = checkUsername;
+                  document.getElementById("password").onblur = checkPassword;
+          };
 
-                function checkUsername() {
-                        var username = document.getElementById("username").value;
-                        var reg_username = /^\w{1,64}$/;
-                        var flag = reg_username.test(username);
-                        var s_username = document.getElementById("s_username");
-                        if (flag) {
-                                s_username.innerHTML = "<img width='35' height='25' src='img/gou.png'/>";
-                        } else {
-                                s_username.innerHTML = "Username cannot be empty or more than 64 characters.";
-                        }
-                        return flag;
-                }
+          function checkUsername() {
+                  var username = document.getElementById("username").value;
+                  var reg_username = /^\w{1,64}$/;
+                  var flag = reg_username.test(username);
+                  var s_username = document.getElementById("s_username");
+                  if (flag) {
+                          s_username.innerHTML = "<img width='35' height='25' src='img/gou.png'/>";
+                  } else {
+                          s_username.innerHTML = "Username cannot be empty or more than 64 characters.";
+                  }
+                  return flag;
+          }
 
-                function checkPassword() {
-                        var password = document.getElementById("password").value;
-                        var reg_password = /^\w{1,128}$/;
-                        var flag = reg_password.test(password);
-                        var s_password = document.getElementById("s_password");
-                        if (flag) {
-                                s_password.innerHTML = "<img width='35' height='25' src='img/gou.png'/>";
-                        } else {
-                                s_password.innerHTML = "Password cannot be empty.";
-                        }
-                        return flag;
-                }
+          function checkPassword() {
+                  var password = document.getElementById("password").value;
+                  var reg_password = /^\w{1,128}$/;
+                  var flag = reg_password.test(password);
+                  var s_password = document.getElementById("s_password");
+                  if (flag) {
+                          s_password.innerHTML = "<img width='35' height='25' src='img/gou.png'/>";
+                  } else {
+                          s_password.innerHTML = "Password canno be empty.";
+                  }
+                  return flag;
+          }
 
-        </script> -->
+  </script> -->
 </head>
 
 <body>
 
-        <div class="rg_layout">
+<div class="rg_layout">
 
-                <div class="rg_left">
-                        <p>New landlord register</p>
-                </div>
+  <div class="rg_left">
+    <p>New landlord register</p>
+  </div>
 
-                <div class="rg_center">
-                        <div class="rg_form">
-                                <form action="#" id="form" method="get">
-                                        <table>
-                                                <tr>
-                                                        <td class="td_left"><label for="username">Username</label></td>
-                                                        <td class="td_right">
-                                                                <input type="text" name="username" id="username" #username
-                                                                        placeholder="Cannot be empty or more than 64 characters.">
-                                                                <span id="s_username" class="error"></span>
-                                                        </td>
-                                                </tr>
+  <div class="rg_center">
+    <div class="rg_form">
+      <form action="#" id="form" method="get">
+        <table>
+          <tr>
+            <td class="td_left"><label for="username">Username</label></td>
+            <td class="td_right">
+              <input #username id="username" name="username" placeholder="Cannot be empty or more than 64 characters."
+                     type="text">
+              <span class="error" id="s_username"></span>
+            </td>
+          </tr>
 
-                                                <tr>
-                                                        <td class="td_left"><label for="password">Password</label></td>
-                                                        <td class="td_right">
-                                                                <input type="password" name="password" id="password" #password
-                                                                        placeholder="Cannot be empty.">
-                                                                <span id="s_password" class="error"></span>
-                                                        </td>
-                                                </tr>
+          <tr>
+            <td class="td_left"><label for="password">Password</label></td>
+            <td class="td_right">
+              <input #password id="password" name="password" placeholder="Cannot be empty."
+                     type="password">
+              <span class="error" id="s_password"></span>
+            </td>
+          </tr>
 
-                                                <tr>
-                                                        <td class="td_left"><label for="Email">Email</label></td>
+          <tr>
+            <td class="td_left"><label for="Email">Email</label></td>
 
-                                                        <td class="td_right"><input type="email" name="Email" id="Email" #email
-                                                                        placeholder="Cannot be empty."></td>
-                                                </tr>
-
-
-                                                <tr>
-                                                        <td class="td_left"><label for="lPhone">Phone</label></td>
-                                                        <td class="td_right"><input type="tel" name="lPhone"
-                                                                        id="lPhone" #phone></td>
-                                                </tr>
-
-                                                <tr>
-                                                        <td colspan="2" id="td_sub"><input type="submit" id="btn_sub"
-                                                                        value="Register" (click)="onRegister(username.value, password.value, email.value, phone.value)"></td>
-                                                </tr>
-                                        </table>
-                                  <p class = "error" id="errorlog" *ngIf="showLog">{{ ErrorLog }}</p>
-
-                                </form>
-                        </div>
-                </div>
+            <td class="td_right"><input #email id="Email" name="Email" placeholder="Cannot be empty."
+                                        type="email"></td>
+          </tr>
 
 
-        </div>
+          <tr>
+            <td class="td_left"><label for="lPhone">Phone</label></td>
+            <td class="td_right"><input #phone id="lPhone"
+                                        name="lPhone" type="tel"></td>
+          </tr>
+
+          <tr>
+            <td colspan="2" id="td_sub"><input (click)="onRegister(username.value, password.value, email.value, phone.value)" id="btn_sub"
+                                               type="submit"
+                                               value="Register">
+            </td>
+          </tr>
+        </table>
+
+      </form>
+    </div>
+  </div>
+
+
+</div>
 
 </body>
 

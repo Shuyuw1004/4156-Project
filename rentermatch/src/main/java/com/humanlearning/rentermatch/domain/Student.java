@@ -4,9 +4,10 @@ import lombok.Data;
 
 @Data
 public class Student {
-    private String email;
-    private String name;
-    private String sid;
-    private String sClientId;
-    private String uni;
+
+  private String email;
+  private String name;
+  private String sid;
+  private String sClientId;
+  private String uni;
 }

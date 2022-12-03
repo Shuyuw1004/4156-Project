@@ -2,181 +2,181 @@
 <html lang="en">
 
 <head>
-        <meta charset="UTF-8">
-        <title>landlordRegister</title>
-        <style>
-                body {
-                        background: url("img/register_bg.png");
-                }
+  <meta charset="UTF-8">
+  <title>landlordRegister</title>
+  <style>
+    body {
+      background: url("img/register_bg.png");
+    }
 
-                .rg_layout {
-                        width: 1200px;
-                        height: auto;
-                        border: 0px solid #EEEEEE;
-                        background-color: white;
-                        margin: auto;
-                }
+    .rg_layout {
+      width: 1200px;
+      height: auto;
+      border: 0px solid #EEEEEE;
+      background-color: white;
+      margin: auto;
+    }
 
-                .rg_left {
-                        float: left;
-                        margin: 15px;
-                }
+    .rg_left {
+      float: left;
+      margin: 15px;
+    }
 
-                .rg_center {
-                        float: left;
-                }
-
-
-                .rg_left>p:first-child {
-                        color: #FFD026;
-                        font-size: 20px;
-                }
-
-                .rg_left>p:last-child {
-                        color: #A6A6A6;
-                        font-size: 20px;
-                }
+    .rg_center {
+      float: left;
+    }
 
 
+    .rg_left > p:first-child {
+      color: #FFD026;
+      font-size: 20px;
+    }
 
-                .td_left {
-                        width: 140px;
-                        height: 45px;
-                        text-align: right;
-                }
+    .rg_left > p:last-child {
+      color: #A6A6A6;
+      font-size: 20px;
+    }
 
-                .td_right {
-                        padding-left: 50px;
-                }
 
-                #username,
-                #password,
-                #Email,
-                #lPhone {
-                        width: 300px;
-                        height: 32px;
-                        border: 1px solid #A6A6A6;
-                        border-radius: 5px;
-                        padding-left: 10px;
-                }
+    .td_left {
+      width: 140px;
+      height: 45px;
+      text-align: right;
+    }
 
-                #checkcode {
-                        width: 110px;
-                }
+    .td_right {
+      padding-left: 50px;
+    }
 
-                #img_check {
-                        height: 32px;
-                        vertical-align: middle;
-                }
+    #username,
+    #password,
+    #Email,
+    #lPhone {
+      width: 300px;
+      height: 32px;
+      border: 1px solid #A6A6A6;
+      border-radius: 5px;
+      padding-left: 10px;
+    }
 
-                #btn_sub {
-                        width: 150px;
-                        height: 40px;
-                        background-color: #FFD026;
-                        border: 1px solid #FFD026;
-                }
+    #checkcode {
+      width: 110px;
+    }
 
-                .error {
-                        color: red;
-                }
+    #img_check {
+      height: 32px;
+      vertical-align: middle;
+    }
 
-                #td_sub {
-                        padding-left: 150px;
-                }
-        </style>
-        <script>
-                window.onload = function () {
-                        document.getElementById("form").onsubmit = function () {
-                                return checkUsername() && checkPassword();
-                        };
-                        document.getElementById("username").onblur = checkUsername;
-                        document.getElementById("password").onblur = checkPassword;
-                };
+    #btn_sub {
+      width: 150px;
+      height: 40px;
+      background-color: #FFD026;
+      border: 1px solid #FFD026;
+    }
 
-                function checkUsername() {
-                        var username = document.getElementById("username").value;
-                        var reg_username = /^\w{1,64}$/;
-                        var flag = reg_username.test(username);
-                        var s_username = document.getElementById("s_username");
-                        if (flag) {
-                                s_username.innerHTML = "<img width='35' height='25' src='img/gou.png'/>";
-                        } else {
-                                s_username.innerHTML = "Username cannot be empty or more than 64 characters.";
-                        }
-                        return flag;
-                }
+    .error {
+      color: red;
+    }
 
-                function checkPassword() {
-                        var password = document.getElementById("password").value;
-                        var reg_password = /^\w{1,128}$/;
-                        var flag = reg_password.test(password);
-                        var s_password = document.getElementById("s_password");
-                        if (flag) {
-                                s_password.innerHTML = "<img width='35' height='25' src='img/gou.png'/>";
-                        } else {
-                                s_password.innerHTML = "Password canno be empty.";
-                        }
-                        return flag;
-                }
+    #td_sub {
+      padding-left: 150px;
+    }
+  </style>
+  <script>
+    window.onload = function () {
+      document.getElementById("form").onsubmit = function () {
+        return checkUsername() && checkPassword();
+      };
+      document.getElementById("username").onblur = checkUsername;
+      document.getElementById("password").onblur = checkPassword;
+    };
 
-        </script>
+    function checkUsername() {
+      var username = document.getElementById("username").value;
+      var reg_username = /^\w{1,64}$/;
+      var flag = reg_username.test(username);
+      var s_username = document.getElementById("s_username");
+      if (flag) {
+        s_username.innerHTML = "<img width='35' height='25' src='img/gou.png'/>";
+      } else {
+        s_username.innerHTML = "Username cannot be empty or more than 64 characters.";
+      }
+      return flag;
+    }
+
+    function checkPassword() {
+      var password = document.getElementById("password").value;
+      var reg_password = /^\w{1,128}$/;
+      var flag = reg_password.test(password);
+      var s_password = document.getElementById("s_password");
+      if (flag) {
+        s_password.innerHTML = "<img width='35' height='25' src='img/gou.png'/>";
+      } else {
+        s_password.innerHTML = "Password canno be empty.";
+      }
+      return flag;
+    }
+
+  </script>
 </head>
 
 <body>
 
-        <div class="rg_layout">
+<div class="rg_layout">
 
-                <div class="rg_left">
-                        <p>New landlord register</p>
-                </div>
+  <div class="rg_left">
+    <p>New landlord register</p>
+  </div>
 
-                <div class="rg_center">
-                        <div class="rg_form">
-                                <form action="#" id="form" method="get">
-                                        <table>
-                                                <tr>
-                                                        <td class="td_left"><label for="username">Username</label></td>
-                                                        <td class="td_right">
-                                                                <input type="text" name="username" id="username"
-                                                                        placeholder="Cannot be empty or more than 64 characters.">
-                                                                <span id="s_username" class="error"></span>
-                                                        </td>
-                                                </tr>
+  <div class="rg_center">
+    <div class="rg_form">
+      <form action="#" id="form" method="get">
+        <table>
+          <tr>
+            <td class="td_left"><label for="username">Username</label></td>
+            <td class="td_right">
+              <input id="username" name="username"
+                     placeholder="Cannot be empty or more than 64 characters."
+                     type="text">
+              <span class="error" id="s_username"></span>
+            </td>
+          </tr>
 
-                                                <tr>
-                                                        <td class="td_left"><label for="password">Password</label></td>
-                                                        <td class="td_right">
-                                                                <input type="password" name="password" id="password"
-                                                                        placeholder="Cannot be empty.">
-                                                                <span id="s_password" class="error"></span>
-                                                        </td>
-                                                </tr>
+          <tr>
+            <td class="td_left"><label for="password">Password</label></td>
+            <td class="td_right">
+              <input id="password" name="password" placeholder="Cannot be empty."
+                     type="password">
+              <span class="error" id="s_password"></span>
+            </td>
+          </tr>
 
-                                                <tr>
-                                                        <td class="td_left"><label for="Email">Email</label></td>
-                                                        <td class="td_right"><input type="email" name="Email" id="Email"
-                                                                        placeholder="Cannot be empty."></td>
-                                                </tr>
-
-
-                                                <tr>
-                                                        <td class="td_left"><label for="lPhone">Phone</label></td>
-                                                        <td class="td_right"><input type="tel" name="lPhone"
-                                                                        id="lPhone"></td>
-                                                </tr>
-
-                                                <tr>
-                                                        <td colspan="2" id="td_sub"><input type="submit" id="btn_sub"
-                                                                        value="Register"></td>
-                                                </tr>
-                                        </table>
-
-                                </form>
-                        </div>
-                </div>
+          <tr>
+            <td class="td_left"><label for="Email">Email</label></td>
+            <td class="td_right"><input id="Email" name="Email" placeholder="Cannot be empty."
+                                        type="email"></td>
+          </tr>
 
 
-        </div>
+          <tr>
+            <td class="td_left"><label for="lPhone">Phone</label></td>
+            <td class="td_right"><input id="lPhone" name="lPhone"
+                                        type="tel"></td>
+          </tr>
+
+          <tr>
+            <td colspan="2" id="td_sub"><input id="btn_sub" type="submit"
+                                               value="Register"></td>
+          </tr>
+        </table>
+
+      </form>
+    </div>
+  </div>
+
+
+</div>
 
 </body>
 
