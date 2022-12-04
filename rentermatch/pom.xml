@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://maven.apache.org/POM/4.0.0"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.7.5</version>
-    <relativePath/> <!-- lookup parent from repository -->
-  </parent>
-  <groupId>com.humanlearning</groupId>
   <artifactId>rentermatch</artifactId>
+
   <version>0.0.1-SNAPSHOT</version>
   <name>rentermatch</name>
   <description>rentermatch</description>
@@ -55,35 +48,33 @@
   <build>
     <plugins>
       <plugin>
-        <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
         <configuration>
           <excludes>
             <exclude>
-              <groupId>org.projectlombok</groupId>
               <artifactId>lombok</artifactId>
+              <groupId>org.projectlombok</groupId>
             </exclude>
           </excludes>
         </configuration>
+        <groupId>org.springframework.boot</groupId>
       </plugin>
 
       <plugin>
-        <groupId>com.heroku.sdk</groupId>
         <artifactId>heroku-maven-plugin</artifactId>
-        <version>3.0.5</version>
         <configuration>
           <appName>rentermatch-service</appName>
           <processTypes>
             <web>java $JAVA_OPTS -cp target/classes:target/dependency/* Main</web>
           </processTypes>
         </configuration>
+        <groupId>com.heroku.sdk</groupId>
+        <version>3.0.5</version>
       </plugin>
 
 
       <plugin>
-        <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
-        <version>0.8.5</version>
         <configuration>
           <excludes>
             **/com/humanlearning/rentermatch/domain/**
@@ -97,18 +88,14 @@
           </execution>
           <!-- attached to Maven test phase -->
           <execution>
-            <id>report</id>
-            <phase>test</phase>
             <goals>
               <goal>report</goal>
             </goals>
+            <id>report</id>
+            <phase>test</phase>
           </execution>
 
           <execution>
-            <id>jacoco-check</id>
-            <goals>
-              <goal>check</goal>
-            </goals>
             <configuration>
               <rules>
                 <rule>
@@ -116,18 +103,89 @@
                   <limits>
                     <limit>
                       <counter>LINE</counter>
-                      <value>COVEREDRATIO</value>
                       <minimum>0.85</minimum>
+                      <value>COVEREDRATIO</value>
                     </limit>
                   </limits>
                 </rule>
               </rules>
             </configuration>
+            <goals>
+              <goal>check</goal>
+            </goals>
+            <id>jacoco-check</id>
           </execution>
 
         </executions>
+        <groupId>org.jacoco</groupId>
+        <version>0.8.5</version>
       </plugin>
     </plugins>
   </build>
+  <dependencies>
+    <dependency>
+      <artifactId>spring-boot-starter-web</artifactId>
+      <groupId>org.springframework.boot</groupId>
+    </dependency>
+    <dependency>
+      <artifactId>mybatis-spring-boot-starter</artifactId>
+      <groupId>org.mybatis.spring.boot</groupId>
+      <version>2.2.2</version>
+    </dependency>
+
+    <dependency>
+      <artifactId>mysql-connector-j</artifactId>
+      <groupId>com.mysql</groupId>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <artifactId>lombok</artifactId>
+      <groupId>org.projectlombok</groupId>
+      <optional>true</optional>
+    </dependency>
+    <dependency>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <groupId>org.springframework.boot</groupId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <artifactId>spring-boot-starter-security</artifactId>
+      <groupId>org.springframework.boot</groupId>
+    </dependency>
+    <dependency>
+      <artifactId>jaxb-api</artifactId>
+      <groupId>javax.xml.bind</groupId>
+      <scope>provided</scope>
+      <version>2.2.8</version>
+    </dependency>
+    <dependency>
+      <artifactId>jjwt</artifactId>
+      <groupId>io.jsonwebtoken</groupId>
+      <version>0.9.1</version>
+    </dependency>
+    <dependency>
+      <artifactId>junit</artifactId>
+      <groupId>junit</groupId>
+      <scope>test</scope>
+      <version>4.12</version>
+    </dependency>
+  </dependencies>
+  <description>rentermatch</description>
+  <groupId>com.humanlearning</groupId>
+  <modelVersion>4.0.0</modelVersion>
+  <name>rentermatch</name>
+  <parent>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <groupId>org.springframework.boot</groupId>
+    <relativePath/>
+    <version>2.7.5</version> <!-- lookup parent from repository -->
+  </parent>
+  <properties>
+    <java.version>1.8</java.version>
+    <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+    <sonar.organization>shuyuw1004</sonar.organization>
+  </properties>
+
+  <version>0.0.1-SNAPSHOT</version>
 
 </project>

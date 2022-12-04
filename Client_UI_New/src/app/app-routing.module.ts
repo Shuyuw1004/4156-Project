@@ -1,3 +1,4 @@
+
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LandlordRegisterComponent } from './landlord-register/landlord-register.component';
@@ -14,10 +15,12 @@ const routes: Routes = [
   { component: SigninComponent, path: "signin"},
   { component: UserHomeComponent, path: "userHome"},
   { component: TenantUpdateComponent, path: "tenantUpdate"}
+
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

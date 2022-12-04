@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { LandlordRegisterComponent } from './landlord-register.component';
+import {LandlordRegisterComponent} from './landlord-register.component';
 
 describe('LandlordRegisterComponent', () => {
   let component: LandlordRegisterComponent;
@@ -8,7 +8,7 @@ describe('LandlordRegisterComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LandlordRegisterComponent ]
+      declarations: [LandlordRegisterComponent]
     })
     .compileComponents();
 

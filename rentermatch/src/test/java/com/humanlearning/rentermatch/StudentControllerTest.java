@@ -15,6 +15,11 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
     RentermatchApplication.class}, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
 public class StudentControllerTest {
+
+  private String testAuthHeader =
+      "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY3MDExNzk5OCwiaWF0IjoxNjcwMDk5OTk4fQ"
+          + ".c216RdkCyNh1webpyKY8NoBIQ8jlxq6XGq-ba8gHF-chbuP-un6w9GFtmd6lQtQeGAhye_tDMPhHJhBNtkkeFA";
+
   @Resource
   private MockMvc mockMvc;
 
@@ -23,6 +28,7 @@ public class StudentControllerTest {
   public void testMock1() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .post("/student/insertStudent")
+            .header("Authorization", testAuthHeader)
             .param("email", ""))
         .andExpect(MockMvcResultMatchers.status().isBadRequest())
         .andExpect(MockMvcResultMatchers.content().string("email cannot be empty"))
@@ -34,6 +40,7 @@ public class StudentControllerTest {
   public void testMock2() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .post("/student/insertStudent")
+            .header("Authorization", testAuthHeader)
             .param("email", "testEmail")
             .param("name", ""))
         .andExpect(MockMvcResultMatchers.status().isBadRequest())
@@ -46,9 +53,10 @@ public class StudentControllerTest {
   public void testMock3() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .post("/student/insertStudent")
+            .header("Authorization", testAuthHeader)
             .param("email", "testEmail")
             .param("name", "testName")
-            .param("sClientId",""))
+            .param("sClientId", ""))
         .andExpect(MockMvcResultMatchers.status().isBadRequest())
         .andExpect(MockMvcResultMatchers.content().string("sClientId cannot be empty"))
         .andReturn();
@@ -59,10 +67,11 @@ public class StudentControllerTest {
   public void testMock4() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .post("/student/insertStudent")
+            .header("Authorization", testAuthHeader)
             .param("email", "testEmail")
             .param("name", "testName")
-            .param("sClientId","testSClientId")
-            .param("uni",""))
+            .param("sClientId", "testSClientId")
+            .param("uni", ""))
         .andExpect(MockMvcResultMatchers.status().isBadRequest())
         .andExpect(MockMvcResultMatchers.content().string("uni cannot be empty"))
         .andReturn();
@@ -73,12 +82,14 @@ public class StudentControllerTest {
   public void testMock5() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .post("/student/insertStudent")
+            .header("Authorization", testAuthHeader)
             .param("email", "testEmail")
             .param("name", "testName")
-            .param("sClientId","testSClientId")
-            .param("uni","testUni"))
+            .param("sClientId", "testSClientId")
+            .param("uni", "testUni"))
         .andExpect(MockMvcResultMatchers.status().isBadRequest())
-        .andExpect(MockMvcResultMatchers.content().string("profile creation failed, student is not a client"))
+        .andExpect(MockMvcResultMatchers.content()
+            .string("profile creation failed, student is not a client"))
         .andReturn();
   }
 
@@ -87,12 +98,14 @@ public class StudentControllerTest {
   public void testMock6() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .post("/student/insertStudent")
+            .header("Authorization", testAuthHeader)
             .param("email", "tony@gmail.com")
             .param("name", "tony")
-            .param("sClientId","4")
-            .param("uni","tony1111"))
+            .param("sClientId", "4")
+            .param("uni", "tony1111"))
         .andExpect(MockMvcResultMatchers.status().isBadRequest())
-        .andExpect(MockMvcResultMatchers.content().string("profile creation failed, student already exist"))
+        .andExpect(MockMvcResultMatchers.content()
+            .string("profile creation failed, student already exist"))
         .andReturn();
   }
 
@@ -101,12 +114,14 @@ public class StudentControllerTest {
   public void testMock7() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .post("/student/insertStudent")
+            .header("Authorization", testAuthHeader)
             .param("email", "tony@gmail.com")
             .param("name", "tony")
-            .param("sClientId","4")
-            .param("uni","tony1111"))
+            .param("sClientId", "4")
+            .param("uni", "tony1111"))
         .andExpect(MockMvcResultMatchers.status().isBadRequest())
-        .andExpect(MockMvcResultMatchers.content().string("profile creation failed, student already exist"))
+        .andExpect(MockMvcResultMatchers.content()
+            .string("profile creation failed, student already exist"))
         .andReturn();
   }
 
@@ -115,10 +130,11 @@ public class StudentControllerTest {
   public void testMock8() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .post("/student/insertStudent")
+            .header("Authorization", testAuthHeader)
             .param("email", "test@gmail.com")
             .param("name", "testName")
-            .param("sClientId","7")
-            .param("uni","testUni"))
+            .param("sClientId", "7")
+            .param("uni", "testUni"))
         .andExpect(MockMvcResultMatchers.status().isOk())
 //        .andExpect(MockMvcResultMatchers.content().string("student profile created successfully"))
         .andReturn();
@@ -129,9 +145,11 @@ public class StudentControllerTest {
   public void testMock9() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .get("/student/getStudent")
+            .header("Authorization", testAuthHeader)
             .param("email", ""))
         .andExpect(MockMvcResultMatchers.status().isOk())
-        .andExpect(MockMvcResultMatchers.content().string("Can't find student by this email. Invalid email."))
+        .andExpect(MockMvcResultMatchers.content()
+            .string("Can't find student by this email. Invalid email."))
         .andReturn();
   }
 
@@ -140,9 +158,11 @@ public class StudentControllerTest {
   public void testMock10() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .get("/student/getStudent")
+            .header("Authorization", testAuthHeader)
             .param("email", "wrong@gmail.com"))
         .andExpect(MockMvcResultMatchers.status().isOk())
-        .andExpect(MockMvcResultMatchers.content().string("Can't find student by this email. Invalid email."))
+        .andExpect(MockMvcResultMatchers.content()
+            .string("Can't find student by this email. Invalid email."))
         .andReturn();
   }
 
@@ -151,9 +171,11 @@ public class StudentControllerTest {
   public void testMock11() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .get("/student/getStudent")
-            .param("sid",""))
+            .header("Authorization", testAuthHeader)
+            .param("sid", ""))
         .andExpect(MockMvcResultMatchers.status().isOk())
-        .andExpect(MockMvcResultMatchers.content().string("Can't find student by this sid. Invalid sid."))
+        .andExpect(
+            MockMvcResultMatchers.content().string("Can't find student by this sid. Invalid sid."))
         .andReturn();
   }
 
@@ -162,9 +184,11 @@ public class StudentControllerTest {
   public void testMock12() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .get("/student/getStudent")
-            .param("sid","wrongSid"))
+            .header("Authorization", testAuthHeader)
+            .param("sid", "wrongSid"))
         .andExpect(MockMvcResultMatchers.status().isOk())
-        .andExpect(MockMvcResultMatchers.content().string("Can't find student by this sid. Invalid sid."))
+        .andExpect(
+            MockMvcResultMatchers.content().string("Can't find student by this sid. Invalid sid."))
         .andReturn();
   }
 
@@ -173,9 +197,11 @@ public class StudentControllerTest {
   public void testMock13() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .get("/student/getStudent")
-            .param("uni",""))
+            .header("Authorization", testAuthHeader)
+            .param("uni", ""))
         .andExpect(MockMvcResultMatchers.status().isOk())
-        .andExpect(MockMvcResultMatchers.content().string("Can't find student by this uni. Invalid uni."))
+        .andExpect(
+            MockMvcResultMatchers.content().string("Can't find student by this uni. Invalid uni."))
         .andReturn();
   }
 
@@ -184,9 +210,11 @@ public class StudentControllerTest {
   public void testMock14() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .get("/student/getStudent")
-            .param("uni","wrongUni"))
+            .header("Authorization", testAuthHeader)
+            .param("uni", "wrongUni"))
         .andExpect(MockMvcResultMatchers.status().isOk())
-        .andExpect(MockMvcResultMatchers.content().string("Can't find student by this uni. Invalid uni."))
+        .andExpect(
+            MockMvcResultMatchers.content().string("Can't find student by this uni. Invalid uni."))
         .andReturn();
   }
 
@@ -195,9 +223,11 @@ public class StudentControllerTest {
   public void testMock15() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .get("/student/getStudent")
-            .param("sClientId",""))
+            .header("Authorization", testAuthHeader)
+            .param("sClientId", ""))
         .andExpect(MockMvcResultMatchers.status().isOk())
-        .andExpect(MockMvcResultMatchers.content().string("Can't find student by this sClientId. Invalid sClientId."))
+        .andExpect(MockMvcResultMatchers.content()
+            .string("Can't find student by this sClientId. Invalid sClientId."))
         .andReturn();
   }
 
@@ -206,9 +236,11 @@ public class StudentControllerTest {
   public void testMock16() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .get("/student/getStudent")
-            .param("sClientId","wrongsClientId"))
+            .header("Authorization", testAuthHeader)
+            .param("sClientId", "wrongsClientId"))
         .andExpect(MockMvcResultMatchers.status().isOk())
-        .andExpect(MockMvcResultMatchers.content().string("Can't find student by this sClientId. Invalid sClientId."))
+        .andExpect(MockMvcResultMatchers.content()
+            .string("Can't find student by this sClientId. Invalid sClientId."))
         .andReturn();
   }
 
@@ -217,9 +249,11 @@ public class StudentControllerTest {
   public void testMock17() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .get("/student/getStudent")
-            .param("name",""))
+            .header("Authorization", testAuthHeader)
+            .param("name", ""))
         .andExpect(MockMvcResultMatchers.status().isOk())
-        .andExpect(MockMvcResultMatchers.content().string("Can't find student by this name. Invalid name."))
+        .andExpect(MockMvcResultMatchers.content()
+            .string("Can't find student by this name. Invalid name."))
         .andReturn();
   }
 
@@ -228,9 +262,11 @@ public class StudentControllerTest {
   public void testMock18() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .get("/student/getStudent")
-            .param("name","wrongsName"))
+            .header("Authorization", testAuthHeader)
+            .param("name", "wrongsName"))
         .andExpect(MockMvcResultMatchers.status().isOk())
-        .andExpect(MockMvcResultMatchers.content().string("Can't find student by this name. Invalid name."))
+        .andExpect(MockMvcResultMatchers.content()
+            .string("Can't find student by this name. Invalid name."))
         .andReturn();
   }
 
@@ -238,7 +274,8 @@ public class StudentControllerTest {
   @DisplayName("getStudent Test Non-exist student")
   public void testMock19() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
-            .get("/student/getStudent"))
+            .get("/student/getStudent")
+            .header("Authorization", testAuthHeader))
         .andExpect(MockMvcResultMatchers.status().isOk())
         .andExpect(MockMvcResultMatchers.content().string("The student does not exist."))
         .andReturn();
@@ -249,7 +286,8 @@ public class StudentControllerTest {
   public void testMock20() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .get("/student/getStudent")
-            .param("email","test@gmail.com"))
+            .header("Authorization", testAuthHeader)
+            .param("email", "test@gmail.com"))
         .andExpect(MockMvcResultMatchers.status().isOk())
 //        .andExpect(MockMvcResultMatchers.content().string("Student(email=test@gmail.com, name=testName, sid=3, sClientId=7, uni=testUni)"))
         .andReturn();
@@ -260,7 +298,8 @@ public class StudentControllerTest {
   public void testMock21() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .get("/student/getStudent")
-            .param("sid","3"))
+            .header("Authorization", testAuthHeader)
+            .param("sid", "3"))
         .andExpect(MockMvcResultMatchers.status().isOk())
 //        .andExpect(MockMvcResultMatchers.content().string("Student(email=test@gmail.com, name=testName, sid=3, sClientId=7, uni=testUni)"))
         .andReturn();
@@ -271,7 +310,8 @@ public class StudentControllerTest {
   public void testMock22() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .get("/student/getStudent")
-            .param("uni","testUni"))
+            .header("Authorization", testAuthHeader)
+            .param("uni", "testUni"))
         .andExpect(MockMvcResultMatchers.status().isOk())
 //        .andExpect(MockMvcResultMatchers.content().string("Student(email=test@gmail.com, name=testName, sid=3, sClientId=7, uni=testUni)"))
         .andReturn();
@@ -282,7 +322,8 @@ public class StudentControllerTest {
   public void testMock23() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .get("/student/getStudent")
-            .param("sClientId","5"))
+            .header("Authorization", testAuthHeader)
+            .param("sClientId", "5"))
         .andExpect(MockMvcResultMatchers.status().isOk())
 //        .andExpect(MockMvcResultMatchers.content().string("Student(email=peterparker@gmail.com, name=Peter Parker, sid=2, sClientId=5, uni=pp0000)"))
         .andReturn();
@@ -293,7 +334,8 @@ public class StudentControllerTest {
   public void testMock24() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .get("/student/getStudent")
-            .param("name","testName"))
+            .header("Authorization", testAuthHeader)
+            .param("name", "testName"))
         .andExpect(MockMvcResultMatchers.status().isOk())
 //        .andExpect(MockMvcResultMatchers.content().string("Student(email=test@gmail.com, name=testName, sid=3, sClientId=7, uni=testUni)"))
         .andReturn();
@@ -305,6 +347,7 @@ public class StudentControllerTest {
   public void testMock25() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .delete("/student/deleteStudent")
+            .header("Authorization", testAuthHeader)
             .param("sClientId", ""))
         .andExpect(MockMvcResultMatchers.status().isOk())
         .andExpect(MockMvcResultMatchers.content().string("sClientId cannot be empty"))
@@ -316,6 +359,7 @@ public class StudentControllerTest {
   public void testMock26() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .delete("/student/deleteStudent")
+            .header("Authorization", testAuthHeader)
             .param("sClientId", "8"))
         .andExpect(MockMvcResultMatchers.status().isOk())
         .andExpect(MockMvcResultMatchers.content().string("student does not exist"))
@@ -327,6 +371,7 @@ public class StudentControllerTest {
   public void testMock27() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .delete("/student/deleteStudent")
+            .header("Authorization", testAuthHeader)
             .param("sClientId", "7"))
         .andExpect(MockMvcResultMatchers.status().isOk())
         .andExpect(MockMvcResultMatchers.content().string("student deleted successfully"))
@@ -339,6 +384,7 @@ public class StudentControllerTest {
   public void testMock28() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .patch("/student/updateStudent")
+            .header("Authorization", testAuthHeader)
             .param("email", ""))
         .andExpect(MockMvcResultMatchers.status().isOk())
         .andExpect(MockMvcResultMatchers.content().string("email cannot be empty"))
@@ -350,6 +396,7 @@ public class StudentControllerTest {
   public void testMock29() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .patch("/student/updateStudent")
+            .header("Authorization", testAuthHeader)
             .param("email", "testEmail")
             .param("name", ""))
         .andExpect(MockMvcResultMatchers.status().isOk())
@@ -362,9 +409,10 @@ public class StudentControllerTest {
   public void testMock30() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .patch("/student/updateStudent")
+            .header("Authorization", testAuthHeader)
             .param("email", "testEmail")
             .param("name", "testName")
-            .param("sClientId",""))
+            .param("sClientId", ""))
         .andExpect(MockMvcResultMatchers.status().isOk())
         .andExpect(MockMvcResultMatchers.content().string("sClientId cannot be empty"))
         .andReturn();
@@ -375,10 +423,11 @@ public class StudentControllerTest {
   public void testMock31() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .patch("/student/updateStudent")
+            .header("Authorization", testAuthHeader)
             .param("email", "testEmail")
             .param("name", "testName")
-            .param("sClientId","testSClientId")
-            .param("uni",""))
+            .param("sClientId", "testSClientId")
+            .param("uni", ""))
         .andExpect(MockMvcResultMatchers.status().isOk())
         .andExpect(MockMvcResultMatchers.content().string("uni cannot be empty"))
         .andReturn();
@@ -389,10 +438,11 @@ public class StudentControllerTest {
   public void testMock32() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .patch("/student/updateStudent")
+            .header("Authorization", testAuthHeader)
             .param("email", "mockEmail")
             .param("name", "mockName")
-            .param("sClientId","mockSClientId")
-            .param("uni","mockUni"))
+            .param("sClientId", "mockSClientId")
+            .param("uni", "mockUni"))
         .andExpect(MockMvcResultMatchers.status().isOk())
         .andExpect(MockMvcResultMatchers.content().string("student does not exist"))
         .andReturn();
@@ -403,10 +453,11 @@ public class StudentControllerTest {
   public void testMock33() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .patch("/student/updateStudent")
+            .header("Authorization", testAuthHeader)
             .param("email", "tony@gmail.com")
             .param("name", "tony")
-            .param("sClientId","4")
-            .param("uni","tony1111"))
+            .param("sClientId", "4")
+            .param("uni", "tony1111"))
         .andExpect(MockMvcResultMatchers.status().isOk())
         .andExpect(MockMvcResultMatchers.content().string("student update successfully"))
         .andReturn();
