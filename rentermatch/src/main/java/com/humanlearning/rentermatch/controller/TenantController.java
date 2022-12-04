@@ -246,7 +246,7 @@ public class TenantController {
             tenants.append("\n");
         }
         //send email
-        sendEmail(tenants.toString(), HttpStatus.OK, this.clientMapper.)
+        sendEmail(tenants.toString(), HttpStatus.OK, this.clientMapper.);
         return tenants.toString();
     }
 

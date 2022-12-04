@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { RegisterComponent } from './register/register.component';
 import { TenantRegisterComponent } from './tenant-register/tenant-register.component';
 import { LandlordRegisterComponent } from './landlord-register/landlord-register.component';
+import { UserHomeComponent } from './user-home/user-home.component';
 import { SigninComponent } from './signin/signin.component';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -15,7 +16,8 @@ import { HttpClientModule } from '@angular/common/http';
     RegisterComponent,
     TenantRegisterComponent,
     LandlordRegisterComponent,
-    SigninComponent
+    SigninComponent,
+    UserHomeComponent,
   ],
   imports: [
     BrowserModule,
