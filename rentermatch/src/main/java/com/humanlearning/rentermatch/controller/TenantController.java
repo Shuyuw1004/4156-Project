@@ -14,6 +14,7 @@ import javax.mail.*;
 import javax.mail.internet.*;
 import javax.activation.*;
 import java.util.List;
+import java.util.Properties;
 
 @Slf4j
 @RequestMapping("tenant")
@@ -245,10 +246,43 @@ public class TenantController {
             tenants.append("\n");
         }
         //send email
+        sendEmail(tenants.toString(), HttpStatus.OK, this.clientMapper.)
         return tenants.toString();
     }
 
-    public ResponseEntity<String> sendEmail(String msg) {
+    public ResponseEntity<String> sendEmail(String msg, int status, String email_adr) {
+        HttpHeaders responseHeaders = new HttpHeaders();
+        responseHeaders.set("Access-Control-Allow-Origin", "*");
+        responseHeaders.set("Access-Control-Allow-Headers","X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method, Authorization");
+        responseHeaders.set("Access-Control-Allow-Methods","GET, POST, OPTIONS, PUT, DELETE, PATCH");
+        String from = "4156_Group@gmail.com";
+        String host = "localhost";
+        Properties properties = System.getProperties();
+        properties.setProperty("mail.smtp.host", host);
+        Session session = Session.getDefaultInstance(properties);
 
+        try {
+            // Create a default MimeMessage object.
+            MimeMessage message = new MimeMessage(session);
+
+            // Set From: header field of the header.
+            message.setFrom(new InternetAddress(from));
+
+            // Set To: header field of the header.
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(email_adr));
+
+            // Set Subject: header field
+            message.setSubject("Your Matching result is Here!");
+
+            // Now set the actual message
+            message.setText(msg);
+
+            // Send message
+            Transport.send(message);
+            System.out.println("Sent message successfully....");
+        } catch (MessagingException mex) {
+            mex.printStackTrace();
+        }
+        return new ResponseEntity<>("success", responseHeaders, status);
     }
 }
