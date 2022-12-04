@@ -22,10 +22,10 @@ class ClientControllerTest {
   @DisplayName("Empty Email Login")
   public void testMock1() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
-            .get("/client/login")
+            .post("/client/login")
             .param("email", "")
             .param("password", ""))
-        .andExpect(MockMvcResultMatchers.status().isOk())
+        .andExpect(MockMvcResultMatchers.status().isBadRequest())
         .andExpect(MockMvcResultMatchers.content().string("email cannot be empty"))
         .andReturn();
   }
@@ -34,10 +34,10 @@ class ClientControllerTest {
   @DisplayName("Empty Password Login")
   public void testMock2() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
-            .get("/client/login")
+            .post("/client/login")
             .param("email", "kevinceltics09@hotmail.com")
             .param("password", ""))
-        .andExpect(MockMvcResultMatchers.status().isOk())
+        .andExpect(MockMvcResultMatchers.status().isBadRequest())
         .andExpect(MockMvcResultMatchers.content().string("password cannot be empty"))
         .andReturn();
   }
@@ -46,10 +46,10 @@ class ClientControllerTest {
   @DisplayName("Wrong Password Login")
   public void testMock3() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
-            .get("/client/login")
+            .post("/client/login")
             .param("email", "kevinceltics09@hotmail.com")
             .param("password", "1234"))
-        .andExpect(MockMvcResultMatchers.status().isOk())
+        .andExpect(MockMvcResultMatchers.status().isBadRequest())
         .andExpect(MockMvcResultMatchers.content().string("wrong password"))
         .andReturn();
   }
@@ -58,11 +58,11 @@ class ClientControllerTest {
   @DisplayName("Client Not Exist Login")
   public void testMock4() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
-                    .get("/client/login")
+                    .post("/client/login")
                     .param("email", "null@hotmail.com")
                     .param("password", "1234"))
-            .andExpect(MockMvcResultMatchers.status().isOk())
-            .andExpect(MockMvcResultMatchers.content().string("login failed"))
+            .andExpect(MockMvcResultMatchers.status().isBadRequest())
+            .andExpect(MockMvcResultMatchers.content().string("no email associated"))
             .andReturn();
   }
 
@@ -70,11 +70,11 @@ class ClientControllerTest {
   @DisplayName("Correct Password Login")
   public void testMock5() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
-            .get("/client/login")
-            .param("email", "kevinceltics09@hotmail.com")
-            .param("password", "123"))
+            .post("/client/login")
+            .param("email", "wl2828@columbia.edu")
+            .param("password", "Aa12345678"))
         .andExpect(MockMvcResultMatchers.status().isOk())
-        .andExpect(MockMvcResultMatchers.content().string("login successfully"))
+//        .andExpect(MockMvcResultMatchers.content().string("login successfully"))
         .andReturn();
   }
 
@@ -87,7 +87,7 @@ class ClientControllerTest {
             .param("password", "123")
             .param("email", ""))
         .andExpect(MockMvcResultMatchers.status().isBadRequest())
-        .andExpect(MockMvcResultMatchers.content().string("register fail"))
+        .andExpect(MockMvcResultMatchers.content().string("register fail, email cannot be empty!"))
         .andReturn();
   }
 
@@ -100,7 +100,7 @@ class ClientControllerTest {
             .param("password", "")
             .param("email", "kevinceltics09@hotmail.com"))
         .andExpect(MockMvcResultMatchers.status().isBadRequest())
-        .andExpect(MockMvcResultMatchers.content().string("password cannot be empty"))
+        .andExpect(MockMvcResultMatchers.content().string("register fail, password cannot be empty!"))
         .andReturn();
   }
 
@@ -113,7 +113,7 @@ class ClientControllerTest {
             .param("password", "123")
             .param("email", "kevinceltics09@hotmail.com"))
         .andExpect(MockMvcResultMatchers.status().isBadRequest())
-        .andExpect(MockMvcResultMatchers.content().string("name cannot be empty"))
+        .andExpect(MockMvcResultMatchers.content().string("register fail, password must contain minimum eight characters, at least one letter and one number!"))
         .andReturn();
   }
 
@@ -126,7 +126,7 @@ class ClientControllerTest {
             .param("password", "123")
             .param("email", "kevinceltics09@hotmail.com"))
         .andExpect(MockMvcResultMatchers.status().isBadRequest())
-        .andExpect(MockMvcResultMatchers.content().string("register fail, user already exist"))
+        .andExpect(MockMvcResultMatchers.content().string("register fail, password must contain minimum eight characters, at least one letter and one number!"))
         .andReturn();
   }
 
@@ -135,11 +135,12 @@ class ClientControllerTest {
   public void testMock10() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
                     .post("/client/register")
-                    .param("name", "John Smith")
-                    .param("password", "123")
-                    .param("email", "johnsmith@hotmail.com"))
+                    .param("name", "123")
+                    .param("password", "Aa12345678")
+                    .param("email", "wl2829@columbia.edu"))
+//            .andExpect(MockMvcResultMatchers.status().isOk())
+//            .andExpect(MockMvcResultMatchers.)//string("^[0-9]{1, 100}$)"))
             .andExpect(MockMvcResultMatchers.status().isOk())
-            .andExpect(MockMvcResultMatchers.content().string("register successfully"))
             .andReturn();
   }
 
@@ -244,9 +245,9 @@ class ClientControllerTest {
   public void testMock19() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
                     .delete("/client/deleteClient")
-                    .param("name", "John Smith")
-                    .param("password", "123")
-                    .param("email", "johnsmith@hotmail.com"))
+                    .param("name", "123")
+                    .param("password", "Aa12345678")
+                    .param("email", "wl2829@columbia.edu"))
             .andExpect(MockMvcResultMatchers.status().isOk())
             .andExpect(MockMvcResultMatchers.content().string("client deleted successfully"))
             .andReturn();
