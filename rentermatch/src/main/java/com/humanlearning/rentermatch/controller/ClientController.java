@@ -26,7 +26,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ClientController {
 
-
     @Autowired
     private ClientMapper clientMapper;
     @Autowired
@@ -63,8 +62,6 @@ public class ClientController {
                     clientMapper.selectClient(email).getCid()), responseHeaders,HttpStatus.OK);
         }
         return new ResponseEntity<>("wrong password", responseHeaders,HttpStatus.BAD_REQUEST);
-    }
-    return "wrong password";
   }
 
 
