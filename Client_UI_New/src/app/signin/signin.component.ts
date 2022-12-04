@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient, HttpParams, HttpResponse} from "@angular/common/http";
+import { Router} from "@angular/router";
 
 @Component({
   selector: 'app-signin',
@@ -10,7 +11,7 @@ export class SigninComponent implements OnInit {
 
   showLog: boolean = false;
   ErrorLog :string = "";
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -23,7 +24,12 @@ export class SigninComponent implements OnInit {
     this.httpClient.post(url1,"",{params: params1, observe: 'body', responseType: 'text'}).subscribe(
       (data:string) => {
         this.ErrorLog = "signin successful!";
-        window.location.replace("./userHome");
+        this.router.navigate(
+          ['/userHome'],
+          {
+            queryParams: { "name": name, "email": email }
+          }
+        );
       },
       error => this.ErrorLog = error.error);
     this.showLog = true;
