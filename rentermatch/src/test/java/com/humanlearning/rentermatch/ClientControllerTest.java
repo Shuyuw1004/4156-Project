@@ -30,7 +30,7 @@ class ClientControllerTest {
             .header("Authorization", testAuthHeader)
             .param("email", "")
             .param("password", ""))
-        .andExpect(MockMvcResultMatchers.status().isOk())
+        .andExpect(MockMvcResultMatchers.status().isBadRequest())
         .andExpect(MockMvcResultMatchers.content().string("email cannot be empty"))
         .andReturn();
   }
@@ -43,7 +43,7 @@ class ClientControllerTest {
             .header("Authorization", testAuthHeader)
             .param("email", "kevinceltics09@hotmail.com")
             .param("password", ""))
-        .andExpect(MockMvcResultMatchers.status().isOk())
+        .andExpect(MockMvcResultMatchers.status().isBadRequest())
         .andExpect(MockMvcResultMatchers.content().string("password cannot be empty"))
         .andReturn();
   }
@@ -56,7 +56,7 @@ class ClientControllerTest {
             .header("Authorization", testAuthHeader)
             .param("email", "kevinceltics09@hotmail.com")
             .param("password", "1234"))
-        .andExpect(MockMvcResultMatchers.status().isOk())
+        .andExpect(MockMvcResultMatchers.status().isBadRequest())
         .andExpect(MockMvcResultMatchers.content().string("wrong password"))
         .andReturn();
   }
@@ -83,7 +83,7 @@ class ClientControllerTest {
             .param("email", "kevinceltics09@hotmail.com")
             .param("password", "123"))
         .andExpect(MockMvcResultMatchers.status().isOk())
-        .andExpect(MockMvcResultMatchers.content().string("login successfully"))
+//        .andExpect(MockMvcResultMatchers.content().string("login successfully"))
         .andReturn();
   }
 
@@ -97,7 +97,7 @@ class ClientControllerTest {
             .param("password", "123")
             .param("email", ""))
         .andExpect(MockMvcResultMatchers.status().isBadRequest())
-        .andExpect(MockMvcResultMatchers.content().string("register fail"))
+        .andExpect(MockMvcResultMatchers.content().string("register fail, email cannot be empty!"))
         .andReturn();
   }
 
@@ -111,7 +111,7 @@ class ClientControllerTest {
             .param("password", "")
             .param("email", "kevinceltics09@hotmail.com"))
         .andExpect(MockMvcResultMatchers.status().isBadRequest())
-        .andExpect(MockMvcResultMatchers.content().string("password cannot be empty"))
+        .andExpect(MockMvcResultMatchers.content().string("register fail, password cannot be empty!"))
         .andReturn();
   }
 
@@ -125,7 +125,7 @@ class ClientControllerTest {
             .param("password", "123")
             .param("email", "kevinceltics09@hotmail.com"))
         .andExpect(MockMvcResultMatchers.status().isBadRequest())
-        .andExpect(MockMvcResultMatchers.content().string("name cannot be empty"))
+        .andExpect(MockMvcResultMatchers.content().string("register fail, password must contain minimum eight characters, at least one letter and one number!"))
         .andReturn();
   }
 
@@ -139,7 +139,7 @@ class ClientControllerTest {
             .param("password", "123")
             .param("email", "kevinceltics09@hotmail.com"))
         .andExpect(MockMvcResultMatchers.status().isBadRequest())
-        .andExpect(MockMvcResultMatchers.content().string("register fail, user already exist"))
+        .andExpect(MockMvcResultMatchers.content().string("register fail, password must contain minimum eight characters, at least one letter and one number!"))
         .andReturn();
   }
 
