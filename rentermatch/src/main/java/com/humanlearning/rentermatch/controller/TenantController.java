@@ -5,14 +5,15 @@ import com.humanlearning.rentermatch.domain.Tenant;
 import com.humanlearning.rentermatch.mapper.ClientMapper;
 import com.humanlearning.rentermatch.mapper.TenantMapper;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.logging.log4j.message.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import javax.mail.*;
-import javax.mail.internet.*;
-import javax.activation.*;
+//import javax.mail.*;
+//import javax.mail.internet.*;
+//import javax.activation.*;
 import java.util.List;
 import java.util.Properties;
 import java.util.logging.Level;
@@ -216,12 +217,17 @@ public class TenantController {
 
     @GetMapping("getMatch")
     public ResponseEntity<String> getMatch(String tClientId) {
+        HttpHeaders responseHeaders = new HttpHeaders();
+        responseHeaders.set("Access-Control-Allow-Origin", "*");
+        responseHeaders.set("Access-Control-Allow-Headers","X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method, Authorization");
+        responseHeaders.set("Access-Control-Allow-Methods","GET, POST, OPTIONS, PUT, DELETE, PATCH");
         if (tClientId == null || tClientId.isEmpty()) {
-            return sendEmail("tClientId cannot be empty", HttpStatus.BAD_REQUEST,clientMapper.selectClientBycId(tClientId).getEmail());
+            return new ResponseEntity<>("tClientId cannot be empty", responseHeaders, HttpStatus.BAD_REQUEST);
         }
         Tenant tenant = tenantMapper.selectTenantBytClientId(tClientId);
         if (tenant == null) {
-            return sendEmail("tenant does not exist", HttpStatus.BAD_REQUEST,clientMapper.selectClientBycId(tClientId).getEmail());
+            return new ResponseEntity<>("tenant does not exist", responseHeaders, HttpStatus.BAD_REQUEST);
+
         }
         String constellation = tenant.getTConstellation();
         String cooking = tenant.getTCooking();
@@ -241,7 +247,8 @@ public class TenantController {
                                                             expenditure, gender, job, lateTimeSleep, numOfRoomates, pet,
                                                             preferLocation, preferType, preferZipCode, smoking);
         if (matchedTenants == null || matchedTenants.size() == 0) {
-            return sendEmail("cannot find matched tenants", HttpStatus.BAD_REQUEST,clientMapper.selectClientBycId(tClientId).getEmail());
+            return new ResponseEntity<>("cannot find matched tenants", responseHeaders, HttpStatus.BAD_REQUEST);
+
         }
         StringBuilder tenants = new StringBuilder("");
         for (int i = 0; i < matchedTenants.size(); i++) {
@@ -249,43 +256,43 @@ public class TenantController {
             tenants.append("\n");
         }
         //send email
-        return sendEmail(tenant.toString(), HttpStatus.OK,clientMapper.selectClientBycId(tClientId).getEmail());
+        return new ResponseEntity<>(tenant.toString(), responseHeaders, HttpStatus.OK);
     }
 
-    public ResponseEntity<String> sendEmail(String msg, HttpStatus status, String email_adr) {
-        HttpHeaders responseHeaders = new HttpHeaders();
-        responseHeaders.set("Access-Control-Allow-Origin", "*");
-        responseHeaders.set("Access-Control-Allow-Headers","X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method, Authorization");
-        responseHeaders.set("Access-Control-Allow-Methods","GET, POST, OPTIONS, PUT, DELETE, PATCH");
-        String from = "4156_Group@gmail.com";
-        String host = "localhost";
-        Properties properties = System.getProperties();
-        properties.setProperty("mail.smtp.host", host);
-        Session session = Session.getDefaultInstance(properties);
-
-        try {
-            // Create a default MimeMessage object.
-            MimeMessage message = new MimeMessage(session);
-
-            // Set From: header field of the header.
-            message.setFrom(new InternetAddress(from));
-
-            // Set To: header field of the header.
-            message.addRecipient(Message.RecipientType.TO, new InternetAddress(email_adr));
-
-            // Set Subject: header field
-            message.setSubject("Your Matching result is Here!");
-
-            // Now set the actual message
-            message.setText(msg);
-
-            // Send message
-            this.LOGGER.log(Level.INFO, "reach here");
-            Transport.send(message);
-            System.out.println("Sent message successfully....");
-        } catch (MessagingException mex) {
-            mex.printStackTrace();
-        }
-        return new ResponseEntity<>("success", responseHeaders, status);
-    }
+//    public ResponseEntity<String> sendEmail(String msg, HttpStatus status, String email_adr) {
+//        HttpHeaders responseHeaders = new HttpHeaders();
+//        responseHeaders.set("Access-Control-Allow-Origin", "*");
+//        responseHeaders.set("Access-Control-Allow-Headers","X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method, Authorization");
+//        responseHeaders.set("Access-Control-Allow-Methods","GET, POST, OPTIONS, PUT, DELETE, PATCH");
+//        String from = "4156_Group@gmail.com";
+//        String host = "localhost";
+//        Properties properties = System.getProperties();
+//        properties.setProperty("mail.smtp.host", host);
+//        Session session = Session.getDefaultInstance(properties);
+//
+//        try {
+//            // Create a default MimeMessage object.
+//            MimeMessage message = new MimeMessage(session);
+//
+//            // Set From: header field of the header.
+//            message.setFrom(new InternetAddress(from));
+//
+//            // Set To: header field of the header.
+//            message.addRecipient(Message.RecipientType.TO, new InternetAddress(email_adr));
+//
+//            // Set Subject: header field
+//            message.setSubject("Your Matching result is Here!");
+//
+//            // Now set the actual message
+//            message.setText(msg);
+//
+//            // Send message
+//            this.LOGGER.log(Level.INFO, "reach here");
+//            Transport.send(message);
+//            System.out.println("Sent message successfully....");
+//        } catch (MessagingException mex) {
+//            mex.printStackTrace();
+//        }
+//        return new ResponseEntity<>("success", responseHeaders, status);
+//    }
 }
