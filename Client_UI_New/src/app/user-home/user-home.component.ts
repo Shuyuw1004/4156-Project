@@ -11,6 +11,7 @@ export class UserHomeComponent implements OnInit {
   name :string = "";
   email : string = "";
   clientId : string = '';
+  getMatchResponse : string = "";
 
   constructor(private httpClient: HttpClient, private route: ActivatedRoute) { }
 
@@ -42,10 +43,16 @@ export class UserHomeComponent implements OnInit {
     let url = "http://127.0.0.1:8080/tenant/getMatch";
     let params = new HttpParams()
       .append("tClientId", this.clientId);
-    this.httpClient.get(url,{params: params}).subscribe({
-      next: next => console.log("Success!", next),
-      error: error => console.log("Error!", error)
+    this.httpClient.get(url,{params: params, observe: 'body', responseType: "text"}).subscribe({
+      next: next => {
+        this.getMatchResponse = next.toString();
+      },
+      error: error => {
+        console.log(error);
+        this.getMatchResponse = error.error;
+      }
     });
+    return false;
   }
 
 }

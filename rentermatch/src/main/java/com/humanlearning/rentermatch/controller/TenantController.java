@@ -247,7 +247,7 @@ public class TenantController {
                                                             expenditure, gender, job, lateTimeSleep, numOfRoomates, pet,
                                                             preferLocation, preferType, preferZipCode, smoking);
         if (matchedTenants == null || matchedTenants.size() == 0) {
-            return new ResponseEntity<>("cannot find matched tenants", responseHeaders, HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("cannot find matched tenants", responseHeaders, HttpStatus.INTERNAL_SERVER_ERROR);
 
         }
         StringBuilder tenants = new StringBuilder("");
@@ -255,6 +255,7 @@ public class TenantController {
             tenants.append(matchedTenants.get(i).toString());
             tenants.append("\n");
         }
+        this.LOGGER.log(Level.INFO, "reach here");
         //send email
         return new ResponseEntity<>(tenant.toString(), responseHeaders, HttpStatus.OK);
     }
