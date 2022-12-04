@@ -23,7 +23,7 @@ export class SigninComponent implements OnInit {
     this.httpClient.post(url1,"",{params: params1, observe: 'body', responseType: 'text'}).subscribe(
       (data:string) => {
         this.ErrorLog = "signin successful!";
-        window.location.replace("http://127.0.0.1:4200/user-home");
+        window.location.replace("./userHome");
       },
       error => this.ErrorLog = error.error);
     this.showLog = true;

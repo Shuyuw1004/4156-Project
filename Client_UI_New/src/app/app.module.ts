@@ -9,6 +9,7 @@ import { LandlordRegisterComponent } from './landlord-register/landlord-register
 import { UserHomeComponent } from './user-home/user-home.component';
 import { SigninComponent } from './signin/signin.component';
 import { HttpClientModule } from '@angular/common/http';
+import {TenantUpdateComponent} from "./tenant-update/tenant-update.component";
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
     LandlordRegisterComponent,
     SigninComponent,
     UserHomeComponent,
+    TenantUpdateComponent,
   ],
   imports: [
     BrowserModule,
