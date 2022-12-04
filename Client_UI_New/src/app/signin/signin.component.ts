@@ -27,7 +27,7 @@ export class SigninComponent implements OnInit {
         this.router.navigate(
           ['/userHome'],
           {
-            queryParams: { "name": name, "email": email }
+            queryParams: { "name": name, "email": email, "clientId": data }
           }
         );
       },

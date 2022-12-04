@@ -54,7 +54,8 @@ public class ClientController {
         }
         //Check whether the password matches the one stored in database
         if (password.equals(client.getPassword())) {
-            return new ResponseEntity<>("login successful", responseHeaders,HttpStatus.OK);
+            return new ResponseEntity<>(String.format("%s",
+                    clientMapper.selectClient(email).getCid()), responseHeaders,HttpStatus.OK);
         }
         return new ResponseEntity<>("wrong password", responseHeaders,HttpStatus.BAD_REQUEST);
     }

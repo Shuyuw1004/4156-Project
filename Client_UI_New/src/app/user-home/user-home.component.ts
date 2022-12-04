@@ -1,6 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import {HttpClient, HttpParams} from "@angular/common/http";
 @Component({
   selector: 'app-userhome',
   templateUrl: './user-home.component.html',
@@ -9,8 +10,9 @@ import { ActivatedRoute } from '@angular/router';
 export class UserHomeComponent implements OnInit {
   name :string = "";
   email : string = "";
+  clientId : string = '';
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private httpClient: HttpClient, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.route.queryParamMap
@@ -27,14 +29,23 @@ export class UserHomeComponent implements OnInit {
         } else {
           this.email = "";
         }
-        console.log(this.name);
-        console.log(this.email);
-
+        let temp_clientId = params.get('clientId');
+        if ( temp_clientId !== null){
+          this.clientId = temp_clientId;
+        } else {
+          this.clientId = "";
+        }
         }
       );
   }
   getMatch() {
-
+    let url = "http://127.0.0.1:8080/tenant/getMatch";
+    let params = new HttpParams()
+      .append("tClientId", this.clientId);
+    this.httpClient.get(url,{params: params}).subscribe({
+      next: next => console.log("Success!", next),
+      error: error => console.log("Error!", error)
+    });
   }
 
 }

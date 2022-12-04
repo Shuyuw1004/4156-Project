@@ -15,12 +15,15 @@ import javax.mail.internet.*;
 import javax.activation.*;
 import java.util.List;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @Slf4j
 @RequestMapping("tenant")
 @RestController
 public class TenantController {
-
+    private final static Logger LOGGER =
+            Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
     @Autowired
     private TenantMapper tenantMapper;
     @Autowired
@@ -212,13 +215,13 @@ public class TenantController {
     }
 
     @GetMapping("getMatch")
-    public String getMatch(String tClientId) {
+    public ResponseEntity<String> getMatch(String tClientId) {
         if (tClientId == null || tClientId.isEmpty()) {
-            return "tClientId cannot be empty";
+            return sendEmail("tClientId cannot be empty", HttpStatus.BAD_REQUEST,clientMapper.selectClientBycId(tClientId).getEmail());
         }
         Tenant tenant = tenantMapper.selectTenantBytClientId(tClientId);
         if (tenant == null) {
-            return "tenant does not exist";
+            return sendEmail("tenant does not exist", HttpStatus.BAD_REQUEST,clientMapper.selectClientBycId(tClientId).getEmail());
         }
         String constellation = tenant.getTConstellation();
         String cooking = tenant.getTCooking();
@@ -238,7 +241,7 @@ public class TenantController {
                                                             expenditure, gender, job, lateTimeSleep, numOfRoomates, pet,
                                                             preferLocation, preferType, preferZipCode, smoking);
         if (matchedTenants == null || matchedTenants.size() == 0) {
-            return "cannot find matched tenants";
+            return sendEmail("cannot find matched tenants", HttpStatus.BAD_REQUEST,clientMapper.selectClientBycId(tClientId).getEmail());
         }
         StringBuilder tenants = new StringBuilder("");
         for (int i = 0; i < matchedTenants.size(); i++) {
@@ -246,11 +249,10 @@ public class TenantController {
             tenants.append("\n");
         }
         //send email
-        System.out.print(tenants.toString());
-        return tenants.toString();
+        return sendEmail(tenant.toString(), HttpStatus.OK,clientMapper.selectClientBycId(tClientId).getEmail());
     }
 
-    public ResponseEntity<String> sendEmail(String msg, int status, String email_adr) {
+    public ResponseEntity<String> sendEmail(String msg, HttpStatus status, String email_adr) {
         HttpHeaders responseHeaders = new HttpHeaders();
         responseHeaders.set("Access-Control-Allow-Origin", "*");
         responseHeaders.set("Access-Control-Allow-Headers","X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method, Authorization");
@@ -278,6 +280,7 @@ public class TenantController {
             message.setText(msg);
 
             // Send message
+            this.LOGGER.log(Level.INFO, "reach here");
             Transport.send(message);
             System.out.println("Sent message successfully....");
         } catch (MessagingException mex) {
