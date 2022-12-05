@@ -10,3 +10,4 @@ spring:
 
 jwt:
   secret: secretkey123
+  expiration: 2592000000 # 30days*24h*60min*60s*1000ms
