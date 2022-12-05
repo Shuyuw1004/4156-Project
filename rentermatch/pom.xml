@@ -36,6 +36,8 @@
         <configuration>
           <excludes>
             **/com/humanlearning/rentermatch/domain/**
+            **/com/humanlearning/rentermatch/model/**
+            **/com/humanlearning/rentermatch/utility/**
           </excludes>
         </configuration>
         <executions>
