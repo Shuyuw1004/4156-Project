@@ -27,7 +27,6 @@ For iteration2, we have the following endpoints:
 <img width="866" alt="image" src="https://user-images.githubusercontent.com/90531103/205741207-80a5333e-5118-4671-aeaf-df2ffc30c319.png">
 
 
-        - 0: register failed.
 
 ## Code Style Checker
 
