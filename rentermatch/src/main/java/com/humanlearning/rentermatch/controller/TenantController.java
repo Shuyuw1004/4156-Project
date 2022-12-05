@@ -30,6 +30,7 @@ public class TenantController {
   private TenantMapper tenantMapper;
   @Autowired
   private ClientMapper clientMapper;
+  final String emptyCid= "tClientId cannot be empty";
 
   @PostMapping("insertTenant")
   public ResponseEntity<String> insertTenant(Integer tAge, String tClientId, String tConstellation,
@@ -45,7 +46,7 @@ public class TenantController {
       return new ResponseEntity<>("tAge cannot be empty", responseHeaders, HttpStatus.BAD_REQUEST);
     }
     if (tClientId == null || tClientId.isEmpty()) {
-      return new ResponseEntity<>("tClientId cannot be empty", responseHeaders,
+      return new ResponseEntity<>(emptyCid, responseHeaders,
           HttpStatus.BAD_REQUEST);
     }
     if (tConstellation == null || tConstellation.isEmpty()) {
@@ -161,7 +162,7 @@ public class TenantController {
       return "tAge cannot be empty";
     }
     if (tClientId == null || tClientId.isEmpty()) {
-      return "tClientId cannot be empty";
+      return emptyCid;
     }
     if (tConstellation == null || tConstellation.isEmpty()) {
       return "tConstellation cannot be empty";
@@ -224,7 +225,7 @@ public class TenantController {
   public String deleteTenant(String tClientId) {
     //Check whether tClientId is empty
     if (tClientId == null || tClientId.isEmpty()) {
-      return "tClientId cannot be empty";
+      return emptyCid;
     }
     Tenant tenant = tenantMapper.selectTenantBytClientId(tClientId);
     if (tenant == null) {
@@ -246,7 +247,7 @@ public class TenantController {
         "X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method, Authorization");
     responseHeaders.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE, PATCH");
     if (tClientId == null || tClientId.isEmpty()) {
-      return new ResponseEntity<>("tClientId cannot be empty", responseHeaders,
+      return new ResponseEntity<>(emptyCid, responseHeaders,
           HttpStatus.BAD_REQUEST);
     }
     Tenant tenant = tenantMapper.selectTenantBytClientId(tClientId);

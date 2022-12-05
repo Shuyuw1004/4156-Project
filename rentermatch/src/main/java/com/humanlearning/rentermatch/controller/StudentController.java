@@ -23,12 +23,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class StudentController {
 
-  private final static Logger LOGGER =
-      Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
   @Autowired
   private StudentMapper studentMapper;
   @Autowired
   private ClientMapper clientMapper;
+  private final static Logger LOGGER =
+          Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+  final String emptyCid= "sClientId cannot be empty";
 
   @PostMapping("insertStudent")
   public ResponseEntity<String> insertStudent(String email, String name, String sClientId,
@@ -45,7 +46,7 @@ public class StudentController {
       return new ResponseEntity<>("name cannot be empty", responseHeaders, HttpStatus.BAD_REQUEST);
     }
     if (sClientId == null || sClientId.isEmpty()) {
-      return new ResponseEntity<>("sClientId cannot be empty", responseHeaders,
+      return new ResponseEntity<>(emptyCid, responseHeaders,
           HttpStatus.BAD_REQUEST);
     }
     if (uni == null || uni.isEmpty()) {
@@ -120,7 +121,7 @@ public class StudentController {
   public String deleteStudent(String sClientId) {
     //Check whether sClientId is empty
     if (sClientId == null || sClientId.isEmpty()) {
-      return "sClientId cannot be empty";
+      return emptyCid;
     }
     Student student = studentMapper.selectStudentBysClientId(sClientId);
     if (student == null) {
@@ -143,7 +144,7 @@ public class StudentController {
       return "name cannot be empty";
     }
     if (sClientId == null || sClientId.isEmpty()) {
-      return "sClientId cannot be empty";
+      return emptyCid;
     }
     if (uni == null || uni.isEmpty()) {
       return "uni cannot be empty";

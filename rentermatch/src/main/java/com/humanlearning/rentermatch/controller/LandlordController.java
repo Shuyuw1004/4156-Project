@@ -29,6 +29,8 @@ public class LandlordController {
   @Autowired
   private HouseMapper houseMapper;
 
+  final String emptyCid = "lClientId cannot be empty";
+
   @PostMapping("insertLandlord")
   public ResponseEntity<String> insertLandlord(String lPhone, String lClientId) {
     //Check whether lPhone is empty
@@ -43,7 +45,7 @@ public class LandlordController {
     }
     //Check whether lClientid is empty
     if (lClientId == null || lClientId.isEmpty()) {
-      return new ResponseEntity<>("lClientId cannot be empty", responseHeaders,
+      return new ResponseEntity<>(emptyCid, responseHeaders,
           HttpStatus.BAD_REQUEST);
     }
     // check if landlord exist in client database
@@ -75,7 +77,7 @@ public class LandlordController {
     }
     //Check whether lClientid is empty
     if (lClientId == null || lClientId.isEmpty()) {
-      return "lClientId cannot be empty";
+      return emptyCid;
     }
     //Select landlord from database by lClientId
     Landlord landlord = landlordMapper.selectLandlordBylClientId(lClientId);
@@ -95,7 +97,7 @@ public class LandlordController {
   public String deleteLandlord(String lClientId) {
     //Check whether lClientid is empty
     if (lClientId == null || lClientId.isEmpty()) {
-      return "lClientId cannot be empty";
+      return emptyCid;
     }
     //Select landlord from database by lClientId
     Landlord landlord = landlordMapper.selectLandlordBylClientId(lClientId);
@@ -104,8 +106,6 @@ public class LandlordController {
       return "landlord does not exist";
     }
     // delete the houses owned by landlord
-    String lid = landlord.getLId();
-
     int resultCount = landlordMapper.deleteLandlordBylClientId(lClientId);
     if (resultCount == 0) {
       return "delete failed";

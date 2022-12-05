@@ -35,9 +35,6 @@ public class ClientController {
   @Autowired
   private TenantMapper tenantMapper;
 
-  private final static Logger LOGGER =
-          Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
-
   @PostMapping("login")
   public ResponseEntity<String> login(String email, String password) {
     HttpHeaders responseHeaders = new HttpHeaders();
@@ -81,11 +78,6 @@ public class ClientController {
       return new ResponseEntity<>("register fail, email cannot be empty!", responseHeaders,
           HttpStatus.BAD_REQUEST);
     }
-//    if (!email.matches(
-//        "(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"\")@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:)\\])")) {
-//      return new ResponseEntity<>("register fail, email format not correct", responseHeaders,
-//          HttpStatus.BAD_REQUEST);
-//    }
     //Check whether password is empty
     if (password == null || password.isEmpty()) {
       return new ResponseEntity<>("register fail, password cannot be empty!", responseHeaders,
