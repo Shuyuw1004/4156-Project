@@ -16,10 +16,10 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 @AutoConfigureMockMvc
 public class HouseControllerTest {
 
-   private String testAuthHeader =
-      "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY3MDI3MjgzNCwiaWF0IjoxNjcwMjU0ODM0fQ."
-          + "9_g8ljjeCl_vryHTDf_ifW7Ur6g34wMeQ1LtFUv39EY8cAW_pav0mTR0qRRGf3KnrOvNwMMBwffJlisKEPCA-w";
-
+  private final String testAuthHeader =
+      "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTgyNTc3NTYyMSwiaWF0IjoxNjcwM"
+          + "jU1NjIxfQ.I90zi32fdL-kFfxMRc75MHnfGWlWIgx44VQnW9fiPh9FhQkD87_r_pTPal-DMh3CK0P-Gg"
+          + "WZaKeCCcj_P3ysMA";
 
   @Resource
   private MockMvc mockMvc;
