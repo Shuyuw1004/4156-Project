@@ -34,28 +34,36 @@ public class LandlordController {
     //Check whether lPhone is empty
     HttpHeaders responseHeaders = new HttpHeaders();
     responseHeaders.set("Access-Control-Allow-Origin", "*");
-    responseHeaders.set("Access-Control-Allow-Headers","X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method, Authorization");
-    responseHeaders.set("Access-Control-Allow-Methods","GET, POST, OPTIONS, PUT, DELETE, PATCH");
+    responseHeaders.set("Access-Control-Allow-Headers",
+        "X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method, Authorization");
+    responseHeaders.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE, PATCH");
     if (lPhone == null || lPhone.isEmpty()) {
-      return new ResponseEntity<>("lPhone cannot be empty", responseHeaders, HttpStatus.BAD_REQUEST);
+      return new ResponseEntity<>("lPhone cannot be empty", responseHeaders,
+          HttpStatus.BAD_REQUEST);
     }
     //Check whether lClientid is empty
     if (lClientId == null || lClientId.isEmpty()) {
-      return new ResponseEntity<>("lClientId cannot be empty", responseHeaders, HttpStatus.BAD_REQUEST);
+      return new ResponseEntity<>("lClientId cannot be empty", responseHeaders,
+          HttpStatus.BAD_REQUEST);
     }
     // check if landlord exist in client database
     Client client = clientMapper.selectClientBycId(lClientId);
     if (client == null) {
-      return new ResponseEntity<>("landlord creation failed, landlord is not a client", responseHeaders, HttpStatus.BAD_REQUEST);
+      return new ResponseEntity<>("landlord creation failed, landlord is not a client",
+          responseHeaders, HttpStatus.BAD_REQUEST);
     }
     //Select landlord from database by lClientId
     Landlord landlord = landlordMapper.selectLandlordBylClientId(lClientId);
     //If landlord does not exist
     if (landlord != null) {
-      return new ResponseEntity<>("landlord creation failed, landlord already exist", responseHeaders, HttpStatus.BAD_REQUEST);
+      return new ResponseEntity<>("landlord creation failed, landlord already exist",
+          responseHeaders, HttpStatus.BAD_REQUEST);
     }
     int resultCount = landlordMapper.saveLandlord(lPhone, lClientId);
-    if (resultCount == 0) return new ResponseEntity<>("landlord creation failed", responseHeaders, HttpStatus.BAD_REQUEST);
+    if (resultCount == 0) {
+      return new ResponseEntity<>("landlord creation failed", responseHeaders,
+          HttpStatus.BAD_REQUEST);
+    }
     return new ResponseEntity<>("landlord created successfully", responseHeaders, HttpStatus.OK);
   }
 
@@ -76,11 +84,11 @@ public class LandlordController {
       return "landlord does not exist";
     }
     int resultCount = landlordMapper.updateLandlord(lPhone, lClientId);
-    if(resultCount == 0) {
+    if (resultCount == 0) {
       return "update failed";
-    }
-    else
+    } else {
       return "update successfully";
+    }
   }
 
   @DeleteMapping("deleteLandlord")
@@ -102,8 +110,8 @@ public class LandlordController {
     int resultCount = landlordMapper.deleteLandlordBylClientId(lClientId);
     if (resultCount == 0) {
       return "delete failed";
-    }
-    else
+    } else {
       return "delete successfully";
+    }
   }
 }
