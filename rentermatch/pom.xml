@@ -35,13 +35,9 @@
         <artifactId>jacoco-maven-plugin</artifactId>
         <configuration>
           <excludes>
-            **/com/humanlearning/rentermatch/domain/**
-          </excludes>
-          <excludes>
-            **/com/humanlearning/rentermatch/model/**
-          </excludes>
-          <excludes>
-            **/com/humanlearning/rentermatch/utility/**
+            <exclude>**/com/humanlearning/rentermatch/domain/**</exclude>
+            <exclude>**/com/humanlearning/rentermatch/model/**</exclude>
+            <exclude>**/com/humanlearning/rentermatch/utility/**</exclude>
           </excludes>
         </configuration>
         <executions>
