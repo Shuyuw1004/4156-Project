@@ -25,7 +25,7 @@ class LandlordControllerTest {
 
   @Test
   @DisplayName("Empty lPhone insertLandlord")
-  public void testMock1() throws Exception {
+  void testMock1() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .post("/landlord/insertLandlord")
             .header("Authorization", testAuthHeader)
@@ -38,7 +38,7 @@ class LandlordControllerTest {
 
   @Test
   @DisplayName("Empty lClientId insertLandlord")
-  public void testMock2() throws Exception {
+  void testMock2() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .post("/landlord/insertLandlord")
             .header("Authorization", testAuthHeader)
@@ -51,7 +51,7 @@ class LandlordControllerTest {
 
   @Test
   @DisplayName("Landlord Not Client insertLandlord")
-  public void testMock3() throws Exception {
+  void testMock3() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .post("/landlord/insertLandlord")
             .header("Authorization", testAuthHeader)
@@ -65,7 +65,7 @@ class LandlordControllerTest {
 
   @Test
   @DisplayName("Landlord Exist insertLandlord")
-  public void testMock4() throws Exception {
+  void testMock4() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .post("/landlord/insertLandlord")
             .header("Authorization", testAuthHeader)
@@ -79,7 +79,7 @@ class LandlordControllerTest {
 
   @Test
   @DisplayName("Landlord Created Successfully")
-  public void testMock5() throws Exception {
+  void testMock5() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .post("/landlord/insertLandlord")
             .header("Authorization", testAuthHeader)
@@ -92,7 +92,7 @@ class LandlordControllerTest {
 
   @Test
   @DisplayName("Empty lPhone updateLandlord")
-  public void testMock6() throws Exception {
+  void testMock6() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .patch("/landlord/updateLandlord")
             .header("Authorization", testAuthHeader)
@@ -105,7 +105,7 @@ class LandlordControllerTest {
 
   @Test
   @DisplayName("Empty lClientId updateLandlord")
-  public void testMock7() throws Exception {
+  void testMock7() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .patch("/landlord/updateLandlord")
             .header("Authorization", testAuthHeader)
@@ -118,7 +118,7 @@ class LandlordControllerTest {
 
   @Test
   @DisplayName("Landlord Not Exist updateLandlord")
-  public void testMock8() throws Exception {
+  void testMock8() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .patch("/landlord/updateLandlord")
             .header("Authorization", testAuthHeader)
@@ -131,7 +131,7 @@ class LandlordControllerTest {
 
   @Test
   @DisplayName("Landlord Update Successfully updateLandlord")
-  public void testMock9() throws Exception {
+  void testMock9() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .patch("/landlord/updateLandlord")
             .header("Authorization", testAuthHeader)
@@ -144,7 +144,7 @@ class LandlordControllerTest {
 
   @Test
   @DisplayName("Empty lClientId deleteLandlord")
-  public void testMock10() throws Exception {
+  void testMock10() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .delete("/landlord/deleteLandlord")
             .header("Authorization", testAuthHeader)
@@ -156,7 +156,7 @@ class LandlordControllerTest {
 
   @Test
   @DisplayName("Landlord Not Exist deleteLandlord")
-  public void testMock11() throws Exception {
+  void testMock11() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .delete("/landlord/deleteLandlord")
             .header("Authorization", testAuthHeader)
@@ -168,7 +168,7 @@ class LandlordControllerTest {
 
   @Test
   @DisplayName("Landlord Delete Successfully deleteLandlord")
-  public void testMock12() throws Exception {
+  void testMock12() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .delete("/landlord/deleteLandlord")
             .header("Authorization", testAuthHeader)

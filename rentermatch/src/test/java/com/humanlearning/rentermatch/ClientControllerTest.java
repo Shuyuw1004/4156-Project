@@ -25,7 +25,7 @@ class ClientControllerTest {
 
   @Test
   @DisplayName("Empty Email Login")
-  public void testMock1() throws Exception {
+  void testMock1() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .post("/client/login")
             .header("Authorization", testAuthHeader)
@@ -38,7 +38,7 @@ class ClientControllerTest {
 
   @Test
   @DisplayName("Empty Password Login")
-  public void testMock2() throws Exception {
+  void testMock2() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .post("/client/login")
             .header("Authorization", testAuthHeader)
@@ -51,7 +51,7 @@ class ClientControllerTest {
 
   @Test
   @DisplayName("Wrong Password Login")
-  public void testMock3() throws Exception {
+  void testMock3() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .post("/client/login")
             .header("Authorization", testAuthHeader)
@@ -64,7 +64,7 @@ class ClientControllerTest {
 
   @Test
   @DisplayName("Client Not Exist Login")
-  public void testMock4() throws Exception {
+  void testMock4() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .post("/client/login")
             .header("Authorization", testAuthHeader)
@@ -77,7 +77,7 @@ class ClientControllerTest {
 
   @Test
   @DisplayName("Correct Password Login")
-  public void testMock5() throws Exception {
+  void testMock5() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .post("/client/login")
             .header("Authorization", testAuthHeader)
@@ -90,7 +90,7 @@ class ClientControllerTest {
 
   @Test
   @DisplayName("Empty Email Register")
-  public void testMock6() throws Exception {
+  void testMock6() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .post("/client/register")
             .header("Authorization", testAuthHeader)
@@ -104,7 +104,7 @@ class ClientControllerTest {
 
   @Test
   @DisplayName("Empty Password Register")
-  public void testMock7() throws Exception {
+  void testMock7() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .post("/client/register")
             .header("Authorization", testAuthHeader)
@@ -119,7 +119,7 @@ class ClientControllerTest {
 
   @Test
   @DisplayName("Empty Name Register")
-  public void testMock8() throws Exception {
+  void testMock8() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .post("/client/register")
             .header("Authorization", testAuthHeader)
@@ -134,7 +134,7 @@ class ClientControllerTest {
 
   @Test
   @DisplayName("Duplicate User Register")
-  public void testMock9() throws Exception {
+  void testMock9() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .post("/client/register")
             .header("Authorization", testAuthHeader)
@@ -149,7 +149,7 @@ class ClientControllerTest {
 
   @Test
   @DisplayName("Client Successfully Register")
-  public void testMock10() throws Exception {
+  void testMock10() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .post("/client/register")
             .header("Authorization", testAuthHeader)
@@ -163,7 +163,7 @@ class ClientControllerTest {
 
   @Test
   @DisplayName("Client Not Exist getClientByEmail")
-  public void testMock11() throws Exception {
+  void testMock11() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .get("/client/getClientByEmail")
             .header("Authorization", testAuthHeader)
@@ -175,7 +175,7 @@ class ClientControllerTest {
 
   @Test
   @DisplayName("Email Empty getClientByEmail")
-  public void testMock12() throws Exception {
+  void testMock12() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .get("/client/getClientByEmail")
             .header("Authorization", testAuthHeader)
@@ -187,7 +187,7 @@ class ClientControllerTest {
 
   @Test
   @DisplayName("Client Not Exist getClientBycId")
-  public void testMock13() throws Exception {
+  void testMock13() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .get("/client/getClientBycId")
             .header("Authorization", testAuthHeader)
@@ -199,7 +199,7 @@ class ClientControllerTest {
 
   @Test
   @DisplayName("cId Empty getClientBycId")
-  public void testMock14() throws Exception {
+  void testMock14() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .get("/client/getClientBycId")
             .header("Authorization", testAuthHeader)
@@ -211,7 +211,7 @@ class ClientControllerTest {
 
   @Test
   @DisplayName("Password Empty deleteClient")
-  public void testMock15() throws Exception {
+  void testMock15() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .delete("/client/deleteClient")
             .header("Authorization", testAuthHeader)
@@ -225,7 +225,7 @@ class ClientControllerTest {
 
   @Test
   @DisplayName("Name Empty deleteClient")
-  public void testMock16() throws Exception {
+  void testMock16() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .delete("/client/deleteClient")
             .header("Authorization", testAuthHeader)
@@ -239,7 +239,7 @@ class ClientControllerTest {
 
   @Test
   @DisplayName("Email Empty deleteClient")
-  public void testMock17() throws Exception {
+  void testMock17() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .delete("/client/deleteClient")
             .header("Authorization", testAuthHeader)
@@ -253,7 +253,7 @@ class ClientControllerTest {
 
   @Test
   @DisplayName("Client Not Exist deleteClient")
-  public void testMock18() throws Exception {
+  void testMock18() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .delete("/client/deleteClient")
             .header("Authorization", testAuthHeader)
@@ -267,7 +267,7 @@ class ClientControllerTest {
 
   @Test
   @DisplayName("Client Delete Successfully deleteClient")
-  public void testMock19() throws Exception {
+  void testMock19() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .delete("/client/deleteClient")
             .header("Authorization", testAuthHeader)

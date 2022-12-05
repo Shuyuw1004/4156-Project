@@ -25,7 +25,7 @@ public class StudentControllerTest {
 
   @Test
   @DisplayName("insertStudent Test empty email")
-  public void testMock1() throws Exception {
+  void testMock1() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .post("/student/insertStudent")
             .header("Authorization", testAuthHeader)
@@ -37,7 +37,7 @@ public class StudentControllerTest {
 
   @Test
   @DisplayName("insertStudent Test empty name")
-  public void testMock2() throws Exception {
+  void testMock2() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .post("/student/insertStudent")
             .header("Authorization", testAuthHeader)
@@ -50,7 +50,7 @@ public class StudentControllerTest {
 
   @Test
   @DisplayName("insertStudent Test empty sClientId")
-  public void testMock3() throws Exception {
+  void testMock3() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .post("/student/insertStudent")
             .header("Authorization", testAuthHeader)
@@ -64,7 +64,7 @@ public class StudentControllerTest {
 
   @Test
   @DisplayName("insertStudent Test empty uni")
-  public void testMock4() throws Exception {
+  void testMock4() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .post("/student/insertStudent")
             .header("Authorization", testAuthHeader)
@@ -79,7 +79,7 @@ public class StudentControllerTest {
 
   @Test
   @DisplayName("insertStudent Test student not client")
-  public void testMock5() throws Exception {
+  void testMock5() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .post("/student/insertStudent")
             .header("Authorization", testAuthHeader)
@@ -95,7 +95,7 @@ public class StudentControllerTest {
 
   @Test
   @DisplayName("insertStudent Test student is client")
-  public void testMock6() throws Exception {
+  void testMock6() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .post("/student/insertStudent")
             .header("Authorization", testAuthHeader)
@@ -111,7 +111,7 @@ public class StudentControllerTest {
 
   @Test
   @DisplayName("insertStudent Test student is client")
-  public void testMock7() throws Exception {
+  void testMock7() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .post("/student/insertStudent")
             .header("Authorization", testAuthHeader)
@@ -127,7 +127,7 @@ public class StudentControllerTest {
 
   @Test
   @DisplayName("insertStudent Test Insert student from a client")
-  public void testMock8() throws Exception {
+  void testMock8() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .post("/student/insertStudent")
             .header("Authorization", testAuthHeader)
@@ -142,7 +142,7 @@ public class StudentControllerTest {
 
   @Test
   @DisplayName("getStudent Test empty email")
-  public void testMock9() throws Exception {
+  void testMock9() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .get("/student/getStudent")
             .header("Authorization", testAuthHeader)
@@ -155,7 +155,7 @@ public class StudentControllerTest {
 
   @Test
   @DisplayName("getStudent Test wrong email")
-  public void testMock10() throws Exception {
+  void testMock10() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .get("/student/getStudent")
             .header("Authorization", testAuthHeader)
@@ -168,7 +168,7 @@ public class StudentControllerTest {
 
   @Test
   @DisplayName("getStudent Test empty sid")
-  public void testMock11() throws Exception {
+  void testMock11() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .get("/student/getStudent")
             .header("Authorization", testAuthHeader)
@@ -181,7 +181,7 @@ public class StudentControllerTest {
 
   @Test
   @DisplayName("getStudent Test wrong sid")
-  public void testMock12() throws Exception {
+  void testMock12() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .get("/student/getStudent")
             .header("Authorization", testAuthHeader)
@@ -194,7 +194,7 @@ public class StudentControllerTest {
 
   @Test
   @DisplayName("getStudent Test empty uni")
-  public void testMock13() throws Exception {
+  void testMock13() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .get("/student/getStudent")
             .header("Authorization", testAuthHeader)
@@ -207,7 +207,7 @@ public class StudentControllerTest {
 
   @Test
   @DisplayName("getStudent Test wrong uni")
-  public void testMock14() throws Exception {
+  void testMock14() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .get("/student/getStudent")
             .header("Authorization", testAuthHeader)
@@ -220,7 +220,7 @@ public class StudentControllerTest {
 
   @Test
   @DisplayName("getStudent Test empty sClientId")
-  public void testMock15() throws Exception {
+  void testMock15() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .get("/student/getStudent")
             .header("Authorization", testAuthHeader)
@@ -233,7 +233,7 @@ public class StudentControllerTest {
 
   @Test
   @DisplayName("getStudent Test wrong sClientId")
-  public void testMock16() throws Exception {
+  void testMock16() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .get("/student/getStudent")
             .header("Authorization", testAuthHeader)
@@ -246,7 +246,7 @@ public class StudentControllerTest {
 
   @Test
   @DisplayName("getStudent Test empty name")
-  public void testMock17() throws Exception {
+  void testMock17() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .get("/student/getStudent")
             .header("Authorization", testAuthHeader)
@@ -259,7 +259,7 @@ public class StudentControllerTest {
 
   @Test
   @DisplayName("getStudent Test wrong name")
-  public void testMock18() throws Exception {
+  void testMock18() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .get("/student/getStudent")
             .header("Authorization", testAuthHeader)
@@ -272,7 +272,7 @@ public class StudentControllerTest {
 
   @Test
   @DisplayName("getStudent Test Non-exist student")
-  public void testMock19() throws Exception {
+  void testMock19() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .get("/student/getStudent")
             .header("Authorization", testAuthHeader))
@@ -283,7 +283,7 @@ public class StudentControllerTest {
 
   @Test
   @DisplayName("getStudent Test Exist student with email")
-  public void testMock20() throws Exception {
+  void testMock20() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .get("/student/getStudent")
             .header("Authorization", testAuthHeader)
@@ -295,7 +295,7 @@ public class StudentControllerTest {
 
   @Test
   @DisplayName("getStudent Test Exist student with sid")
-  public void testMock21() throws Exception {
+  void testMock21() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .get("/student/getStudent")
             .header("Authorization", testAuthHeader)
@@ -307,7 +307,7 @@ public class StudentControllerTest {
 
   @Test
   @DisplayName("getStudent Test Exist student with uni")
-  public void testMock22() throws Exception {
+  void testMock22() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .get("/student/getStudent")
             .header("Authorization", testAuthHeader)
@@ -319,7 +319,7 @@ public class StudentControllerTest {
 
   @Test
   @DisplayName("getStudent Test Exist student with sClientId")
-  public void testMock23() throws Exception {
+  void testMock23() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .get("/student/getStudent")
             .header("Authorization", testAuthHeader)
@@ -331,7 +331,7 @@ public class StudentControllerTest {
 
   @Test
   @DisplayName("getStudent Test Exist student with name")
-  public void testMock24() throws Exception {
+  void testMock24() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .get("/student/getStudent")
             .header("Authorization", testAuthHeader)
@@ -344,7 +344,7 @@ public class StudentControllerTest {
 
   @Test
   @DisplayName("deleteStudent test empty sClientId")
-  public void testMock25() throws Exception {
+  void testMock25() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .delete("/student/deleteStudent")
             .header("Authorization", testAuthHeader)
@@ -356,7 +356,7 @@ public class StudentControllerTest {
 
   @Test
   @DisplayName("deleteStudent test non-exist sClientId")
-  public void testMock26() throws Exception {
+  void testMock26() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .delete("/student/deleteStudent")
             .header("Authorization", testAuthHeader)
@@ -368,7 +368,7 @@ public class StudentControllerTest {
 
   @Test
   @DisplayName("deleteStudent test delete test student successfully")
-  public void testMock27() throws Exception {
+  void testMock27() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .delete("/student/deleteStudent")
             .header("Authorization", testAuthHeader)
@@ -381,7 +381,7 @@ public class StudentControllerTest {
 
   @Test
   @DisplayName("updateStudent test empty email")
-  public void testMock28() throws Exception {
+  void testMock28() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .patch("/student/updateStudent")
             .header("Authorization", testAuthHeader)
@@ -393,7 +393,7 @@ public class StudentControllerTest {
 
   @Test
   @DisplayName("updateStudent test empty name")
-  public void testMock29() throws Exception {
+  void testMock29() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .patch("/student/updateStudent")
             .header("Authorization", testAuthHeader)
@@ -406,7 +406,7 @@ public class StudentControllerTest {
 
   @Test
   @DisplayName("updateStudent test empty sClientId")
-  public void testMock30() throws Exception {
+  void testMock30() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .patch("/student/updateStudent")
             .header("Authorization", testAuthHeader)
@@ -420,7 +420,7 @@ public class StudentControllerTest {
 
   @Test
   @DisplayName("updateStudent test empty Uni")
-  public void testMock31() throws Exception {
+  void testMock31() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .patch("/student/updateStudent")
             .header("Authorization", testAuthHeader)
@@ -435,7 +435,7 @@ public class StudentControllerTest {
 
   @Test
   @DisplayName("updateStudent test Non-exist student")
-  public void testMock32() throws Exception {
+  void testMock32() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .patch("/student/updateStudent")
             .header("Authorization", testAuthHeader)
@@ -450,7 +450,7 @@ public class StudentControllerTest {
 
   @Test
   @DisplayName("updateStudent test update successfully")
-  public void testMock33() throws Exception {
+  void testMock33() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .patch("/student/updateStudent")
             .header("Authorization", testAuthHeader)

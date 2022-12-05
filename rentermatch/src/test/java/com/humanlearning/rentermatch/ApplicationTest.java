@@ -32,7 +32,7 @@ class ApplicationTest {
 
   @Test
   @DisplayName("Main Page Test")
-  public void testHomePage() throws Exception {
+  void testHomePage() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .get("/")
             .header("Authorization", testAuthHeader))

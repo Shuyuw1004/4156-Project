@@ -272,7 +272,7 @@ public class TenantController {
         tearlyTimeSleep,
         expenditure, gender, job, lateTimeSleep, numOfRoomates, pet,
         preferLocation, preferType, preferZipCode, smoking);
-    if (matchedTenants == null || matchedTenants.size() == 0) {
+    if (matchedTenants == null || matchedTenants.isEmpty()) {
       return new ResponseEntity<>("cannot find matched tenants", responseHeaders,
           HttpStatus.INTERNAL_SERVER_ERROR);
 

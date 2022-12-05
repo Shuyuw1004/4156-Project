@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 public class RentermatchApplicationTests {
 
   @Test
-  public void main() {
+  void main() {
     RentermatchApplication.main(new String[]{});
   }
 }

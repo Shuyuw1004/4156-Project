@@ -26,7 +26,7 @@ public class HouseControllerTest {
 
   @Test
   @DisplayName("insertHouse - empty hAddress")
-  public void testMock1() throws Exception {
+  void testMock1() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .post("/house/insertHouse")
             .header("Authorization", testAuthHeader)
@@ -41,7 +41,7 @@ public class HouseControllerTest {
 
   @Test
   @DisplayName("insertHouse - empty hPrice")
-  public void testMock2() throws Exception {
+  void testMock2() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .post("/house/insertHouse")
             .header("Authorization", testAuthHeader)
@@ -56,7 +56,7 @@ public class HouseControllerTest {
 
   @Test
   @DisplayName("insertHouse - empty hType")
-  public void testMock3() throws Exception {
+  void testMock3() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .post("/house/insertHouse")
             .header("Authorization", testAuthHeader)
@@ -71,7 +71,7 @@ public class HouseControllerTest {
 
   @Test
   @DisplayName("insertHouse - empty landlordId")
-  public void testMock4() throws Exception {
+  void testMock4() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .post("/house/insertHouse")
             .header("Authorization", testAuthHeader)
@@ -86,7 +86,7 @@ public class HouseControllerTest {
 
   @Test
   @DisplayName("insertHouse - landlord does not exist")
-  public void testMock5() throws Exception {
+  void testMock5() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .post("/house/insertHouse")
             .header("Authorization", testAuthHeader)
@@ -102,7 +102,7 @@ public class HouseControllerTest {
 
   @Test
   @DisplayName("insertHouse - house already exist")
-  public void testMock6() throws Exception {
+  void testMock6() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .post("/house/insertHouse")
             .header("Authorization", testAuthHeader)
@@ -118,7 +118,7 @@ public class HouseControllerTest {
 
   @Test
   @DisplayName("insertHouse - successfully")
-  public void testMock7() throws Exception {
+  void testMock7() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .post("/house/insertHouse")
             .header("Authorization", testAuthHeader)
@@ -133,7 +133,7 @@ public class HouseControllerTest {
 
   @Test
   @DisplayName("updateHousePrice - hAddress empty")
-  public void testMock8() throws Exception {
+  void testMock8() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .patch("/house/updateHousePrice")
             .header("Authorization", testAuthHeader)
@@ -146,7 +146,7 @@ public class HouseControllerTest {
 
   @Test
   @DisplayName("updateHousePrice - house does not exist")
-  public void testMock9() throws Exception {
+  void testMock9() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .patch("/house/updateHousePrice")
             .header("Authorization", testAuthHeader)
@@ -159,7 +159,7 @@ public class HouseControllerTest {
 
   @Test
   @DisplayName("updateHousePrice - update successfully")
-  public void testMock10() throws Exception {
+  void testMock10() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .patch("/house/updateHousePrice")
             .header("Authorization", testAuthHeader)
@@ -172,7 +172,7 @@ public class HouseControllerTest {
 
   @Test
   @DisplayName("deleteHouse - hAddress empty")
-  public void testMock11() throws Exception {
+  void testMock11() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .delete("/house/deleteHouse")
             .header("Authorization", testAuthHeader)
@@ -184,7 +184,7 @@ public class HouseControllerTest {
 
   @Test
   @DisplayName("deleteHouse - house does not exist")
-  public void testMock12() throws Exception {
+  void testMock12() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .delete("/house/deleteHouse")
             .header("Authorization", testAuthHeader)
@@ -196,7 +196,7 @@ public class HouseControllerTest {
 
   @Test
   @DisplayName("deleteHouse - house deleted successfully")
-  public void testMock13() throws Exception {
+  void testMock13() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .delete("/house/deleteHouse")
             .header("Authorization", testAuthHeader)

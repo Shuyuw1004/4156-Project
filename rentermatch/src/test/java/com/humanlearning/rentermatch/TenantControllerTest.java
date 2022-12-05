@@ -25,7 +25,7 @@ public class TenantControllerTest {
 
   @Test
   @DisplayName("Empty Age Tenant Insert")
-  public void testMock1() throws Exception {
+  void testMock1() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .post("/tenant/insertTenant")
             .header("Authorization", testAuthHeader)
@@ -52,7 +52,7 @@ public class TenantControllerTest {
 
   @Test
   @DisplayName("Empty ClientId Tenant Insert")
-  public void testMock2() throws Exception {
+  void testMock2() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .post("/tenant/insertTenant")
             .header("Authorization", testAuthHeader)
@@ -79,7 +79,7 @@ public class TenantControllerTest {
 
   @Test
   @DisplayName("Empty Constellation Tenant Insert")
-  public void testMock3() throws Exception {
+  void testMock3() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .post("/tenant/insertTenant")
             .header("Authorization", testAuthHeader)
@@ -106,7 +106,7 @@ public class TenantControllerTest {
 
   @Test
   @DisplayName("Empty Cooking Tenant Insert")
-  public void testMock4() throws Exception {
+  void testMock4() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .post("/tenant/insertTenant")
             .header("Authorization", testAuthHeader)
@@ -133,7 +133,7 @@ public class TenantControllerTest {
 
   @Test
   @DisplayName("Empty EarlyTimeSleep Tenant Insert")
-  public void testMock5() throws Exception {
+  void testMock5() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .post("/tenant/insertTenant")
             .header("Authorization", testAuthHeader)
@@ -160,7 +160,7 @@ public class TenantControllerTest {
 
   @Test
   @DisplayName("Empty Expenditure Tenant Insert")
-  public void testMock6() throws Exception {
+  void testMock6() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .post("/tenant/insertTenant")
             .header("Authorization", testAuthHeader)
@@ -187,7 +187,7 @@ public class TenantControllerTest {
 
   @Test
   @DisplayName("Empty Job Tenant Insert")
-  public void testMock7() throws Exception {
+  void testMock7() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .post("/tenant/insertTenant")
             .header("Authorization", testAuthHeader)
@@ -214,7 +214,7 @@ public class TenantControllerTest {
 
   @Test
   @DisplayName("Empty LateTimeSleep Tenant Insert")
-  public void testMock8() throws Exception {
+  void testMock8() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .post("/tenant/insertTenant")
             .header("Authorization", testAuthHeader)
@@ -241,7 +241,7 @@ public class TenantControllerTest {
 
   @Test
   @DisplayName("Empty NumOfRoomates Tenant Insert")
-  public void testMock9() throws Exception {
+  void testMock9() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .post("/tenant/insertTenant")
             .header("Authorization", testAuthHeader)
@@ -268,7 +268,7 @@ public class TenantControllerTest {
 
   @Test
   @DisplayName("Empty Pet Tenant Insert")
-  public void testMock10() throws Exception {
+  void testMock10() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .post("/tenant/insertTenant")
             .header("Authorization", testAuthHeader)
@@ -295,7 +295,7 @@ public class TenantControllerTest {
 
   @Test
   @DisplayName("Empty Phone Tenant Insert")
-  public void testMock11() throws Exception {
+  void testMock11() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .post("/tenant/insertTenant")
             .header("Authorization", testAuthHeader)
@@ -322,7 +322,7 @@ public class TenantControllerTest {
 
   @Test
   @DisplayName("Empty PreferLocation Tenant Insert")
-  public void testMock12() throws Exception {
+  void testMock12() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .post("/tenant/insertTenant")
             .header("Authorization", testAuthHeader)
@@ -349,7 +349,7 @@ public class TenantControllerTest {
 
   @Test
   @DisplayName("Empty PreferType Tenant Insert")
-  public void testMock13() throws Exception {
+  void testMock13() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .post("/tenant/insertTenant")
             .header("Authorization", testAuthHeader)
@@ -376,7 +376,7 @@ public class TenantControllerTest {
 
   @Test
   @DisplayName("Empty PreferZipCode Tenant Insert")
-  public void testMock14() throws Exception {
+  void testMock14() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .post("/tenant/insertTenant")
             .header("Authorization", testAuthHeader)
@@ -403,7 +403,7 @@ public class TenantControllerTest {
 
   @Test
   @DisplayName("Empty Smoking Tenant Insert")
-  public void testMock15() throws Exception {
+  void testMock15() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .post("/tenant/insertTenant")
             .header("Authorization", testAuthHeader)
@@ -430,7 +430,7 @@ public class TenantControllerTest {
 
   @Test
   @DisplayName("No Matching tClient Tenant Insert")
-  public void testMock16() throws Exception {
+  void testMock16() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .post("/tenant/insertTenant")
             .header("Authorization", testAuthHeader)
@@ -458,7 +458,7 @@ public class TenantControllerTest {
 
   @Test
   @DisplayName("Duplicate Tenant")
-  public void testMock17() throws Exception {
+  void testMock17() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .post("/tenant/insertTenant")
             .header("Authorization", testAuthHeader)
@@ -486,7 +486,7 @@ public class TenantControllerTest {
 
   @Test
   @DisplayName("Get Tenant with Empty tId")
-  public void testMock18() throws Exception {
+  void testMock18() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .get("/tenant/getTenantBytId")
             .header("Authorization", testAuthHeader)
@@ -498,7 +498,7 @@ public class TenantControllerTest {
 
   @Test
   @DisplayName("Get Tenant with Wrong tId")
-  public void testMock19() throws Exception {
+  void testMock19() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .get("/tenant/getTenantBytId")
             .header("Authorization", testAuthHeader)
@@ -510,7 +510,7 @@ public class TenantControllerTest {
 
   @Test
   @DisplayName("Get Tenant By tId Successfully")
-  public void testMock20() throws Exception {
+  void testMock20() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .get("/tenant/getTenantBytId")
             .header("Authorization", testAuthHeader)
@@ -523,7 +523,7 @@ public class TenantControllerTest {
 
   @Test
   @DisplayName("Get Tenant with Empty tClientId")
-  public void testMock21() throws Exception {
+  void testMock21() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .get("/tenant/getTenantBytClientId")
             .header("Authorization", testAuthHeader)
@@ -535,7 +535,7 @@ public class TenantControllerTest {
 
   @Test
   @DisplayName("Get Tenant with Wrong tClientId")
-  public void testMock22() throws Exception {
+  void testMock22() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .get("/tenant/getTenantBytClientId")
             .header("Authorization", testAuthHeader)
@@ -547,7 +547,7 @@ public class TenantControllerTest {
 
   @Test
   @DisplayName("Get Tenant By tClientId Successfully")
-  public void testMock23() throws Exception {
+  void testMock23() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .get("/tenant/getTenantBytClientId")
             .header("Authorization", testAuthHeader)
@@ -560,7 +560,7 @@ public class TenantControllerTest {
 
   @Test
   @DisplayName("Empty Age Tenant Update")
-  public void testMock24() throws Exception {
+  void testMock24() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .patch("/tenant/updateTenant")
             .header("Authorization", testAuthHeader)
@@ -587,7 +587,7 @@ public class TenantControllerTest {
 
   @Test
   @DisplayName("Empty ClientId Tenant Update")
-  public void testMock25() throws Exception {
+  void testMock25() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .patch("/tenant/updateTenant")
             .header("Authorization", testAuthHeader)
@@ -614,7 +614,7 @@ public class TenantControllerTest {
 
   @Test
   @DisplayName("Empty Constellation Tenant Update")
-  public void testMock26() throws Exception {
+  void testMock26() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .patch("/tenant/updateTenant")
             .header("Authorization", testAuthHeader)
@@ -641,7 +641,7 @@ public class TenantControllerTest {
 
   @Test
   @DisplayName("Empty Cooking Tenant Update")
-  public void testMock27() throws Exception {
+  void testMock27() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .patch("/tenant/updateTenant")
             .header("Authorization", testAuthHeader)
@@ -668,7 +668,7 @@ public class TenantControllerTest {
 
   @Test
   @DisplayName("Empty EarlyTimeSleep Tenant Update")
-  public void testMock28() throws Exception {
+  void testMock28() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .patch("/tenant/updateTenant")
             .header("Authorization", testAuthHeader)
@@ -695,7 +695,7 @@ public class TenantControllerTest {
 
   @Test
   @DisplayName("Empty Expenditure Tenant Update")
-  public void testMock29() throws Exception {
+  void testMock29() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .patch("/tenant/updateTenant")
             .header("Authorization", testAuthHeader)
@@ -722,7 +722,7 @@ public class TenantControllerTest {
 
   @Test
   @DisplayName("Empty Job Tenant Update")
-  public void testMock30() throws Exception {
+  void testMock30() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .patch("/tenant/updateTenant")
             .header("Authorization", testAuthHeader)
@@ -749,7 +749,7 @@ public class TenantControllerTest {
 
   @Test
   @DisplayName("Empty LateTimeSleep Tenant Update")
-  public void testMock31() throws Exception {
+  void testMock31() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .patch("/tenant/updateTenant")
             .header("Authorization", testAuthHeader)
@@ -776,7 +776,7 @@ public class TenantControllerTest {
 
   @Test
   @DisplayName("Empty NumOfRoomates Tenant Update")
-  public void testMock32() throws Exception {
+  void testMock32() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .patch("/tenant/updateTenant")
             .header("Authorization", testAuthHeader)
@@ -803,7 +803,7 @@ public class TenantControllerTest {
 
   @Test
   @DisplayName("Empty Pet Tenant Update")
-  public void testMock33() throws Exception {
+  void testMock33() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .patch("/tenant/updateTenant")
             .header("Authorization", testAuthHeader)
@@ -830,7 +830,7 @@ public class TenantControllerTest {
 
   @Test
   @DisplayName("Empty Phone Tenant Update")
-  public void testMoc34() throws Exception {
+  void testMoc34() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .patch("/tenant/updateTenant")
             .header("Authorization", testAuthHeader)
@@ -857,7 +857,7 @@ public class TenantControllerTest {
 
   @Test
   @DisplayName("Empty PreferLocation Tenant Update")
-  public void testMock35() throws Exception {
+  void testMock35() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .patch("/tenant/updateTenant")
             .header("Authorization", testAuthHeader)
@@ -884,7 +884,7 @@ public class TenantControllerTest {
 
   @Test
   @DisplayName("Empty PreferType Tenant Update")
-  public void testMock36() throws Exception {
+  void testMock36() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .patch("/tenant/updateTenant")
             .header("Authorization", testAuthHeader)
@@ -911,7 +911,7 @@ public class TenantControllerTest {
 
   @Test
   @DisplayName("Empty PreferZipCode Tenant Update")
-  public void testMock37() throws Exception {
+  void testMock37() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .patch("/tenant/updateTenant")
             .header("Authorization", testAuthHeader)
@@ -938,7 +938,7 @@ public class TenantControllerTest {
 
   @Test
   @DisplayName("Empty Smoking Tenant Update")
-  public void testMock38() throws Exception {
+  void testMock38() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .patch("/tenant/updateTenant")
             .header("Authorization", testAuthHeader)
@@ -965,7 +965,7 @@ public class TenantControllerTest {
 
   @Test
   @DisplayName("No Matching tClient Tenant Update")
-  public void testMock39() throws Exception {
+  void testMock39() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .patch("/tenant/updateTenant")
             .header("Authorization", testAuthHeader)
@@ -992,7 +992,7 @@ public class TenantControllerTest {
 
   @Test
   @DisplayName("Delete Tenant with Empty ClientId")
-  public void testMock40() throws Exception {
+  void testMock40() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .delete("/tenant/deleteTenant")
             .header("Authorization", testAuthHeader)
@@ -1004,7 +1004,7 @@ public class TenantControllerTest {
 
   @Test
   @DisplayName("Delete Tenant with Wrong ClientId")
-  public void testMock41() throws Exception {
+  void testMock41() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .delete("/tenant/deleteTenant")
             .header("Authorization", testAuthHeader)
@@ -1016,7 +1016,7 @@ public class TenantControllerTest {
 
   @Test
   @DisplayName("Empty ClientId getMatch")
-  public void testMock42() throws Exception {
+  void testMock42() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .get("/tenant/getMatch")
             .header("Authorization", testAuthHeader)
@@ -1028,7 +1028,7 @@ public class TenantControllerTest {
 
   @Test
   @DisplayName("Wrong ClientId getMatch")
-  public void testMock43() throws Exception {
+  void testMock43() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .get("/tenant/getMatch")
             .header("Authorization", testAuthHeader)
@@ -1040,7 +1040,7 @@ public class TenantControllerTest {
 
   @Test
   @DisplayName("ClientId Cannot Find Match")
-  public void testMock44() throws Exception {
+  void testMock44() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .get("/tenant/getMatch")
             .header("Authorization", testAuthHeader)
@@ -1052,7 +1052,7 @@ public class TenantControllerTest {
 
   @Test
   @DisplayName("tClientId Matched With Other Tenants Successfully")
-  public void testMock45() throws Exception {
+  void testMock45() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .get("/tenant/getMatch")
             .header("Authorization", testAuthHeader)

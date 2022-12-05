@@ -105,7 +105,6 @@ public class LandlordController {
     }
     // delete the houses owned by landlord
     String lid = landlord.getLId();
-    int deleteHouse = houseMapper.deleteHouseByhLandlordId(lid);
 
     int resultCount = landlordMapper.deleteLandlordBylClientId(lClientId);
     if (resultCount == 0) {

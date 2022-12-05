@@ -26,8 +26,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ClientController {
 
-  private final static Logger LOGGER =
-      Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
   @Autowired
   private ClientMapper clientMapper;
   @Autowired
@@ -36,6 +34,9 @@ public class ClientController {
   private StudentMapper studentMapper;
   @Autowired
   private TenantMapper tenantMapper;
+
+  private final static Logger LOGGER =
+          Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
   @PostMapping("login")
   public ResponseEntity<String> login(String email, String password) {
