@@ -9,5 +9,5 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
 
 jwt:
-  secret: secretkey123
+  secret: humanlearningrentermatch
   expiration: 2592000000 # 30days*24h*60min*60s*1000ms
