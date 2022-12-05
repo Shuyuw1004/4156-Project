@@ -19,8 +19,8 @@ class ClientControllerTest {
   private MockMvc mockMvc;
 
   private String testAuthHeader =
-      "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY3MDIxNjM4MSwiaWF0IjoxNjcwMTk4MzgxfQ"
-          + ".hiTDCxNeR9MjTyEbz-CIhta0jEGqZ7qzWzGjqgkPdgD_KSfz-xoHRlvZBlGdmWLk4-e6GwEaNLU1mUSzMIfEhA";
+      "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY3MDI3MjgzNCwiaWF0IjoxNjcwMjU0ODM0fQ."
+          + "9_g8ljjeCl_vryHTDf_ifW7Ur6g34wMeQ1LtFUv39EY8cAW_pav0mTR0qRRGf3KnrOvNwMMBwffJlisKEPCA-w";
 
   @Test
   @DisplayName("Empty Email Login")
