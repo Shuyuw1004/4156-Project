@@ -17,8 +17,8 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 public class StudentControllerTest {
 
   private String testAuthHeader =
-      "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY3MDExNzk5OCwiaWF0IjoxNjcwMDk5OTk4fQ"
-          + ".c216RdkCyNh1webpyKY8NoBIQ8jlxq6XGq-ba8gHF-chbuP-un6w9GFtmd6lQtQeGAhye_tDMPhHJhBNtkkeFA";
+      "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY3MDIxNjM4MSwiaWF0IjoxNjcwMTk4MzgxfQ"
+          + ".hiTDCxNeR9MjTyEbz-CIhta0jEGqZ7qzWzGjqgkPdgD_KSfz-xoHRlvZBlGdmWLk4-e6GwEaNLU1mUSzMIfEhA";
 
   @Resource
   private MockMvc mockMvc;

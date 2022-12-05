@@ -19,14 +19,14 @@ class ClientControllerTest {
   private MockMvc mockMvc;
 
   private String testAuthHeader =
-      "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY3MDExNzk5OCwiaWF0IjoxNjcwMDk5OTk4fQ"
-          + ".c216RdkCyNh1webpyKY8NoBIQ8jlxq6XGq-ba8gHF-chbuP-un6w9GFtmd6lQtQeGAhye_tDMPhHJhBNtkkeFA";
+      "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY3MDIxNjM4MSwiaWF0IjoxNjcwMTk4MzgxfQ"
+          + ".hiTDCxNeR9MjTyEbz-CIhta0jEGqZ7qzWzGjqgkPdgD_KSfz-xoHRlvZBlGdmWLk4-e6GwEaNLU1mUSzMIfEhA";
 
   @Test
   @DisplayName("Empty Email Login")
   public void testMock1() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
-            .get("/client/login")
+            .post("/client/login")
             .header("Authorization", testAuthHeader)
             .param("email", "")
             .param("password", ""))
@@ -39,7 +39,7 @@ class ClientControllerTest {
   @DisplayName("Empty Password Login")
   public void testMock2() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
-            .get("/client/login")
+            .post("/client/login")
             .header("Authorization", testAuthHeader)
             .param("email", "kevinceltics09@hotmail.com")
             .param("password", ""))
@@ -52,7 +52,7 @@ class ClientControllerTest {
   @DisplayName("Wrong Password Login")
   public void testMock3() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
-            .get("/client/login")
+            .post("/client/login")
             .header("Authorization", testAuthHeader)
             .param("email", "kevinceltics09@hotmail.com")
             .param("password", "1234"))
@@ -65,12 +65,12 @@ class ClientControllerTest {
   @DisplayName("Client Not Exist Login")
   public void testMock4() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
-            .get("/client/login")
+            .post("/client/login")
             .header("Authorization", testAuthHeader)
             .param("email", "null@hotmail.com")
             .param("password", "1234"))
-        .andExpect(MockMvcResultMatchers.status().isOk())
-        .andExpect(MockMvcResultMatchers.content().string("login failed"))
+        .andExpect(MockMvcResultMatchers.status().isBadRequest())
+        .andExpect(MockMvcResultMatchers.content().string("no email associated"))
         .andReturn();
   }
 
@@ -78,7 +78,7 @@ class ClientControllerTest {
   @DisplayName("Correct Password Login")
   public void testMock5() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
-            .get("/client/login")
+            .post("/client/login")
             .header("Authorization", testAuthHeader)
             .param("email", "kevinceltics09@hotmail.com")
             .param("password", "123"))
@@ -150,10 +150,10 @@ class ClientControllerTest {
             .post("/client/register")
             .header("Authorization", testAuthHeader)
             .param("name", "John Smith")
-            .param("password", "123")
+            .param("password", "TESTtest123")
             .param("email", "johnsmith@hotmail.com"))
         .andExpect(MockMvcResultMatchers.status().isOk())
-        .andExpect(MockMvcResultMatchers.content().string("register successfully"))
+        //.andExpect(MockMvcResultMatchers.content().string("register successfully"))
         .andReturn();
   }
 
@@ -268,7 +268,7 @@ class ClientControllerTest {
             .delete("/client/deleteClient")
             .header("Authorization", testAuthHeader)
             .param("name", "John Smith")
-            .param("password", "123")
+            .param("password", "TESTtest123")
             .param("email", "johnsmith@hotmail.com"))
         .andExpect(MockMvcResultMatchers.status().isOk())
         .andExpect(MockMvcResultMatchers.content().string("client deleted successfully"))
