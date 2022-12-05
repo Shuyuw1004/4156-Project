@@ -8,7 +8,6 @@ import com.humanlearning.rentermatch.mapper.ClientMapper;
 import com.humanlearning.rentermatch.mapper.LandlordMapper;
 import com.humanlearning.rentermatch.mapper.StudentMapper;
 import com.humanlearning.rentermatch.mapper.TenantMapper;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,42 +25,45 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ClientController {
 
-    @Autowired
-    private ClientMapper clientMapper;
-    @Autowired
-    private LandlordMapper landlordMapper;
-    @Autowired
-    private StudentMapper studentMapper;
-    @Autowired
-    private TenantMapper tenantMapper;
-    private final static Logger LOGGER =
-            Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
-    @PostMapping("login")
-    public ResponseEntity<String> login(String email, String password) {
-        HttpHeaders responseHeaders = new HttpHeaders();
-        responseHeaders.set("Access-Control-Allow-Origin", "*");
-        responseHeaders.set("Access-Control-Allow-Headers","X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method, Authorization");
-        responseHeaders.set("Access-Control-Allow-Methods","GET, POST, OPTIONS, PUT, DELETE, PATCH");
-        //Check whether email is empty
-        if (email == null || email.isEmpty()) {
-            return new ResponseEntity<>("email cannot be empty", responseHeaders,HttpStatus.BAD_REQUEST);
-        }
-        //Check whether password is empty
-        if (password == null || password.isEmpty()) {
-            return new ResponseEntity<>("password cannot be empty", responseHeaders,HttpStatus.BAD_REQUEST);
-        }
-        //Select client from database by email
-        Client client = clientMapper.selectClient(email);
-        //If client does not exist
-        if (client == null) {
-            return new ResponseEntity<>("no email associated", responseHeaders,HttpStatus.BAD_REQUEST);
-        }
-        //Check whether the password matches the one stored in database
-        if (password.equals(client.getPassword())) {
-            return new ResponseEntity<>(String.format("%s",
-                    clientMapper.selectClient(email).getCid()), responseHeaders,HttpStatus.OK);
-        }
-        return new ResponseEntity<>("wrong password", responseHeaders,HttpStatus.BAD_REQUEST);
+  private final static Logger LOGGER =
+      Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+  @Autowired
+  private ClientMapper clientMapper;
+  @Autowired
+  private LandlordMapper landlordMapper;
+  @Autowired
+  private StudentMapper studentMapper;
+  @Autowired
+  private TenantMapper tenantMapper;
+
+  @PostMapping("login")
+  public ResponseEntity<String> login(String email, String password) {
+    HttpHeaders responseHeaders = new HttpHeaders();
+    responseHeaders.set("Access-Control-Allow-Origin", "*");
+    responseHeaders.set("Access-Control-Allow-Headers",
+        "X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method, Authorization");
+    responseHeaders.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE, PATCH");
+    //Check whether email is empty
+    if (email == null || email.isEmpty()) {
+      return new ResponseEntity<>("email cannot be empty", responseHeaders, HttpStatus.BAD_REQUEST);
+    }
+    //Check whether password is empty
+    if (password == null || password.isEmpty()) {
+      return new ResponseEntity<>("password cannot be empty", responseHeaders,
+          HttpStatus.BAD_REQUEST);
+    }
+    //Select client from database by email
+    Client client = clientMapper.selectClient(email);
+    //If client does not exist
+    if (client == null) {
+      return new ResponseEntity<>("no email associated", responseHeaders, HttpStatus.BAD_REQUEST);
+    }
+    //Check whether the password matches the one stored in database
+    if (password.equals(client.getPassword())) {
+      return new ResponseEntity<>(String.format("%s",
+          clientMapper.selectClient(email).getCid()), responseHeaders, HttpStatus.OK);
+    }
+    return new ResponseEntity<>("wrong password", responseHeaders, HttpStatus.BAD_REQUEST);
   }
 
 
@@ -69,39 +71,50 @@ public class ClientController {
   public ResponseEntity<String> register(String password, String name, String email) {
     HttpHeaders responseHeaders = new HttpHeaders();
     responseHeaders.set("Access-Control-Allow-Origin", "*");
-    responseHeaders.set("Access-Control-Allow-Headers","X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method, Authorization");
-    responseHeaders.set("Access-Control-Allow-Methods","GET, POST, OPTIONS, PUT, DELETE, PATCH");
+    responseHeaders.set("Access-Control-Allow-Headers",
+        "X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method, Authorization");
+    responseHeaders.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE, PATCH");
     //Check whether email is empty
     if (email == null || email.isEmpty()) {
-      return new ResponseEntity<>("register fail, email cannot be empty!", responseHeaders,HttpStatus.BAD_REQUEST);
+      return new ResponseEntity<>("register fail, email cannot be empty!", responseHeaders,
+          HttpStatus.BAD_REQUEST);
     }
-    if (!email.matches("(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])")) {
-      return new ResponseEntity<>("register fail, email format not correct", responseHeaders,HttpStatus.BAD_REQUEST);
+    if (!email.matches(
+        "(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])")) {
+      return new ResponseEntity<>("register fail, email format not correct", responseHeaders,
+          HttpStatus.BAD_REQUEST);
     }
     //Check whether password is empty
     if (password == null || password.isEmpty()) {
-      return new ResponseEntity<>("register fail, password cannot be empty!", responseHeaders,HttpStatus.BAD_REQUEST);
+      return new ResponseEntity<>("register fail, password cannot be empty!", responseHeaders,
+          HttpStatus.BAD_REQUEST);
     }
     if (!password.matches("^(?=.*[A-Za-z0-9])(?=.*)[A-Za-z0-9]{8,}$")) {
-      return new ResponseEntity<>("register fail, password must contain minimum eight characters, at least one letter and one number!", responseHeaders,HttpStatus.BAD_REQUEST);
+      return new ResponseEntity<>(
+          "register fail, password must contain minimum eight characters, at least one letter and one number!",
+          responseHeaders, HttpStatus.BAD_REQUEST);
     }
     //Check whether name is empty
     if (name == null || name.isEmpty()) {
-      return new ResponseEntity<>("register fail, name cannot be empty!", responseHeaders, HttpStatus.BAD_REQUEST);
+      return new ResponseEntity<>("register fail, name cannot be empty!", responseHeaders,
+          HttpStatus.BAD_REQUEST);
     }
     if (name.length() > 64) {
-      return new ResponseEntity<>("register fail, name cannot exceed 64 characters!", responseHeaders, HttpStatus.BAD_REQUEST);
+      return new ResponseEntity<>("register fail, name cannot exceed 64 characters!",
+          responseHeaders, HttpStatus.BAD_REQUEST);
     }
     //Select client from database by email
     Client client = clientMapper.selectClient(email);
     //Check whether client already exist
     if (client != null) {
-      return new ResponseEntity<>("register fail, user already exist!", responseHeaders, HttpStatus.BAD_REQUEST);
+      return new ResponseEntity<>("register fail, user already exist!", responseHeaders,
+          HttpStatus.BAD_REQUEST);
     }
     //Return 1 if saved successfully; return 0 if failed
     int resultCount = clientMapper.saveClient(password, name, email);
     if (resultCount == 0) {
-      return new ResponseEntity<>("register fail, reason unknown!", responseHeaders, HttpStatus.BAD_REQUEST);
+      return new ResponseEntity<>("register fail, reason unknown!", responseHeaders,
+          HttpStatus.BAD_REQUEST);
     }
     return new ResponseEntity<>(String.format("%s",
         clientMapper.selectClient(email).getCid()), responseHeaders, HttpStatus.OK);
