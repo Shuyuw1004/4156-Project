@@ -22,32 +22,12 @@ To test this project, use IntelliJ internal running tool to run ClientController
 
 ## API Introduction
 
-For iteration1, we have the following endpoints:
+For iteration2, we have the following endpoints:
+<img width="874" alt="image" src="https://user-images.githubusercontent.com/90531103/205741169-55cf42df-b5c0-41d4-8a1a-b5f16204cec5.png">
+<img width="866" alt="image" src="https://user-images.githubusercontent.com/90531103/205741207-80a5333e-5118-4671-aeaf-df2ffc30c319.png">
 
-![img_2.png](img_2.png)
 
-* GET /client/login
-    - Description: This is for our client to sign in our service.
-    - Request parameters: email, password. Both cannot be empty.
-    - Response Body: email, password
-* GET /client/register
-    - Description： This is for our client to register for our service.
-    - Request parameters: email, name, password. All of them cannot be empty.
-    - Response Body:
-        - 1: register successfully
         - 0: register failed.
-* /tenant/insertStudent
-    - Description: This is for our client tenant to insert Student.
-    - Request parameters: Attributes as in the database. Among all of them, tid cannot be empty.
-    - Response Body:
-        - 1: insert successfully
-        - 0: insert failed.
-* /student/insertStudent
-    - Description: This is for our client student to insert information to create profile.
-    - Request parameters: email, name, sid, uni tid. All of them cannot be empty.
-    - Response Body:
-        - 1: insert successfully
-        - 0: insert failed.
 
 ## Code Style Checker
 
