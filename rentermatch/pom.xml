@@ -36,7 +36,11 @@
         <configuration>
           <excludes>
             **/com/humanlearning/rentermatch/domain/**
+          </excludes>
+          <excludes>
             **/com/humanlearning/rentermatch/model/**
+          </excludes>
+          <excludes>
             **/com/humanlearning/rentermatch/utility/**
           </excludes>
         </configuration>
