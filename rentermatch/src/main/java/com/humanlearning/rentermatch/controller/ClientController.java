@@ -1,4 +1,5 @@
 package com.humanlearning.rentermatch.controller;
+//
 
 import com.humanlearning.rentermatch.domain.Client;
 import com.humanlearning.rentermatch.domain.Landlord;
@@ -119,6 +120,7 @@ public class ClientController {
     return new ResponseEntity<>(String.format("%s",
         clientMapper.selectClient(email).getCid()), responseHeaders, HttpStatus.OK);
   }
+
 
   @GetMapping("getClientByEmail")
   public String getClientByEmail(String email) {
