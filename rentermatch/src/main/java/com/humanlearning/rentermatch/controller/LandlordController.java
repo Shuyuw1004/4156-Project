@@ -29,7 +29,7 @@ public class LandlordController {
   @Autowired
   private HouseMapper houseMapper;
 
-  final String emptyCid = "lClientId cannot be empty";
+  final static String emptyCid = "lClientId cannot be empty";
 
   @PostMapping("insertLandlord")
   public ResponseEntity<String> insertLandlord(String lPhone, String lClientId) {

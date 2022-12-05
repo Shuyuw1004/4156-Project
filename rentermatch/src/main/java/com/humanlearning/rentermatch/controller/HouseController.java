@@ -24,6 +24,7 @@ public class HouseController {
   private HouseMapper houseMapper;
   @Autowired
   private LandlordMapper landlordMapper;
+  final static String emptyAddr = "hAddress cannot be empty";
 
   @PostMapping("insertHouse")
   public ResponseEntity<String> insertHouse(String hAddress, Integer hPrice, String hType,
@@ -35,7 +36,7 @@ public class HouseController {
     responseHeaders.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE, PATCH");
     //Check whether hAddress is empty
     if (hAddress == null || hAddress.isEmpty()) {
-      return new ResponseEntity<>("hAddress cannot be empty", responseHeaders,
+      return new ResponseEntity<>(emptyAddr, responseHeaders,
           HttpStatus.BAD_REQUEST);
     }
     //Check whether hPrice is empty
@@ -82,7 +83,7 @@ public class HouseController {
     responseHeaders.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE, PATCH");
     //Check whether hAddress is empty
     if (hAddress == null || hAddress.isEmpty()) {
-      return new ResponseEntity<>("hAddress cannot be empty", responseHeaders,
+      return new ResponseEntity<>(emptyAddr, responseHeaders,
           HttpStatus.BAD_REQUEST);
     }
     //Check whether hPrice is empty
@@ -107,7 +108,7 @@ public class HouseController {
   public String deleteHouse(String hAddress) {
     //Check whether hAddress is empty
     if (hAddress == null || hAddress.isEmpty()) {
-      return "hAddress cannot be empty";
+      return emptyAddr;
     }
     House house = houseMapper.selectHouse(hAddress);
     if (house == null) {

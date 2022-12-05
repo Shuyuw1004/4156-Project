@@ -30,7 +30,7 @@ public class TenantController {
   private TenantMapper tenantMapper;
   @Autowired
   private ClientMapper clientMapper;
-  final String emptyCid= "tClientId cannot be empty";
+  final static String emptyCid= "tClientId cannot be empty";
 
   @PostMapping("insertTenant")
   public ResponseEntity<String> insertTenant(Integer tAge, String tClientId, String tConstellation,
@@ -283,45 +283,8 @@ public class TenantController {
       tenants.append(matchedTenants.get(i).toString());
       tenants.append("\n");
     }
-    this.LOGGER.log(Level.INFO, "reach here");
+    TenantController.LOGGER.log(Level.INFO, "reach here");
     //send email
     return new ResponseEntity<>(tenant.toString(), responseHeaders, HttpStatus.OK);
   }
-
-//    public ResponseEntity<String> sendEmail(String msg, HttpStatus status, String email_adr) {
-//        HttpHeaders responseHeaders = new HttpHeaders();
-//        responseHeaders.set("Access-Control-Allow-Origin", "*");
-//        responseHeaders.set("Access-Control-Allow-Headers","X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method, Authorization");
-//        responseHeaders.set("Access-Control-Allow-Methods","GET, POST, OPTIONS, PUT, DELETE, PATCH");
-//        String from = "4156_Group@gmail.com";
-//        String host = "localhost";
-//        Properties properties = System.getProperties();
-//        properties.setProperty("mail.smtp.host", host);
-//        Session session = Session.getDefaultInstance(properties);
-//
-//        try {
-//            // Create a default MimeMessage object.
-//            MimeMessage message = new MimeMessage(session);
-//
-//            // Set From: header field of the header.
-//            message.setFrom(new InternetAddress(from));
-//
-//            // Set To: header field of the header.
-//            message.addRecipient(Message.RecipientType.TO, new InternetAddress(email_adr));
-//
-//            // Set Subject: header field
-//            message.setSubject("Your Matching result is Here!");
-//
-//            // Now set the actual message
-//            message.setText(msg);
-//
-//            // Send message
-//            this.LOGGER.log(Level.INFO, "reach here");
-//            Transport.send(message);
-//            System.out.println("Sent message successfully....");
-//        } catch (MessagingException mex) {
-//            mex.printStackTrace();
-//        }
-//        return new ResponseEntity<>("success", responseHeaders, status);
-//    }
 }

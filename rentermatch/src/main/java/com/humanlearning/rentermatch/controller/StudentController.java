@@ -29,7 +29,7 @@ public class StudentController {
   private ClientMapper clientMapper;
   private final static Logger LOGGER =
           Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
-  final String emptyCid= "sClientId cannot be empty";
+  final static String emptyCid= "sClientId cannot be empty";
 
   @PostMapping("insertStudent")
   public ResponseEntity<String> insertStudent(String email, String name, String sClientId,
@@ -68,7 +68,7 @@ public class StudentController {
       return new ResponseEntity<>("studnet profile creation failed", responseHeaders,
           HttpStatus.BAD_REQUEST);
     }
-    this.LOGGER.log(Level.INFO, "reach here");
+    StudentController.LOGGER.log(Level.INFO, "reach here");
     return new ResponseEntity<>("student profile created successfully", responseHeaders,
         HttpStatus.OK);
   }
