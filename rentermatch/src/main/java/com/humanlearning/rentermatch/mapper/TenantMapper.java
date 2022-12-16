@@ -89,4 +89,11 @@ public interface TenantMapper {
       @Param("tNumOfRoomates") Integer tNumOfRoomates, @Param("tPet") String tPet,
       @Param("tPreferLocation") String tPreferLocation, @Param("tPreferType") String tPreferType,
       @Param("tPreferZipCode") String tPreferZipCode, @Param("tSmoking") String tSmoking);
+
+  @Select(
+          "SELECT tid, tAge, tClientId, tConstellation, tCooking, tEarlyTimeSleep, tExpenditure, tGender, tJob, tLateTimeSleep, "
+                  +
+                  "tMatches, tNumOfRoomates, tPet, tPhone, tPreferLocation, tPreferType, tPreferZipCode, tSmoking FROM coms4156.tenant WHERE tPreferZipCode=#{tPreferZipCode}")
+  List<Tenant> selectTenantByZipcode(@Param("tPreferZipCode") String tPreferZipCode);
+
 }
