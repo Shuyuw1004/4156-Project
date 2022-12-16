@@ -202,7 +202,7 @@ public class ClientController {
     responseHeaders.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE, PATCH");
     if (zipcode != null && !zipcode.isEmpty()) {
       List<Tenant> tenants = tenantMapper.selectTenantByZipcode(zipcode);
-      if (tenants != null) {
+      if (tenants != null && !tenants.isEmpty()) {
         StringBuilder sb = new StringBuilder("");
         for (int i = 0; i < tenants.size(); i++) {
           sb.append(tenants.get(i).toString());
@@ -211,7 +211,7 @@ public class ClientController {
         return new ResponseEntity<>(sb.toString(), responseHeaders, HttpStatus.OK);
       } else {
         return new ResponseEntity<>("The tenant does not exist.", responseHeaders,
-                HttpStatus.BAD_REQUEST);
+                HttpStatus.INTERNAL_SERVER_ERROR);
       }
     } else {
       return new ResponseEntity<>("Zipcode cannot be empty.", responseHeaders,
