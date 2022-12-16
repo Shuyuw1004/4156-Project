@@ -18,12 +18,12 @@ body {
 .rg_center {
   float: left;
   margin-left: 200px;
+  font-size: 40px;
 }
 
 .rg_right {
   float: right;
   margin-right: 15px;
-  font-size: 40px;
 }
 
 .rg_left>p:first-child {
