@@ -11,7 +11,8 @@ export class LandlordUserHomeComponent implements OnInit {
   name :string = "";
   email : string = "";
   clientId : string = '';
-  getMatchResponse : string = "";
+  getZipcodeResponse : string = "";
+  getTenantsByZipcode : string = "";
 
   constructor(private httpClient: HttpClient, private route: ActivatedRoute) { }
 
@@ -41,7 +42,31 @@ export class LandlordUserHomeComponent implements OnInit {
   }
 
   getZipcode() {
-    let url = "http://127.0.0.1:8080/landlord/getZipcode";
+    let url = "http://127.0.0.1:8080/client/getZipcode";
+    let url2 = "http://127.0.0.1:8080/client/getTenantByZipcode";
+    this.httpClient.get(url,{observe: 'body', responseType: "text"}).subscribe({
+      next: next => {
+        console.log(next);
+        this.getZipcodeResponse = next.toString();
+        let params = new HttpParams()
+          .append("zipcode", this.getZipcodeResponse);
+        this.httpClient.get(url2, {params: params, observe: 'body', responseType: "text"}).subscribe(
+          {
+            next: next => {
+            this.getTenantsByZipcode = next;
+            },
+            error: error => {
+              console.log(error);
+              this.getTenantsByZipcode = error.error;
+            }
+          }
+        );
+      },
+      error: error => {
+        console.log(error);
+        this.getZipcodeResponse = error.error;
+      }
+    });
 
   }
 
