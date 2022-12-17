@@ -54,8 +54,15 @@ public class ClientController {
         }
         //Check whether the password matches the one stored in database
         if (password.equals(client.getPassword())) {
-            return new ResponseEntity<>(String.format("%s",
-                    clientMapper.selectClient(email).getCid()), responseHeaders,HttpStatus.OK);
+            String clientType = "client";
+            if (tenantMapper.selectTenantBytClientId(clientMapper.selectClient(email).getCid()) != null){
+                clientType = "tenant";
+            }
+            if (landlordMapper.selectLandlordBylClientId(clientMapper.selectClient(email).getCid()) != null){
+                 clientType = "landlord";
+            }
+            return new ResponseEntity<>(String.format("%s | %s",
+                    clientMapper.selectClient(email).getCid(), clientType), responseHeaders,HttpStatus.OK);
         }
         return new ResponseEntity<>("wrong password", responseHeaders,HttpStatus.BAD_REQUEST);
     }
