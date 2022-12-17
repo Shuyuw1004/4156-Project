@@ -23,13 +23,17 @@ export class SigninComponent implements OnInit {
       .append("email", email);
     this.httpClient.post(url1,"",{params: params1, observe: 'body', responseType: 'text'}).subscribe(
       (data:string) => {
-        this.ErrorLog = "signin successful!";
-        this.router.navigate(
-          ['/userHome'],
-          {
-            queryParams: { "name": name, "email": email, "clientId": data }
-          }
-        );
+        if (data.includes("tenant")) {
+          this.ErrorLog = "signin successful!";
+          this.router.navigate(
+            ['/userHome'],
+            {
+              queryParams: {"name": name, "email": email, "clientId": data.split("|")[0]}
+            }
+          );
+        } else {
+          this.ErrorLog = "You are not a tenant!"
+        }
       },
       error => this.ErrorLog = error.error);
     this.showLog = true;
