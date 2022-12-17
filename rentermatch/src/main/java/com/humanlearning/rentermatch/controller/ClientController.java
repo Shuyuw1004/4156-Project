@@ -128,6 +128,19 @@ public class ClientController {
             return "cId cannot be empty.";
     }
 
+    @GetMapping("getZipcode")
+    public ResponseEntity<String> getTenantByZipcode() {
+        HttpHeaders responseHeaders = new HttpHeaders();
+        responseHeaders.set("Access-Control-Allow-Origin", "*");
+        responseHeaders.set("Access-Control-Allow-Headers",
+                "X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method, Authorization");
+        responseHeaders.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE, PATCH");
+        String zipCode = tenantMapper.getMostFrequentZip();
+        if (zipCode.isEmpty()) {
+            return new ResponseEntity<>("No zipcode stored in database.", responseHeaders, HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(zipCode, responseHeaders, HttpStatus.OK);
+    }
     @DeleteMapping("deleteClient")
     public String deleteClient(String password, String name, String email) {
         if (password == null || password.isEmpty()) {

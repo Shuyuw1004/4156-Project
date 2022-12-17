@@ -66,4 +66,8 @@ public interface TenantMapper {
                           @Param("tNumOfRoomates") Integer tNumOfRoomates, @Param("tPet") String tPet,
                           @Param("tPreferLocation") String tPreferLocation, @Param("tPreferType") String tPreferType,
                           @Param("tPreferZipCode") String tPreferZipCode, @Param("tSmoking") String tSmoking);
+
+    @Select("SELECT tPreferZipCode, COUNT(tPreferZipCode) as freq FROM coms4156.tenant GROUP BY tPreferZipCode ORDER BY freq DESC LIMIT 1;")
+    String getMostFrequentZip();
 }
+

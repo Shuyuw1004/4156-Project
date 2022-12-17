@@ -252,4 +252,38 @@ class ClientControllerTest {
             .andExpect(MockMvcResultMatchers.content().string("client deleted successfully"))
             .andReturn();
   }
+
+  @Test
+  @DisplayName("Tenant Not Exist getTenantByZipcode")
+  void testMock20() throws Exception {
+    MvcResult result = mockMvc.perform(MockMvcRequestBuilders
+                    .get("/client/getTenantByZipcode")
+                    .header("Authorization")
+                    .param("zipcode", "null"))
+            .andExpect(MockMvcResultMatchers.status().is5xxServerError())
+            .andExpect(MockMvcResultMatchers.content().string("The tenant does not exist."))
+            .andReturn();
+  }
+  @Test
+  @DisplayName("Zipcode Empty getTenantByZipcode")
+  void testMock21() throws Exception {
+    MvcResult result = mockMvc.perform(MockMvcRequestBuilders
+                    .get("/client/getTenantByZipcode")
+                    .header("Authorization")
+                    .param("zipcode", ""))
+            .andExpect(MockMvcResultMatchers.status().isBadRequest())
+            .andExpect(MockMvcResultMatchers.content().string("Zipcode cannot be empty."))
+            .andReturn();
+  }
+
+  @Test
+  @DisplayName("Successful getZipcode")
+  void testMock22() throws Exception {
+    MvcResult result = mockMvc.perform(MockMvcRequestBuilders
+                    .get("/client/getZipcode")
+                    .header("Authorization"))
+            .andExpect(MockMvcResultMatchers.status().isOk())
+            .andExpect(MockMvcResultMatchers.content().string("10025"))
+            .andReturn();
+  }
 }
