@@ -69,7 +69,7 @@ public class ClientController {
 
 
   @PostMapping("register")
-  public ResponseEntity<String> register(String password, String name, String email) {
+  public ResponseEntity<String> register(String password, String name, String email, String type) {
     HttpHeaders responseHeaders = new HttpHeaders();
     responseHeaders.set("Access-Control-Allow-Origin", "*");
     responseHeaders.set("Access-Control-Allow-Headers",
@@ -99,6 +99,11 @@ public class ClientController {
       return new ResponseEntity<>("register fail, name cannot exceed 64 characters!",
           responseHeaders, HttpStatus.BAD_REQUEST);
     }
+    //check whether type is empty
+    if (type == null || type.isEmpty()) {
+      return new ResponseEntity<>("register fail, type cannot be empty!", responseHeaders,
+          HttpStatus.BAD_REQUEST);
+    }
     //Select client from database by email
     Client client = clientMapper.selectClient(email);
     //Check whether client already exist
@@ -107,7 +112,7 @@ public class ClientController {
           HttpStatus.BAD_REQUEST);
     }
     //Return 1 if saved successfully; return 0 if failed
-    int resultCount = clientMapper.saveClient(password, name, email);
+    int resultCount = clientMapper.saveClient(password, name, email,type);
     if (resultCount == 0) {
       return new ResponseEntity<>("register fail, reason unknown!", responseHeaders,
           HttpStatus.BAD_REQUEST);
@@ -116,6 +121,21 @@ public class ClientController {
         clientMapper.selectClient(email).getCid()), responseHeaders, HttpStatus.OK);
   }
 
+  @GetMapping("getClientType")
+  public String getClientType(String email) {
+    if (email != null && !email.isEmpty()) {
+      Client client = clientMapper.selectClientByEmail(email);
+      if (client != null) {
+        System.out.println("here");
+        System.out.println(client);
+        return client.getType();
+      } else {
+        return "The client does not exist.";
+      }
+    } else {
+      return "Email cannot be empty.";
+    }
+  }
 
   @GetMapping("getClientByEmail")
   public String getClientByEmail(String email) {
