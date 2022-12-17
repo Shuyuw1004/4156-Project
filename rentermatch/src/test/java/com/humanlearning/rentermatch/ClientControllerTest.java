@@ -333,7 +333,7 @@ class ClientControllerTest {
 
   @Test
   @DisplayName("Return client type Successfully")
-  void testMock33() throws Exception {
+  void testMock24() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
             .get("/client/getClientType")
             .header("Authorization", testAuthHeader)
