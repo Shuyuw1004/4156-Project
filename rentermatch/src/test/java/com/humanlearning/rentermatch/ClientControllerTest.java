@@ -342,5 +342,4 @@ class ClientControllerTest {
         .andExpect(MockMvcResultMatchers.content().string("student"))
         .andReturn();
   }
-
 }
