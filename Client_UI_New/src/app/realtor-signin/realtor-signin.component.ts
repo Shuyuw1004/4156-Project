@@ -16,19 +16,21 @@ export class RealtorSigninComponent implements OnInit {
   ngOnInit(): void {
   }
   onSignin(name:string, password:string, email:string) {
-    let url1 = "http://127.0.0.1:8080/realtor/login";
+    let url1 = "http://127.0.0.1:8080/client/login";
     let params1 = new HttpParams()
       .append("password", password)
       .append("email", email);
     this.httpClient.post(url1,"",{params: params1, observe: 'body', responseType: 'text'}).subscribe(
       (data:string) => {
-        this.ErrorLog = "signin successful!";
-        this.router.navigate(
-          ['/realtorUserHome'],
-          {
-            queryParams: { "name": name, "email": email, "clientId": data }
-          }
-        );
+        if (data.includes("client")) {
+          this.ErrorLog = "signin successful!";
+          this.router.navigate(
+            ['/realtorUserHome'],
+            {
+              queryParams: {"name": name, "email": email, "clientId": data.split("|")[0]}
+            }
+          );
+        }
       },
       error => this.ErrorLog = error.error);
     this.showLog = true;
