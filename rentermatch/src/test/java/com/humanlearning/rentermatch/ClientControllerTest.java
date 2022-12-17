@@ -15,13 +15,12 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 @AutoConfigureMockMvc
 class ClientControllerTest {
 
-  @Resource
-  private MockMvc mockMvc;
-
   private final String testAuthHeader =
       "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTgyNTc3NTYyMSwiaWF0IjoxNjcwM"
           + "jU1NjIxfQ.I90zi32fdL-kFfxMRc75MHnfGWlWIgx44VQnW9fiPh9FhQkD87_r_pTPal-DMh3CK0P-Gg"
           + "WZaKeCCcj_P3ysMA";
+  @Resource
+  private MockMvc mockMvc;
 
   @Test
   @DisplayName("Empty Email Login")
@@ -283,34 +282,34 @@ class ClientControllerTest {
   @DisplayName("Tenant Not Exist getTenantByZipcode")
   void testMock20() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
-                    .get("/client/getTenantByZipcode")
-                    .header("Authorization", testAuthHeader)
-                    .param("zipcode", "null"))
-            .andExpect(MockMvcResultMatchers.status().is5xxServerError())
-            .andExpect(MockMvcResultMatchers.content().string("The tenant does not exist."))
-            .andReturn();
+            .get("/client/getTenantByZipcode")
+            .header("Authorization", testAuthHeader)
+            .param("zipcode", "null"))
+        .andExpect(MockMvcResultMatchers.status().is5xxServerError())
+        .andExpect(MockMvcResultMatchers.content().string("The tenant does not exist."))
+        .andReturn();
   }
 
   @Test
   @DisplayName("Zipcode Empty getTenantByZipcode")
   void testMock21() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
-                    .get("/client/getTenantByZipcode")
-                    .header("Authorization", testAuthHeader)
-                    .param("zipcode", ""))
-            .andExpect(MockMvcResultMatchers.status().isBadRequest())
-            .andExpect(MockMvcResultMatchers.content().string("Zipcode cannot be empty."))
-            .andReturn();
+            .get("/client/getTenantByZipcode")
+            .header("Authorization", testAuthHeader)
+            .param("zipcode", ""))
+        .andExpect(MockMvcResultMatchers.status().isBadRequest())
+        .andExpect(MockMvcResultMatchers.content().string("Zipcode cannot be empty."))
+        .andReturn();
   }
 
   @Test
   @DisplayName("Successful getZipcode")
   void testMock22() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
-                    .get("/client/getZipcode")
-                    .header("Authorization", testAuthHeader))
-            .andExpect(MockMvcResultMatchers.status().isOk())
-            .andExpect(MockMvcResultMatchers.content().string("10025"))
-            .andReturn();
+            .get("/client/getZipcode")
+            .header("Authorization", testAuthHeader))
+        .andExpect(MockMvcResultMatchers.status().isOk())
+        .andExpect(MockMvcResultMatchers.content().string("10025"))
+        .andReturn();
   }
 }

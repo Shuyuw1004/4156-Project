@@ -517,7 +517,7 @@ class TenantControllerTest {
             .param("tId", "16"))
         .andExpect(MockMvcResultMatchers.status().isOk())
         .andExpect(MockMvcResultMatchers.content().string(
-            "Tenant(tid=16, tAge=22, tClientId=1, tConstellation=Libra, tCooking=No, tEarlyTimeSleep=12:00, tExpenditure=1600, tGender=Male, tJob=Student, tLateTimeSleep=3:00, tMatches=null, tNumOfRoomates=3, tPet=No, tPhone=212-555-9113, tPreferLocation=New York, tPreferType=Condo, tPreferZipCode=10032, tSmoking=No)"))
+            "Tenant(tid=16, tAge=22, tClientId=1, tConstellation=Libra, tCooking=, tEarlyTimeSleep=12:00, tExpenditure=1600, tGender=Male, tJob=Student, tLateTimeSleep=3:00, tMatches=null, tNumOfRoomates=3, tPet=No, tPhone=212-555-9113, tPreferLocation=New York, tPreferType=Condo, tPreferZipCode=10032, tSmoking=No)"))
         .andReturn();
   }
 
@@ -554,7 +554,7 @@ class TenantControllerTest {
             .param("tClientId", "1"))
         .andExpect(MockMvcResultMatchers.status().isOk())
         .andExpect(MockMvcResultMatchers.content().string(
-            "Tenant(tid=16, tAge=22, tClientId=1, tConstellation=Libra, tCooking=No, tEarlyTimeSleep=12:00, tExpenditure=1600, tGender=Male, tJob=Student, tLateTimeSleep=3:00, tMatches=null, tNumOfRoomates=3, tPet=No, tPhone=212-555-9113, tPreferLocation=New York, tPreferType=Condo, tPreferZipCode=10032, tSmoking=No)"))
+            "Tenant(tid=16, tAge=22, tClientId=1, tConstellation=Libra, tCooking=, tEarlyTimeSleep=12:00, tExpenditure=1600, tGender=Male, tJob=Student, tLateTimeSleep=3:00, tMatches=null, tNumOfRoomates=3, tPet=No, tPhone=212-555-9113, tPreferLocation=New York, tPreferType=Condo, tPreferZipCode=10032, tSmoking=No)"))
         .andReturn();
   }
 

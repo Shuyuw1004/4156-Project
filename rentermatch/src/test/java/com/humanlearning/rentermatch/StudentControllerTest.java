@@ -110,22 +110,6 @@ class StudentControllerTest {
   }
 
   @Test
-  @DisplayName("insertStudent Test student is client")
-  void testMock7() throws Exception {
-    MvcResult result = mockMvc.perform(MockMvcRequestBuilders
-            .post("/student/insertStudent")
-            .header("Authorization", testAuthHeader)
-            .param("email", "tony@gmail.com")
-            .param("name", "tony")
-            .param("sClientId", "4")
-            .param("uni", "tony1111"))
-        .andExpect(MockMvcResultMatchers.status().isBadRequest())
-        .andExpect(MockMvcResultMatchers.content()
-            .string("profile creation failed, student already exist"))
-        .andReturn();
-  }
-
-  @Test
   @DisplayName("insertStudent Test Insert student from a client")
   void testMock8() throws Exception {
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders
