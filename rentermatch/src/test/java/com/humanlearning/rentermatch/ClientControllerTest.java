@@ -302,4 +302,15 @@ class ClientControllerTest {
             .andExpect(MockMvcResultMatchers.content().string("Zipcode cannot be empty."))
             .andReturn();
   }
+
+  @Test
+  @DisplayName("Successful getZipcode")
+  void testMock22() throws Exception {
+    MvcResult result = mockMvc.perform(MockMvcRequestBuilders
+                    .get("/client/getZipcode")
+                    .header("Authorization", testAuthHeader))
+            .andExpect(MockMvcResultMatchers.status().isOk())
+            .andExpect(MockMvcResultMatchers.content().string("10025"))
+            .andReturn();
+  }
 }

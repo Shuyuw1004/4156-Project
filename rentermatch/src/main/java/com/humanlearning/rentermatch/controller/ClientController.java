@@ -218,4 +218,18 @@ public class ClientController {
               HttpStatus.BAD_REQUEST);
     }
   }
+
+  @GetMapping("getZipcode")
+  public ResponseEntity<String> getTenantByZipcode() {
+    HttpHeaders responseHeaders = new HttpHeaders();
+    responseHeaders.set("Access-Control-Allow-Origin", "*");
+    responseHeaders.set("Access-Control-Allow-Headers",
+            "X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method, Authorization");
+    responseHeaders.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE, PATCH");
+    String zipCode = tenantMapper.getMostFrequentZip();
+    if (zipCode.isEmpty()) {
+      return new ResponseEntity<>("No zipcode stored in database.", responseHeaders, HttpStatus.BAD_REQUEST);
+    }
+    return new ResponseEntity<>(zipCode, responseHeaders, HttpStatus.OK);
+  }
 }
