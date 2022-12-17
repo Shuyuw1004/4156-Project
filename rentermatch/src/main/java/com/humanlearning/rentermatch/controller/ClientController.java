@@ -126,8 +126,6 @@ public class ClientController {
     if (email != null && !email.isEmpty()) {
       Client client = clientMapper.selectClientByEmail(email);
       if (client != null) {
-        System.out.println("here");
-        System.out.println(client);
         return client.getType();
       } else {
         return "The client does not exist.";
