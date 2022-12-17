@@ -17,6 +17,7 @@ import org.springframework.http.HttpHeaders;
 import java.util.logging.*;
 import java.util.logging.Logger;
 import java.util.Formatter;
+import java.util.List;
 @Slf4j
 @RequestMapping("client")
 @RestController
@@ -194,5 +195,31 @@ public class ClientController {
         }
         else
             return "client deleted successfully";
+    }
+
+    @GetMapping("getTenantByZipcode")
+    public ResponseEntity<String> getTenantByZipcode(String zipcode) {
+        HttpHeaders responseHeaders = new HttpHeaders();
+        responseHeaders.set("Access-Control-Allow-Origin", "*");
+        responseHeaders.set("Access-Control-Allow-Headers",
+                "X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method, Authorization");
+        responseHeaders.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE, PATCH");
+        if (zipcode != null && !zipcode.isEmpty()) {
+            List<Tenant> tenants = tenantMapper.selectTenantByZipcode(zipcode);
+            if (tenants != null  && !tenants.isEmpty()) {
+                StringBuilder sb = new StringBuilder("");
+                for (int i = 0; i < tenants.size(); i++) {
+                    sb.append(tenants.get(i).toString());
+                    sb.append("\n");
+                }
+                return new ResponseEntity<>(sb.toString(), responseHeaders, HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>("The tenant does not exist.", responseHeaders,
+                        HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        } else {
+            return new ResponseEntity<>("Zipcode cannot be empty.", responseHeaders,
+                    HttpStatus.BAD_REQUEST);
+        }
     }
 }

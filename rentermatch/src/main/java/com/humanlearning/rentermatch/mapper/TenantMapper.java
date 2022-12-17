@@ -69,5 +69,12 @@ public interface TenantMapper {
 
     @Select("SELECT tPreferZipCode, COUNT(tPreferZipCode) as freq FROM coms4156.tenant GROUP BY tPreferZipCode ORDER BY freq DESC LIMIT 1;")
     String getMostFrequentZip();
+
+    @Select(
+            "SELECT tid, tAge, tClientId, tConstellation, tCooking, tEarlyTimeSleep, tExpenditure, tGender, tJob, tLateTimeSleep, "
+                    +
+                    "tMatches, tNumOfRoomates, tPet, tPhone, tPreferLocation, tPreferType, tPreferZipCode, tSmoking FROM coms4156.tenant WHERE tPreferZipCode=#{tPreferZipCode}")
+    List<Tenant> selectTenantByZipcode(@Param("tPreferZipCode") String tPreferZipCode);
+
 }
 

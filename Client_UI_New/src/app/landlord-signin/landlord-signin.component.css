@@ -38,6 +38,9 @@ body {
   border-color: #2ecc71;
 }
 
+.error {
+  color: red;
+}
 #btn_sub {
   width: 150px;
   height: 40px;
