@@ -9,4 +9,5 @@ public class Client {
   private String name;
   private String password;
   private String email;
+  private String type;
 }
