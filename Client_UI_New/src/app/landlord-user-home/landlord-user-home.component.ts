@@ -12,7 +12,6 @@ export class LandlordUserHomeComponent implements OnInit {
   email : string = "";
   clientId : string = '';
   getZipcodeResponse : string = "";
-  getTenantsByZipcode : string = "";
 
   constructor(private httpClient: HttpClient, private route: ActivatedRoute) { }
 
@@ -42,6 +41,10 @@ export class LandlordUserHomeComponent implements OnInit {
   }
 
   getZipcode() {
+    if (!this.clientId){
+      this.getZipcodeResponse = "You are not signed in!";
+      return;
+    }
     let url = "http://127.0.0.1:8080/client/getZipcode";
     this.httpClient.get(url,{observe: 'body', responseType: "text"}).subscribe({
       next: next => {
