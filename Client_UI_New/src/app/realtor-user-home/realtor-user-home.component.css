@@ -1,0 +1,47 @@
+body {
+  background: url("../../../img/register_bg.png");
+}
+
+.rg_layout {
+  width: 900px;
+  height: 100px;
+  border: 8px solid #EEEEEE;
+  background-color: white;
+  margin-left: 200px;
+}
+
+.rg_left {
+  float: left;
+  margin-left: 15px;
+}
+
+.rg_center {
+  float: left;
+  margin-left: 200px;
+  font-size: 25px;
+}
+
+.rg_right {
+  float: right;
+  margin-right: 15px;
+  font-size: 25px;
+}
+
+.rg_left>p:first-child {
+  color: #FFD026;
+  font-size: 20px;
+}
+
+.rg_left>p:last-child {
+  color: #A6A6A6;
+  font-size: 20px;
+}
+
+.rg_right>p:first-child {
+  font-size: 15px;
+
+}
+
+.rg_right p a {
+  color: pink;
+}

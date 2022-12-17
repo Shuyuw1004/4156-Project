@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Realtor UserHome</title>
+</head>
+
+<body>
+<div class="rg_layout">
+
+  <div class="rg_left">
+    <p>Realtor User Home</p>
+  </div>
+
+  <!--  <div class="rg_center">-->
+  <!--    <p><a href="./tenantUpdate"> <b>Tenant Update</b></a></p>-->
+  <!--    <p>{{ getMatchResponse }} </p>-->
+  <!--  </div>-->
+  <form action="#" class="realtor_zipcode" method="POST">
+    <div class="rg_center">
+    <input name="zipcode" placeholder="Enter a zipcode" type="text">
+    </div>
+
+
+    <div class="rg_right">
+      <button (click)=getTenants()>Get tenants from this zipcode</button>
+    </div>
+
+    <p></p>
+  </form>
+
+
+
+</div>
+
+</body>
+
+</html>
