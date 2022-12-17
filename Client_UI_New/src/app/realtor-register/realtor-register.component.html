@@ -80,12 +80,13 @@
           </tr>
 
           <tr>
-            <td colspan="2" id="td_sub"><input (click)="onRegister(username.value, password.value, email.value)" id="btn_sub"
+            <td colspan="2" id="td_sub"><input (click)="onRegister()" id="btn_sub"
                                                type="submit"
                                                value="Register">
             </td>
           </tr>
         </table>
+        <p class = "error" id="errorlog" *ngIf="showLog">{{ ErrorLog }}</p>
 
       </form>
     </div>

@@ -71,7 +71,9 @@ body {
 .error {
   color: red;
 }
-
+#errorlog {
+  padding-left: 140px;
+}
 #td_sub {
   padding-left: 150px;
 }

@@ -11,6 +11,8 @@ export class RealtorRegisterComponent implements OnInit {
 
   public realtor: Realtor;
 
+  showLog: boolean = false;
+  ErrorLog :string = "";
   constructor(private httpClient: HttpClient) {
     this.realtor = new Realtor("", "", "");
   }
@@ -18,27 +20,24 @@ export class RealtorRegisterComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onRegister(name: string, password: string, email: string) {
+  onRegister() {
     let url1 = "http://127.0.0.1:8080/client/register";
-    let url2 = "http://127.0.0.1:8080/realtor/insertRealtor";
-    // const username = (<HTMLInputElement>document.getElementById('username')).value;
-    // const password = (<HTMLInputElement>document.getElementById('password')).value;
-    // const email = (<HTMLInputElement>document.getElementById('Email')).value;
-    // const phone = (<HTMLInputElement>document.getElementById('lphone')).value;
-    // this.landlord = new Landlord(username,
-    //   password, email, phone);
+    const username = (<HTMLInputElement>document.getElementById('username')).value;
+    const password = (<HTMLInputElement>document.getElementById('password')).value;
+    const email = (<HTMLInputElement>document.getElementById('Email')).value;
+
     let params = new HttpParams()
-      .append("name", name)
+      .append("name", username)
       .append("password", password)
       .append("email", email);
-    console.log();
     this.httpClient.post(url1, "", {params: params}).subscribe({
-      next: next => console.log("Success!", next),
-      error: error => console.log("Error!", error)
+      next: next => {
+        this.ErrorLog = "registration successful!";
+        window.location.replace("http://127.0.0.1:4200");
+      },
+      error: error => this.ErrorLog = error.error
     });
-    this.httpClient.post(url2, "", {params: params}).subscribe({
-      next: next => console.log("Success!", next),
-      error: error => console.log("Error!", error)
-    });
+    this.showLog = true;
+    return false;
   }
 }
