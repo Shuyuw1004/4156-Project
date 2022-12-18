@@ -2,6 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {HttpClient, HttpParams} from "@angular/common/http";
+import {Tenant} from "../realtor-user-home/tenant";
 @Component({
   selector: 'app-userhome',
   templateUrl: './user-home.component.html',
@@ -13,6 +14,7 @@ export class UserHomeComponent implements OnInit {
   clientId : string = '';
   getMatchResponse : string = "";
 
+  getMatchResponseArr : Tenant[] = [];
   constructor(private httpClient: HttpClient, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -41,11 +43,15 @@ export class UserHomeComponent implements OnInit {
   }
   getMatch() {
     let url = "http://127.0.0.1:8080/tenant/getMatch";
+    this.getMatchResponseArr = [];
     let params = new HttpParams()
       .append("tClientId", this.clientId);
     this.httpClient.get(url,{params: params, observe: 'body', responseType: "text"}).subscribe({
       next: next => {
-        this.getMatchResponse = next.toString();
+        for (let index = 0; index < next.split("\n").length - 1; index++) {
+          let responseTenant = new Tenant(next.split("\n")[index]);
+          this.getMatchResponseArr.push(responseTenant);
+        }
       },
       error: error => {
         console.log(error);

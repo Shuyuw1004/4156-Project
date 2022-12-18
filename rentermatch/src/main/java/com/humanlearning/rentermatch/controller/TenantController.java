@@ -280,7 +280,7 @@ public class TenantController {
     }
     StringBuilder tenants = new StringBuilder("");
     for (int i = 0; i < matchedTenants.size(); i++) {
-      tenants.append(matchedTenants.get(i).toString());
+      tenants.append(clientMapper.selectClientBycId(matchedTenants.get(i).getTClientId()).toString());
       tenants.append("\n");
     }
     TenantController.LOGGER.log(Level.INFO, "reach here");

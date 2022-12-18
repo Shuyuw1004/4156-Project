@@ -45,3 +45,11 @@ body {
 .rg_right p a {
   color: pink;
 }
+
+table, th, td {
+  border: 1px solid black;
+}
+
+.mb_3 {
+  margin-left: 550px;
+}

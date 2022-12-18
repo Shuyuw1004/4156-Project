@@ -50,7 +50,7 @@ export class RealtorUserHomeComponent implements OnInit {
     this.httpClient.get(url,{params: params, observe: 'body', responseType: "text"}).subscribe({
       next: next => {
         this.getTenantsResponse = next.toString();
-        for (let index = 0; index < next.split("\n").length; index++){
+        for (let index = 0; index < next.split("\n").length - 1; index++){
           let responseTenant  = new Tenant(next.split("\n")[index]);
           this.tenantResponseArr.push(responseTenant);
         }

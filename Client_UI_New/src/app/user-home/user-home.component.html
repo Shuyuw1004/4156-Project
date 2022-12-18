@@ -23,8 +23,26 @@
     <button (click)=getMatch()>GetMatch</button>
   </div>
 
+</div>
 
+<div class="mb_3">
+  <label></label>
   <p>{{ getMatchResponse }}</p>
+  <div  *ngIf="getMatchResponseArr" class='table-responsive'>
+    <table class='table' style="border: 1px solid black;border-collapse: collapse;">
+      <thead>
+      <tr>
+        <th *ngFor="let item of getMatchResponseArr[0].header">{{item}}</th>
+
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let p of getMatchResponseArr;">
+        <td *ngFor="let item of p.elements">{{item}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 
 </body>
