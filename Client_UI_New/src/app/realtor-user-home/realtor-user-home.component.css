@@ -18,13 +18,13 @@ body {
 .rg_center {
   float: left;
   margin-left: 200px;
-  font-size: 25px;
+  font-size: 40px;
 }
 
 .rg_right {
   float: right;
   margin-right: 15px;
-  font-size: 25px;
+  font-size: 40px;
 }
 
 .rg_left>p:first-child {
@@ -44,4 +44,11 @@ body {
 
 .rg_right p a {
   color: pink;
+}
+.mb-3 {
+  margin-left: 300px;
+}
+
+table, th, td {
+  border: 1px solid black;
 }

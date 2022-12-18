@@ -24,6 +24,8 @@ body {
 .rg_right {
   float: right;
   margin-right: 15px;
+  font-size: 80px;
+
 }
 
 .rg_left>p:first-child {
@@ -37,7 +39,7 @@ body {
 }
 
 .rg_right>p:first-child {
-  font-size: 15px;
+  font-size: 20px;
 
 }
 

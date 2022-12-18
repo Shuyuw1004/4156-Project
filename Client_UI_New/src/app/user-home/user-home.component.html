@@ -10,19 +10,21 @@
 <div class="rg_layout">
 
   <div class="rg_left">
-    <p>User Home</p>
+    <p>Tenant User Home</p>
   </div>
+
+<!--  <div class="rg_center">-->
+<!--    <p><a href="./tenantUpdate"> <b>Tenant Update</b></a></p>-->
+<!--    <p>{{ getMatchResponse }} </p>-->
+<!--  </div>-->
+
 
   <div class="rg_center">
-    <p><a href="./tenantUpdate"> <b>Tenant Update</b></a></p>
-    <p>{{ getMatchResponse }} </p>
-  </div>
-
-
-  <div class="rg_right">
     <button (click)=getMatch()>GetMatch</button>
   </div>
 
+
+  <p>{{ getMatchResponse }}</p>
 </div>
 
 </body>
