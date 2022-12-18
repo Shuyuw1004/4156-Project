@@ -69,7 +69,7 @@ public class ClientController {
 
 
   @PostMapping("register")
-  public ResponseEntity<String> register(String password, String name, String email, String type) {
+  public ResponseEntity<String> register(String password, String name, String email) {
     HttpHeaders responseHeaders = new HttpHeaders();
     responseHeaders.set("Access-Control-Allow-Origin", "*");
     responseHeaders.set("Access-Control-Allow-Headers",

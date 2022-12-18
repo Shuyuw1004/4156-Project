@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 public interface ClientMapper {
 
   //Save the information of new clients into database
-  @Insert("INSERT INTO coms4156.client(Name, password, Email) VALUES(#{name},#{password},#{email},#{type})")
+  @Insert("INSERT INTO coms4156.client(Name, password, Email) VALUES(#{name},#{password},#{email})")
   int saveClient(@Param("password") String password, @Param("name") String name,
       @Param("email") String email);
 

@@ -131,21 +131,21 @@ class ClientControllerTest {
         .andReturn();
   }
 
-  @Test
-  @DisplayName("Empty type Register")
-  void testMock9() throws Exception {
-    MvcResult result = mockMvc.perform(MockMvcRequestBuilders
-            .post("/client/register")
-            .header("Authorization", testAuthHeader)
-            .param("type", "")
-            .param("name","kevin")
-            .param("password", "Aa12345678")
-            .param("email", "kevinceltics09@hotmail.com"))
-        .andExpect(MockMvcResultMatchers.status().isBadRequest())
-        .andExpect(MockMvcResultMatchers.content().string(
-            "register fail, type cannot be empty!"))
-        .andReturn();
-  }
+//  @Test
+//  @DisplayName("Empty type Register")
+//  void testMock9() throws Exception {
+//    MvcResult result = mockMvc.perform(MockMvcRequestBuilders
+//            .post("/client/register")
+//            .header("Authorization", testAuthHeader)
+//            .param("type", "")
+//            .param("name","kevin")
+//            .param("password", "Aa12345678")
+//            .param("email", "kevinceltics09@hotmail.com"))
+//        .andExpect(MockMvcResultMatchers.status().isBadRequest())
+//        .andExpect(MockMvcResultMatchers.content().string(
+//            "register fail, type cannot be empty!"))
+//        .andReturn();
+//  }
 
   @Test
   @DisplayName("Duplicate User Register")
@@ -171,8 +171,7 @@ class ClientControllerTest {
             .header("Authorization", testAuthHeader)
             .param("name", "Ariel")
             .param("password", "Ariel1234")
-            .param("email", "ariel@gmail.com")
-            .param("type","student"))
+            .param("email", "ariel@gmail.com"))
         .andExpect(MockMvcResultMatchers.status().isOk())
         //.andExpect(MockMvcResultMatchers.content().string("register successfully"))
         .andReturn();
@@ -331,15 +330,15 @@ class ClientControllerTest {
         .andReturn();
   }
 
-  @Test
-  @DisplayName("Return client type Successfully")
-  void testMock24() throws Exception {
-    MvcResult result = mockMvc.perform(MockMvcRequestBuilders
-            .get("/client/getClientType")
-            .header("Authorization", testAuthHeader)
-            .param("email", "newapi@gmail.com"))
-        .andExpect(MockMvcResultMatchers.status().isOk())
-        .andExpect(MockMvcResultMatchers.content().string("student"))
-        .andReturn();
-  }
+//  @Test
+//  @DisplayName("Return client type Successfully")
+//  void testMock24() throws Exception {
+//    MvcResult result = mockMvc.perform(MockMvcRequestBuilders
+//            .get("/client/getClientType")
+//            .header("Authorization", testAuthHeader)
+//            .param("email", "newapi@gmail.com"))
+//        .andExpect(MockMvcResultMatchers.status().isOk())
+//        .andExpect(MockMvcResultMatchers.content().string("student"))
+//        .andReturn();
+//  }
 }
