@@ -206,7 +206,7 @@ public class ClientController {
             if (tenants != null  && !tenants.isEmpty()) {
                 StringBuilder sb = new StringBuilder("");
                 for (int i = 0; i < tenants.size(); i++) {
-                    sb.append(tenants.get(i).toString());
+                    sb.append(clientMapper.selectClientBycId(tenants.get(i).getTClientId()).toString());
                     sb.append("\n");
                 }
                 return new ResponseEntity<>(sb.toString(), responseHeaders, HttpStatus.OK);

@@ -20,7 +20,28 @@
 
   <div class="rg_right">
     <button (click)=getTenants()>Get tenants from this zipcode</button>
-    <p>{{ getTenantsResponse }}</p>
+
+    <div class="mb-3">
+      <label></label>
+      <p></p>
+      <div  *ngIf="tenantResponseArr" class='table-responsive'>
+        <table class='table' style="border: 1px solid black;border-collapse: collapse;">
+          <thead>
+          <tr>
+            <th *ngFor="let item of tenantResponseArr[0].header">{{item}}</th>
+
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let p of tenantResponseArr;">
+            <td *ngFor="let item of p.elements">{{item}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
   </div>
 
 </div>

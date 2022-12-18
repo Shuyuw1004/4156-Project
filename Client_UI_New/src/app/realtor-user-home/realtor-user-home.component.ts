@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient, HttpParams} from "@angular/common/http";
 import {ActivatedRoute} from "@angular/router";
-
+import {Tenant} from "../realtor-user-home/tenant";
 @Component({
   selector: 'app-realtor-user-home',
   templateUrl: './realtor-user-home.component.html',
@@ -13,6 +13,7 @@ export class RealtorUserHomeComponent implements OnInit {
   email : string = "";
   clientId : string = "";
   getTenantsResponse : string = "";
+  tenantResponseArr : Tenant[] = [];
   constructor(private httpClient: HttpClient, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -45,10 +46,16 @@ export class RealtorUserHomeComponent implements OnInit {
     let zipcode = (<HTMLInputElement>document.querySelector('[name="zipcode"]')).value;
     let params = new HttpParams()
       .append("zipcode", zipcode);
+    this.tenantResponseArr = [];
     this.httpClient.get(url,{params: params, observe: 'body', responseType: "text"}).subscribe({
       next: next => {
-        console.log(next);
         this.getTenantsResponse = next.toString();
+        for (let index = 0; index < next.split("\n").length; index++){
+          let responseTenant  = new Tenant(next.split("\n")[index]);
+          this.tenantResponseArr.push(responseTenant);
+        }
+
+        console.log(this.tenantResponseArr);
       },
       error: error => {
         console.log(error);
@@ -56,8 +63,6 @@ export class RealtorUserHomeComponent implements OnInit {
       }
     });
     return false;
-
-
   }
 
 }
